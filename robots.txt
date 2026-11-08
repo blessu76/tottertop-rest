@@ -44,4 +44,4 @@ Allow: /
 User-agent: Meta-ExternalAgent
 Allow: /
 
-Sitemap: https://tilttower.ipe.rest/sitemap.xml
+Sitemap: https://tottertop.ipe.rest/sitemap.xml

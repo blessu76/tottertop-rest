@@ -1,6 +1,6 @@
 # tilttower-rest
 
-Intro site skeleton for **Tilt Tower / 기우뚱탑** (F-026). Static site, Python 3.8+ stdlib only, 11 languages.
+Intro site for **Tottertop / 기우뚱탑** (F-026). Static site, Python 3.8+ stdlib only, 11 languages.
 
 - Game name / domain / operator live in ONE place: `games.json` (+ root `CNAME` must equal its `domain`).
 - Build: `python3 scripts/build_site.py` — writes the generated pages, sitemap.xml, robots.txt, llms.txt.
@@ -9,8 +9,8 @@ Intro site skeleton for **Tilt Tower / 기우뚱탑** (F-026). Static site, Pyth
 - Page text: `content/i18n/<lang>.json` and `content/pages/<lang>/{privacy,terms,contact}.md` (non-en/ko pages need `translation_of: en|ko`).
 
 ## HOLD
-Do not push, create the GitHub repo, or touch DNS until the tlt-0001 trademark issue is resolved (decided in room g00).
+Do not push, create the GitHub repo, or touch DNS until the owner (Davy) says so. The name is final: Tottertop (tottertop.ipe.rest).
 
 ## TODO
-- Real translations for the 9 non-en/ko languages (currently English copies).
-- Real art (assets/ are brand-neutral placeholders), privacy §2 and terms §2 `[TODO]`.
+- Real art (assets/ are brand-neutral placeholders).
+- Resolve the `[법무 확인 필요]` markers in privacy §2/§3 and terms §2 before the store submission.

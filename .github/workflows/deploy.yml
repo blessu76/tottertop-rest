@@ -1,4 +1,4 @@
-# HOLD: do not push or enable Pages/DNS until the tlt-0001 trademark check is resolved (decided in room g00).
+# HOLD: do not push or enable Pages/DNS until the owner approves (name is now Tottertop).
 name: Deploy to GitHub Pages
 
 on:

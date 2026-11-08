@@ -1,18 +1,23 @@
 ---
-title: Terms of Use
+title: 利用規約
 translation_of: en
-description: The terms for using tilttower.ipe.rest and, once released, the Tilt Tower app.
+description: tottertop.ipe.rest、およびリリース後の Tottertop アプリをご利用いただく際の規約です。
 ---
-Effective date: **{{EFFECTIVE}}**. These terms cover the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"), operated by **{{OPERATOR}}** ("we").
+施行日: **{{EFFECTIVE}}**。この規約は、**{{OPERATOR}}**(以下「当方」)が運営するウェブサイト {{DOMAIN}}(以下「本サイト」)と、リリース後の {{GAME}} モバイルアプリ(以下「本アプリ」)に適用されます。
 
-## 1. The Site
+## 1. 本サイト
 
-The Site is provided as is, for information about the App. {{GAME}} is in development and has not been released: nothing on the Site is a promise of a feature, date or price.
+本サイトは、本アプリに関する情報提供を目的として、現状有姿で提供されます。{{GAME}} は開発中で、リリースされていません。本サイト上の記載は、機能・日付・価格のいずれについても約束するものではありません。
 
-## 2. The App (once released)
+## 2. 本アプリ(リリース後)
 
-[TODO: App terms — license, rewarded ads, no warranty — to be written before the store submission and reviewed by the owner.]
+本アプリに関するこの規約は草案であり、リリース前に確定します。
 
-## 3. Contact
+- **ライセンス。** 当方は、お客様に対し、ご自身の端末に本アプリをインストールし、個人的かつ非商業的な目的で使用するための、非独占的で譲渡不能な個人向けライセンスを付与します。法律で認められている場合を除き、本アプリを複製、転売、リバースエンジニアリング、改変することはできません。
+- **リワード広告。** 本アプリでは、第三者が配信する広告を表示する予定です。リワード広告は任意です。視聴するかどうかはお客様が選択でき、報酬は最後まで視聴した場合にのみ付与されます。第三者の広告の内容について、当方は管理しません。
+- **広告削除の購入。** 本アプリでは、広告を削除する任意の1回限りの購入を提供する予定です。課金と管理は Apple App Store または Google Play が行い、返金や購入の復元はストアの規則に従います。広告を削除しても、報酬のためにお客様が自分で選んで視聴する任意のリワード広告は削除されない場合があります。[법무 확인 필요: 「広告削除」の正確な範囲と返金に関する文言。]
+- **無保証。** 本アプリは、いかなる種類の保証もなく現状有姿で提供されます。法律で認められる範囲で、当方は間接的または付随的な損害について責任を負いません。[법무 확인 필요: 責任制限と準拠法は、ストア申請前にオーナーが確認すること。]
 
-Questions about these terms: {{EMAIL}}.
+## 3. お問い合わせ
+
+この規約に関するご質問: {{EMAIL}}。

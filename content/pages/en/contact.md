@@ -1,6 +1,6 @@
 ---
 title: Contact
-description: How to reach the people making Tilt Tower.
+description: How to reach the people making Tottertop.
 ---
 Write to us at **{{EMAIL}}**. {{GAME}} is made by {{OPERATOR}}.
 

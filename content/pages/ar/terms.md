@@ -1,18 +1,23 @@
 ---
-title: Terms of Use
+title: شروط الاستخدام
 translation_of: en
-description: The terms for using tilttower.ipe.rest and, once released, the Tilt Tower app.
+description: شروط استخدام tottertop.ipe.rest وتطبيق Tottertop بعد صدوره.
 ---
-Effective date: **{{EFFECTIVE}}**. These terms cover the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"), operated by **{{OPERATOR}}** ("we").
+تاريخ السريان: **{{EFFECTIVE}}**. تشمل هذه الشروط الموقع {{DOMAIN}} («الموقع») وتطبيق الجوال {{GAME}} («التطبيق») بعد صدوره، ويشغّلهما **{{OPERATOR}}** («نحن»).
 
-## 1. The Site
+## 1. الموقع
 
-The Site is provided as is, for information about the App. {{GAME}} is in development and has not been released: nothing on the Site is a promise of a feature, date or price.
+يُقدَّم الموقع «كما هو» للتعريف بالتطبيق. {{GAME}} قيد التطوير ولم تصدر بعد: ولا يُعدّ أي شيء في الموقع وعدًا بميزة أو موعد أو سعر.
 
-## 2. The App (once released)
+## 2. التطبيق (بعد صدوره)
 
-[TODO: App terms — license, rewarded ads, no warranty — to be written before the store submission and reviewed by the owner.]
+هذه الشروط الخاصة بالتطبيق مسودة ستُستكمل قبل الإصدار.
 
-## 3. Contact
+- **الترخيص.** نمنحك ترخيصًا شخصيًا غير حصري وغير قابل للتحويل لتثبيت التطبيق واستخدامه على أجهزتك الخاصة للاستخدام الشخصي غير التجاري. ولا يجوز لك نسخ التطبيق أو إعادة بيعه أو هندسته عكسيًا أو العبث به، إلا حيث يسمح القانون بذلك.
+- **الإعلانات المكافِئة.** من المخطط أن يعرض التطبيق إعلانات تقدمها جهات خارجية. والإعلانات المكافِئة اختيارية: أنت تقرر ما إذا كنت ستشاهد إعلانًا منها، ولا تُمنح أي مكافأة إلا إذا أنهيت مشاهدته. ولا نتحكم في محتوى إعلانات الجهات الخارجية.
+- **شراء إزالة الإعلانات.** من المخطط أن يتيح التطبيق عملية شراء اختيارية لمرة واحدة تزيل الإعلانات. وتتم فوترتها وإدارتها عبر Apple App Store أو Google Play، وتخضع عمليات الاسترداد واستعادة المشتريات لقواعد المتجر. وقد لا تؤدي إزالة الإعلانات إلى إزالة الإعلانات المكافِئة الاختيارية التي تختار مشاهدتها مقابل مكافأة. [법무 확인 필요: النطاق الدقيق لعبارة «إزالة الإعلانات» وصياغة الاسترداد.]
+- **عدم وجود ضمان.** يُقدَّم التطبيق «كما هو»، دون ضمانات من أي نوع، ولا نتحمل المسؤولية عن الخسائر غير المباشرة أو العرضية إلى المدى الذي يسمح به القانون. [법무 확인 필요: يجب أن يراجع المالك تحديد المسؤولية والقانون الواجب التطبيق قبل التقديم إلى المتاجر.]
 
-Questions about these terms: {{EMAIL}}.
+## 3. اتصل بنا
+
+للاستفسار عن هذه الشروط: {{EMAIL}}.

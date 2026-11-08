@@ -1,27 +1,33 @@
 ---
-title: Privacy Policy
+title: سياسة الخصوصية
 translation_of: en
-description: How tilttower.ipe.rest handles information, and the privacy position of the Tilt Tower app that is in development.
+description: كيف يتعامل tottertop.ipe.rest مع المعلومات، وخطة الخصوصية لتطبيق Tottertop الذي هو قيد التطوير.
 ---
-Effective date: **{{EFFECTIVE}}**. This policy covers the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"). The operator is **{{OPERATOR}}** ("we"), an individual developer. Contact: {{EMAIL}}.
+تاريخ السريان: **{{EFFECTIVE}}**. تشمل هذه السياسة الموقع {{DOMAIN}} («الموقع») وتطبيق الجوال {{GAME}} («التطبيق») بعد صدوره. المشغّل هو **{{OPERATOR}}** («نحن»)، وهو مطوّر فرد. للتواصل: {{EMAIL}}.
 
-In short: the Site has no accounts, no sign-up, no comments and no advertising, and we do not ask you for personal information.
+باختصار: لا توجد في الموقع حسابات ولا تسجيل ولا تعليقات ولا إعلانات، ولا نطلب منك معلومات شخصية. ومن المخطط أن يعرض التطبيق إعلانات، كما هو موضح في القسم 2.
 
-## 1. The Site
+## 1. الموقع
 
-- **Information you send us.** If you email us we receive your address and your message, and use them only to reply.
-- **Hosting logs.** The Site is hosted on GitHub Pages. The host may process technical request data, such as your IP address, to deliver the pages. We do not receive or use it.
-- **Browser storage.** The Site saves two small preferences, your light or dark theme and the language you pick, in your browser's local storage. They stay on your device and are never sent to us.
-- **Links.** The Site links to ipe.rest and other sites. Their privacy practices are their own.
+- **المعلومات التي ترسلها إلينا.** إذا راسلتنا بالبريد الإلكتروني فإننا نتلقى عنوانك ورسالتك، ونستخدمهما للرد فقط.
+- **سجلات الاستضافة.** يُستضاف الموقع على GitHub Pages. وقد تعالج جهة الاستضافة بيانات تقنية للطلبات، مثل عنوان IP الخاص بك، لتسليم الصفحات. نحن لا نتلقى هذه البيانات ولا نستخدمها.
+- **تخزين المتصفح.** يحفظ الموقع تفضيلين صغيرين، هما المظهر الفاتح أو الداكن واللغة التي تختارها، في التخزين المحلي لمتصفحك. وتبقى على جهازك ولا تُرسل إلينا أبدًا.
+- **الروابط.** يحتوي الموقع على روابط إلى ipe.rest ومواقع أخرى. وممارسات الخصوصية لديها شأن خاص بها.
 
-## 2. The App (in development)
+## 2. التطبيق (قيد التطوير)
 
-The App is not released. The privacy details (advertising and analytics included) will be decided before release and the store privacy statement will match them. Until then, treat this section as a plan, not a promise about a shipped product. [TODO: fill in once the ad and analytics setup is decided]
+التطبيق لم يصدر بعد، ولذلك يصف هذا القسم الخطة وليس منتجًا مطروحًا. سنحدّثه قبل الإصدار، وستتطابق معه تفاصيل الخصوصية في متاجر التطبيقات.
 
-## 3. Children
+- **الإعلانات.** من المخطط أن يكون التطبيق مجانيًا ومدعومًا بإعلانات من Google AdMob، وأغلبها إعلانات مكافِئة تختار مشاهدتها (مثلًا لمتابعة جولة). ولعرض الإعلانات وقياسها ومنع الاحتيال، قد تجمع AdMob وشركاؤها معلومات من جهازك وتستخدمها، مثل معرّف الإعلانات وعنوان IP والموقع التقريبي وتفاصيل الجهاز والتطبيق وطريقة تفاعلك مع الإعلانات. وحيثما يشترط القانون ذلك، سنطلب موافقتك أولًا (مثل رسالة الموافقة في المنطقة الاقتصادية الأوروبية والمملكة المتحدة، أو نافذة App Tracking Transparency في iOS). ويمكنك الحد من تخصيص الإعلانات أو إعادة ضبط معرّف الإعلانات من إعدادات جهازك. وتصف Google ممارساتها على https://policies.google.com/privacy.
+- **شراء إزالة الإعلانات.** من المخطط أن يتيح التطبيق عملية شراء اختيارية داخل التطبيق تزيل الإعلانات. وتتولى معالجة الدفع Apple App Store أو Google Play؛ ولا نتلقى بيانات بطاقتك أو دفعك، بل فقط حالة الشراء اللازمة لفتح الميزة.
+- **بيانات اللعبة.** من المخطط أن تُخزَّن الإعدادات والتقدم، مثل أفضل نتيجة لك، على جهازك. ولا نخطط لاشتراط حساب.
+- **التحليلات.** لم نقرر بعد ما إذا كان التطبيق سيستخدم التحليلات أو تقارير الأعطال. وإذا استخدمها، فسيُدرج هذا القسم ما يُجمع قبل الإصدار.
+- **الاحتفاظ بالبيانات وحقوقك.** [법무 확인 필요: صياغة الاحتفاظ بالبيانات والحقوق بحسب المنطقة (GDPR وCCPA وPIPA الكورية) يجب تأكيدها قبل التقديم إلى المتاجر.]
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information.
+## 3. الأطفال
 
-## 4. Changes
+الموقع والتطبيق غير موجهين للأطفال دون سن 13 عامًا، ولا نجمع معلوماتهم عن علم. [법무 확인 필요: إعدادات الإعلانات للمعاملة الموجهة للأطفال والتصنيف العمري يجب تأكيدها قبل الإصدار.]
 
-If this policy changes, the new text and its effective date will be published on this page.
+## 4. التغييرات
+
+إذا تغيرت هذه السياسة، فسيُنشر النص الجديد وتاريخ سريانه في هذه الصفحة.

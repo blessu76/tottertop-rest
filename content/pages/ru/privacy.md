@@ -1,27 +1,33 @@
 ---
-title: Privacy Policy
+title: Политика конфиденциальности
 translation_of: en
-description: How tilttower.ipe.rest handles information, and the privacy position of the Tilt Tower app that is in development.
+description: Как tottertop.ipe.rest обращается с информацией, и план защиты конфиденциальности для приложения Tottertop, которое находится в разработке.
 ---
-Effective date: **{{EFFECTIVE}}**. This policy covers the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"). The operator is **{{OPERATOR}}** ("we"), an individual developer. Contact: {{EMAIL}}.
+Дата вступления в силу: **{{EFFECTIVE}}**. Эта политика распространяется на сайт {{DOMAIN}} («Сайт») и, после выхода, на мобильное приложение {{GAME}} («Приложение»). Оператор — **{{OPERATOR}}** («мы»), независимый разработчик. Контакт: {{EMAIL}}.
 
-In short: the Site has no accounts, no sign-up, no comments and no advertising, and we do not ask you for personal information.
+Коротко: на Сайте нет учётных записей, регистрации, комментариев и рекламы, и мы не запрашиваем у вас персональные данные. В Приложении планируется показ рекламы, как описано в разделе 2.
 
-## 1. The Site
+## 1. Сайт
 
-- **Information you send us.** If you email us we receive your address and your message, and use them only to reply.
-- **Hosting logs.** The Site is hosted on GitHub Pages. The host may process technical request data, such as your IP address, to deliver the pages. We do not receive or use it.
-- **Browser storage.** The Site saves two small preferences, your light or dark theme and the language you pick, in your browser's local storage. They stay on your device and are never sent to us.
-- **Links.** The Site links to ipe.rest and other sites. Their privacy practices are their own.
+- **Информация, которую вы нам отправляете.** Если вы напишете нам по электронной почте, мы получим ваш адрес и сообщение и используем их только для ответа.
+- **Журналы хостинга.** Сайт размещён на GitHub Pages. Хостинг-провайдер может обрабатывать технические данные запросов, например ваш IP-адрес, чтобы доставлять страницы. Мы эти данные не получаем и не используем.
+- **Хранилище браузера.** Сайт сохраняет в локальном хранилище вашего браузера две небольшие настройки: светлую или тёмную тему и выбранный язык. Они остаются на вашем устройстве и нам не отправляются.
+- **Ссылки.** Сайт содержит ссылки на ipe.rest и другие сайты. Их политика конфиденциальности определяется ими самими.
 
-## 2. The App (in development)
+## 2. Приложение (в разработке)
 
-The App is not released. The privacy details (advertising and analytics included) will be decided before release and the store privacy statement will match them. Until then, treat this section as a plan, not a promise about a shipped product. [TODO: fill in once the ad and analytics setup is decided]
+Приложение не выпущено, поэтому этот раздел описывает планы, а не готовый продукт. Перед выпуском мы обновим его, а сведения о конфиденциальности в магазинах приложений будут ему соответствовать.
 
-## 3. Children
+- **Реклама.** Планируется, что Приложение будет бесплатным и будет поддерживаться рекламой Google AdMob, в основном рекламой за вознаграждение, которую вы смотрите по своему выбору (например, чтобы продолжить раунд). Чтобы показывать и измерять рекламу и предотвращать мошенничество, AdMob и его партнёры могут собирать и использовать информацию с вашего устройства, например рекламный идентификатор, IP-адрес, примерное местоположение, сведения об устройстве и приложении и данные о вашем взаимодействии с рекламой. Там, где этого требует закон, мы сначала запросим ваше согласие (например, сообщение о согласии в ЕЭЗ и Великобритании или запрос App Tracking Transparency в iOS). Вы можете ограничить персонализацию рекламы или сбросить рекламный идентификатор в настройках устройства. Google описывает свою практику по адресу https://policies.google.com/privacy.
+- **Покупка отключения рекламы.** Планируется, что в Приложении будет доступна дополнительная встроенная покупка, отключающая рекламу. Платёж обрабатывается Apple App Store или Google Play; мы не получаем данные вашей карты или платежа, а только статус покупки, необходимый для разблокировки функции.
+- **Игровые данные.** Настройки и прогресс, например ваш лучший результат, планируется хранить на вашем устройстве. Мы не планируем требовать учётную запись.
+- **Аналитика.** Мы ещё не решили, будет ли Приложение использовать аналитику или отчёты о сбоях. Если будет, этот раздел перед выпуском перечислит, что именно собирается.
+- **Хранение данных и ваши права.** [법무 확인 필요: формулировки о сроках хранения данных и правах по регионам (GDPR, CCPA, корейский PIPA) нужно подтвердить до отправки в магазины.]
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information.
+## 3. Дети
 
-## 4. Changes
+Сайт и Приложение не предназначены для детей младше 13 лет, и мы сознательно не собираем их данные. [법무 확인 필요: настройки рекламы для режима, ориентированного на детей, и возрастной рейтинг нужно подтвердить до выпуска.]
 
-If this policy changes, the new text and its effective date will be published on this page.
+## 4. Изменения
+
+Если эта политика изменится, новый текст и дата вступления его в силу будут опубликованы на этой странице.

@@ -1,10 +1,10 @@
 ---
-title: Contact
+title: संपर्क
 translation_of: en
-description: How to reach the people making Tilt Tower.
+description: Tottertop बनाने वाले लोगों से कैसे संपर्क करें।
 ---
-Write to us at **{{EMAIL}}**. {{GAME}} is made by {{OPERATOR}}.
+हमें **{{EMAIL}}** पर लिखिए। {{GAME}} को {{OPERATOR}} ने बनाया है।
 
-- Questions, bug reports and feedback are welcome. We read every message but cannot promise a reply time.
-- For privacy requests, put "privacy" in the subject line.
-- There is no store page yet, so there is no support portal.
+- प्रश्न, बग रिपोर्ट और फ़ीडबैक का स्वागत है। हम हर संदेश पढ़ते हैं, लेकिन जवाब देने के समय का वादा नहीं कर सकते।
+- गोपनीयता से जुड़े अनुरोधों के लिए विषय पंक्ति में "privacy" लिखिए।
+- अभी कोई स्टोर पेज नहीं है, इसलिए कोई सपोर्ट पोर्टल भी नहीं है।

@@ -1,27 +1,33 @@
 ---
-title: Privacy Policy
+title: गोपनीयता नीति
 translation_of: en
-description: How tilttower.ipe.rest handles information, and the privacy position of the Tilt Tower app that is in development.
+description: tottertop.ipe.rest जानकारी को कैसे संभालता है, और विकासाधीन Tottertop ऐप के लिए गोपनीयता योजना।
 ---
-Effective date: **{{EFFECTIVE}}**. This policy covers the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"). The operator is **{{OPERATOR}}** ("we"), an individual developer. Contact: {{EMAIL}}.
+प्रभावी तिथि: **{{EFFECTIVE}}**। यह नीति वेबसाइट {{DOMAIN}} ("साइट") और, रिलीज़ होने के बाद, {{GAME}} मोबाइल ऐप ("ऐप") पर लागू होती है। संचालक **{{OPERATOR}}** ("हम") है, जो एक व्यक्तिगत डेवलपर है। संपर्क: {{EMAIL}}।
 
-In short: the Site has no accounts, no sign-up, no comments and no advertising, and we do not ask you for personal information.
+संक्षेप में: साइट पर कोई खाता, साइन-अप, टिप्पणी या विज्ञापन नहीं है, और हम आपसे व्यक्तिगत जानकारी नहीं माँगते। ऐप में विज्ञापन दिखाने की योजना है, जैसा कि खंड 2 में बताया गया है।
 
-## 1. The Site
+## 1. साइट
 
-- **Information you send us.** If you email us we receive your address and your message, and use them only to reply.
-- **Hosting logs.** The Site is hosted on GitHub Pages. The host may process technical request data, such as your IP address, to deliver the pages. We do not receive or use it.
-- **Browser storage.** The Site saves two small preferences, your light or dark theme and the language you pick, in your browser's local storage. They stay on your device and are never sent to us.
-- **Links.** The Site links to ipe.rest and other sites. Their privacy practices are their own.
+- **आप हमें जो जानकारी भेजते हैं।** यदि आप हमें ईमेल करते हैं तो हमें आपका पता और आपका संदेश मिलता है, और हम उनका उपयोग केवल जवाब देने के लिए करते हैं।
+- **होस्टिंग लॉग।** साइट GitHub Pages पर होस्ट की गई है। पेज पहुँचाने के लिए होस्ट तकनीकी अनुरोध डेटा, जैसे आपका IP पता, प्रोसेस कर सकता है। हमें यह डेटा न मिलता है और न हम इसका उपयोग करते हैं।
+- **ब्राउज़र स्टोरेज।** साइट दो छोटी प्राथमिकताएँ, यानी आपकी लाइट या डार्क थीम और आपकी चुनी हुई भाषा, आपके ब्राउज़र के लोकल स्टोरेज में सहेजती है। वे आपके डिवाइस पर ही रहती हैं और हमें कभी नहीं भेजी जातीं।
+- **लिंक।** साइट ipe.rest और अन्य साइटों से लिंक करती है। उनकी गोपनीयता संबंधी प्रथाएँ उनकी अपनी हैं।
 
-## 2. The App (in development)
+## 2. ऐप (विकासाधीन)
 
-The App is not released. The privacy details (advertising and analytics included) will be decided before release and the store privacy statement will match them. Until then, treat this section as a plan, not a promise about a shipped product. [TODO: fill in once the ad and analytics setup is decided]
+ऐप रिलीज़ नहीं हुआ है, इसलिए यह खंड योजना का वर्णन करता है, किसी जारी उत्पाद का नहीं। रिलीज़ से पहले हम इसे अपडेट करेंगे, और ऐप स्टोर में गोपनीयता विवरण इससे मेल खाएँगे।
 
-## 3. Children
+- **विज्ञापन।** ऐप के फ़्री-टू-प्ले होने और Google AdMob के विज्ञापनों से समर्थित होने की योजना है, मुख्यतः रिवॉर्डेड विज्ञापन जिन्हें आप अपनी मर्ज़ी से देखते हैं (उदाहरण के लिए, राउंड जारी रखने के लिए)। विज्ञापन दिखाने और मापने तथा धोखाधड़ी रोकने के लिए AdMob और उसके साझेदार आपके डिवाइस से जानकारी एकत्र और उपयोग कर सकते हैं, जैसे आपका विज्ञापन आइडेंटिफ़ायर, IP पता, अनुमानित स्थान, डिवाइस और ऐप का विवरण, और आप विज्ञापनों से कैसे इंटरैक्ट करते हैं। जहाँ कानून की आवश्यकता हो, हम पहले आपकी सहमति माँगेंगे (उदाहरण के लिए, EEA और UK में सहमति संदेश, या iOS पर App Tracking Transparency प्रॉम्प्ट)। आप अपने डिवाइस की सेटिंग में विज्ञापन वैयक्तिकरण सीमित कर सकते हैं या अपना विज्ञापन आइडेंटिफ़ायर रीसेट कर सकते हैं। Google अपनी प्रथाओं का वर्णन https://policies.google.com/privacy पर करता है।
+- **विज्ञापन हटाने की खरीद।** ऐप में एक वैकल्पिक इन-ऐप खरीद देने की योजना है जो विज्ञापन हटा देती है। भुगतान Apple App Store या Google Play संभालता है; हमें आपके कार्ड या भुगतान का विवरण नहीं मिलता, केवल फ़ीचर अनलॉक करने के लिए आवश्यक खरीद की स्थिति मिलती है।
+- **गेम डेटा।** सेटिंग और प्रगति, जैसे आपका सर्वश्रेष्ठ स्कोर, आपके डिवाइस पर संग्रहीत करने की योजना है। हम खाता अनिवार्य करने की योजना नहीं रखते।
+- **एनालिटिक्स।** हमने अभी तय नहीं किया है कि ऐप एनालिटिक्स या क्रैश रिपोर्टिंग का उपयोग करेगा या नहीं। यदि करेगा, तो रिलीज़ से पहले यह खंड बताएगा कि क्या एकत्र किया जाता है।
+- **डेटा प्रतिधारण और आपके अधिकार।** [법무 확인 필요: डेटा प्रतिधारण की शब्दावली और क्षेत्र के अनुसार अधिकार (GDPR, CCPA, कोरियाई PIPA) स्टोर सबमिशन से पहले पुष्टि किए जाने हैं।]
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information.
+## 3. बच्चे
 
-## 4. Changes
+साइट और ऐप 13 वर्ष से कम उम्र के बच्चों के लिए नहीं हैं, और हम जानबूझकर उनकी जानकारी एकत्र नहीं करते। [법무 확인 필요: बच्चों के लिए निर्देशित व्यवहार हेतु विज्ञापन सेटिंग और आयु रेटिंग की पुष्टि रिलीज़ से पहले की जानी है।]
 
-If this policy changes, the new text and its effective date will be published on this page.
+## 4. बदलाव
+
+यदि यह नीति बदलती है, तो नया पाठ और उसकी प्रभावी तिथि इसी पेज पर प्रकाशित की जाएगी।

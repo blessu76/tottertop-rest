@@ -1,27 +1,33 @@
 ---
-title: Privacy Policy
+title: 隐私政策
 translation_of: en
-description: How tilttower.ipe.rest handles information, and the privacy position of the Tilt Tower app that is in development.
+description: tottertop.ipe.rest 如何处理信息,以及正在开发中的 Tottertop 应用的隐私计划。
 ---
-Effective date: **{{EFFECTIVE}}**. This policy covers the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"). The operator is **{{OPERATOR}}** ("we"), an individual developer. Contact: {{EMAIL}}.
+生效日期:**{{EFFECTIVE}}**。本政策适用于网站 {{DOMAIN}}(以下简称"本网站"),以及 {{GAME}} 手机应用(以下简称"本应用")发布后的使用。运营者为个人开发者 **{{OPERATOR}}**(以下简称"我们")。联系方式:{{EMAIL}}。
 
-In short: the Site has no accounts, no sign-up, no comments and no advertising, and we do not ask you for personal information.
+简而言之:本网站没有账号、注册、评论和广告,我们也不会向你索要个人信息。本应用计划展示广告,详见第 2 节。
 
-## 1. The Site
+## 1. 本网站
 
-- **Information you send us.** If you email us we receive your address and your message, and use them only to reply.
-- **Hosting logs.** The Site is hosted on GitHub Pages. The host may process technical request data, such as your IP address, to deliver the pages. We do not receive or use it.
-- **Browser storage.** The Site saves two small preferences, your light or dark theme and the language you pick, in your browser's local storage. They stay on your device and are never sent to us.
-- **Links.** The Site links to ipe.rest and other sites. Their privacy practices are their own.
+- **你发送给我们的信息。** 如果你给我们发邮件,我们会收到你的邮箱地址和消息内容,并且仅用于回复。
+- **托管日志。** 本网站托管在 GitHub Pages 上。托管方可能会处理技术性请求数据(例如你的 IP 地址)以便提供页面。我们不会接收或使用这些数据。
+- **浏览器存储。** 本网站会在浏览器的本地存储中保存两项小偏好设置:你的浅色或深色主题,以及你选择的语言。它们保留在你的设备上,不会发送给我们。
+- **链接。** 本网站链接到 ipe.rest 及其他网站。这些网站的隐私做法由其自行负责。
 
-## 2. The App (in development)
+## 2. 本应用(开发中)
 
-The App is not released. The privacy details (advertising and analytics included) will be decided before release and the store privacy statement will match them. Until then, treat this section as a plan, not a promise about a shipped product. [TODO: fill in once the ad and analytics setup is decided]
+本应用尚未发布,因此本节描述的是计划,而不是已上线的产品。发布前我们会更新本节,应用商店中的隐私信息也将与之保持一致。
 
-## 3. Children
+- **广告。** 本应用计划免费游玩,并由 Google AdMob 的广告提供支持,主要是你自愿观看的激励广告(例如用于继续一局游戏)。为了投放和衡量广告并防止欺诈,AdMob 及其合作伙伴可能会收集并使用来自你设备的信息,例如广告标识符、IP 地址、大致位置、设备和应用详情,以及你与广告的互动方式。在法律要求的情况下,我们会先征求你的同意(例如在欧洲经济区和英国显示同意提示,或在 iOS 上显示 App Tracking Transparency 提示)。你可以在设备设置中限制广告个性化或重置广告标识符。Google 的做法请见 https://policies.google.com/privacy。
+- **去广告购买。** 本应用计划提供可选的应用内购买,用于去除广告。付款由 Apple App Store 或 Google Play 处理;我们不会收到你的银行卡或付款详情,只会收到解锁该功能所需的购买状态。
+- **游戏数据。** 设置以及最高分等进度计划存储在你的设备上。我们不打算要求你注册账号。
+- **数据分析。** 我们尚未决定本应用是否使用数据分析或崩溃报告。如果使用,发布前会在本节列出所收集的内容。
+- **保留期限与你的权利。** [법무 확인 필요: 数据保留的措辞以及各地区的权利(GDPR、CCPA、韩国 PIPA),需在提交商店审核前确认。]
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information.
+## 3. 儿童
 
-## 4. Changes
+本网站和本应用并非面向 13 岁以下儿童,我们也不会故意收集他们的信息。[법무 확인 필요: 面向儿童处理的广告设置和年龄分级,需在发布前确认。]
 
-If this policy changes, the new text and its effective date will be published on this page.
+## 4. 变更
+
+如果本政策发生变化,新的文本及其生效日期将发布在本页面上。

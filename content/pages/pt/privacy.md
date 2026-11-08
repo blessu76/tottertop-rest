@@ -1,27 +1,33 @@
 ---
-title: Privacy Policy
+title: Política de Privacidade
 translation_of: en
-description: How tilttower.ipe.rest handles information, and the privacy position of the Tilt Tower app that is in development.
+description: Como o tottertop.ipe.rest trata as informações e o plano de privacidade do app Tottertop, que está em desenvolvimento.
 ---
-Effective date: **{{EFFECTIVE}}**. This policy covers the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"). The operator is **{{OPERATOR}}** ("we"), an individual developer. Contact: {{EMAIL}}.
+Data de vigência: **{{EFFECTIVE}}**. Esta política abrange o site {{DOMAIN}} (o "Site") e, depois de lançado, o aplicativo móvel {{GAME}} (o "App"). O responsável é **{{OPERATOR}}** ("nós"), um desenvolvedor individual. Contato: {{EMAIL}}.
 
-In short: the Site has no accounts, no sign-up, no comments and no advertising, and we do not ask you for personal information.
+Em resumo: o Site não tem contas, cadastro, comentários nem publicidade, e não pedimos informações pessoais a você. O App deve exibir anúncios, conforme descrito na seção 2.
 
-## 1. The Site
+## 1. O Site
 
-- **Information you send us.** If you email us we receive your address and your message, and use them only to reply.
-- **Hosting logs.** The Site is hosted on GitHub Pages. The host may process technical request data, such as your IP address, to deliver the pages. We do not receive or use it.
-- **Browser storage.** The Site saves two small preferences, your light or dark theme and the language you pick, in your browser's local storage. They stay on your device and are never sent to us.
-- **Links.** The Site links to ipe.rest and other sites. Their privacy practices are their own.
+- **Informações que você nos envia.** Se você nos enviar um e-mail, recebemos seu endereço e sua mensagem e os usamos apenas para responder.
+- **Registros de hospedagem.** O Site é hospedado no GitHub Pages. O provedor pode processar dados técnicos da requisição, como seu endereço IP, para entregar as páginas. Nós não os recebemos nem usamos.
+- **Armazenamento do navegador.** O Site salva duas pequenas preferências, seu tema claro ou escuro e o idioma escolhido, no armazenamento local do seu navegador. Elas ficam no seu dispositivo e nunca são enviadas a nós.
+- **Links.** O Site tem links para ipe.rest e outros sites. As práticas de privacidade deles são de responsabilidade deles.
 
-## 2. The App (in development)
+## 2. O App (em desenvolvimento)
 
-The App is not released. The privacy details (advertising and analytics included) will be decided before release and the store privacy statement will match them. Until then, treat this section as a plan, not a promise about a shipped product. [TODO: fill in once the ad and analytics setup is decided]
+O App não foi lançado, então esta seção descreve um plano, não um produto entregue. Vamos atualizá-la antes do lançamento, e as informações de privacidade nas lojas de aplicativos corresponderão a ela.
 
-## 3. Children
+- **Publicidade.** O App deve ser gratuito e mantido por anúncios do Google AdMob, principalmente anúncios premiados que você escolhe assistir (por exemplo, para continuar uma partida). Para exibir e medir anúncios e prevenir fraudes, o AdMob e seus parceiros podem coletar e usar informações do seu dispositivo, como seu identificador de publicidade, endereço IP, localização aproximada, dados do dispositivo e do app e a forma como você interage com os anúncios. Quando a lei exigir, pediremos seu consentimento antes (por exemplo, uma mensagem de consentimento no EEE e no Reino Unido, ou o aviso do App Tracking Transparency no iOS). Você pode limitar a personalização de anúncios ou redefinir seu identificador de publicidade nas configurações do dispositivo. O Google descreve suas práticas em https://policies.google.com/privacy.
+- **Compra para remover anúncios.** O App deve oferecer uma compra opcional dentro do app que remove os anúncios. O pagamento é feito pela Apple App Store ou pelo Google Play; não recebemos os dados do seu cartão ou de pagamento, apenas o status da compra necessário para liberar o recurso.
+- **Dados do jogo.** Configurações e progresso, como sua melhor pontuação, devem ser armazenados no seu dispositivo. Não planejamos exigir uma conta.
+- **Análises.** Ainda não decidimos se o App usará análises ou relatórios de falhas. Se usar, esta seção listará o que é coletado antes do lançamento.
+- **Retenção e seus direitos.** [법무 확인 필요: texto sobre retenção de dados e direitos por região (GDPR, CCPA, PIPA coreana) a ser confirmado antes do envio às lojas.]
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information.
+## 3. Crianças
 
-## 4. Changes
+O Site e o App não são direcionados a crianças menores de 13 anos, e não coletamos intencionalmente informações delas. [법무 확인 필요: configurações de anúncios para tratamento direcionado a crianças e classificação etária a serem confirmadas antes do lançamento.]
 
-If this policy changes, the new text and its effective date will be published on this page.
+## 4. Alterações
+
+Se esta política mudar, o novo texto e sua data de vigência serão publicados nesta página.

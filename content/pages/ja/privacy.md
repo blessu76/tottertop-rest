@@ -1,27 +1,33 @@
 ---
-title: Privacy Policy
+title: プライバシーポリシー
 translation_of: en
-description: How tilttower.ipe.rest handles information, and the privacy position of the Tilt Tower app that is in development.
+description: tottertop.ipe.rest が情報をどのように扱うか、および開発中の Tottertop アプリのプライバシー計画について説明します。
 ---
-Effective date: **{{EFFECTIVE}}**. This policy covers the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"). The operator is **{{OPERATOR}}** ("we"), an individual developer. Contact: {{EMAIL}}.
+施行日: **{{EFFECTIVE}}**。このポリシーは、ウェブサイト {{DOMAIN}}(以下「本サイト」)と、リリース後の {{GAME}} モバイルアプリ(以下「本アプリ」)に適用されます。運営者は個人開発者の **{{OPERATOR}}**(以下「当方」)です。連絡先: {{EMAIL}}。
 
-In short: the Site has no accounts, no sign-up, no comments and no advertising, and we do not ask you for personal information.
+要約: 本サイトにはアカウント、登録、コメント、広告がなく、個人情報の入力をお願いすることもありません。本アプリでは、第2項で説明するとおり広告を表示する予定です。
 
-## 1. The Site
+## 1. 本サイト
 
-- **Information you send us.** If you email us we receive your address and your message, and use them only to reply.
-- **Hosting logs.** The Site is hosted on GitHub Pages. The host may process technical request data, such as your IP address, to deliver the pages. We do not receive or use it.
-- **Browser storage.** The Site saves two small preferences, your light or dark theme and the language you pick, in your browser's local storage. They stay on your device and are never sent to us.
-- **Links.** The Site links to ipe.rest and other sites. Their privacy practices are their own.
+- **お送りいただく情報。** メールをお送りいただいた場合、メールアドレスとメッセージを受け取り、返信のためだけに使用します。
+- **ホスティングのログ。** 本サイトは GitHub Pages でホストされています。ホスト側がページを配信するために、IP アドレスなどの技術的なリクエストデータを処理することがあります。当方はそれを受け取ることも使用することもありません。
+- **ブラウザのストレージ。** 本サイトは、ライト/ダークテーマと選択した言語という2つの小さな設定を、ブラウザのローカルストレージに保存します。これらはお使いの端末内にとどまり、当方に送信されることはありません。
+- **リンク。** 本サイトは ipe.rest やその他のサイトへのリンクを含みます。それらのサイトのプライバシーへの取り組みは、各サイトの責任となります。
 
-## 2. The App (in development)
+## 2. 本アプリ(開発中)
 
-The App is not released. The privacy details (advertising and analytics included) will be decided before release and the store privacy statement will match them. Until then, treat this section as a plan, not a promise about a shipped product. [TODO: fill in once the ad and analytics setup is decided]
+本アプリは未リリースのため、この項は出荷済みの製品ではなく計画を説明するものです。リリース前に内容を更新し、アプリストアのプライバシー情報もそれに合わせます。
 
-## 3. Children
+- **広告。** 本アプリは基本プレイ無料とし、Google AdMob の広告、主に自分で選んで視聴するリワード広告(たとえば、ラウンドを続けるためのもの)で運営する予定です。広告の配信・測定や不正防止のため、AdMob とそのパートナーは、広告 ID、IP アドレス、おおよその位置情報、端末およびアプリの詳細、広告の操作状況など、お使いの端末の情報を収集・利用することがあります。法令で必要な場合は、先に同意をお願いします(たとえば、EEA と英国での同意メッセージや、iOS の App Tracking Transparency のプロンプトなど)。広告のパーソナライズの制限や広告 ID のリセットは、端末の設定から行えます。Google の取り組みについては https://policies.google.com/privacy をご覧ください。
+- **広告削除の購入。** 本アプリでは、広告を削除する任意のアプリ内購入を提供する予定です。支払いは Apple App Store または Google Play が処理し、当方がカードや支払いの詳細を受け取ることはなく、機能を解放するために必要な購入状況のみを受け取ります。
+- **ゲームデータ。** 設定やベストスコアなどの進行状況は、お使いの端末に保存する予定です。アカウントの作成を必須にする予定はありません。
+- **アナリティクス。** 本アプリでアナリティクスやクラッシュレポートを使用するかどうかは、まだ決めていません。使用する場合は、リリース前にこの項で収集する内容を記載します。
+- **保存期間とお客様の権利。** [법무 확인 필요: データ保持に関する文言と地域別の権利(GDPR、CCPA、韓国 PIPA)は、ストア申請前に確認すること。]
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information.
+## 3. 子ども
 
-## 4. Changes
+本サイトおよび本アプリは13歳未満の子どもを対象としておらず、子どもの情報を意図的に収集することはありません。[법무 확인 필요: 子ども向け扱いの広告設定と年齢レーティングは、リリース前に確認すること。]
 
-If this policy changes, the new text and its effective date will be published on this page.
+## 4. 変更
+
+このポリシーを変更する場合は、新しい内容と施行日をこのページに掲載します。

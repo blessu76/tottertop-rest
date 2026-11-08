@@ -1,6 +1,6 @@
 ---
 title: 문의
-description: 기우뚱탑을 만드는 사람들에게 연락하는 방법입니다.
+description: 기우뚱탑(Tottertop)을 만드는 사람들에게 연락하는 방법입니다.
 ---
 **{{EMAIL}}** 로 보내 주세요. {{GAME}} 은 {{OPERATOR}} 가 만듭니다.
 

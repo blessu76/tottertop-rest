@@ -1,27 +1,33 @@
 ---
-title: Privacy Policy
+title: Politique de confidentialité
 translation_of: en
-description: How tilttower.ipe.rest handles information, and the privacy position of the Tilt Tower app that is in development.
+description: Comment tottertop.ipe.rest traite les informations, et le plan de confidentialité de l'application Tottertop en cours de développement.
 ---
-Effective date: **{{EFFECTIVE}}**. This policy covers the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"). The operator is **{{OPERATOR}}** ("we"), an individual developer. Contact: {{EMAIL}}.
+Date d'entrée en vigueur : **{{EFFECTIVE}}**. Cette politique couvre le site web {{DOMAIN}} (le « Site ») et, une fois publiée, l'application mobile {{GAME}} (l'« Application »). L'exploitant est **{{OPERATOR}}** (« nous »), un développeur indépendant. Contact : {{EMAIL}}.
 
-In short: the Site has no accounts, no sign-up, no comments and no advertising, and we do not ask you for personal information.
+En bref : le Site n'a ni comptes, ni inscription, ni commentaires, ni publicité, et nous ne vous demandons aucune information personnelle. L'Application doit afficher des publicités, comme décrit à la section 2.
 
-## 1. The Site
+## 1. Le Site
 
-- **Information you send us.** If you email us we receive your address and your message, and use them only to reply.
-- **Hosting logs.** The Site is hosted on GitHub Pages. The host may process technical request data, such as your IP address, to deliver the pages. We do not receive or use it.
-- **Browser storage.** The Site saves two small preferences, your light or dark theme and the language you pick, in your browser's local storage. They stay on your device and are never sent to us.
-- **Links.** The Site links to ipe.rest and other sites. Their privacy practices are their own.
+- **Informations que vous nous envoyez.** Si vous nous écrivez, nous recevons votre adresse et votre message, et ne les utilisons que pour répondre.
+- **Journaux d'hébergement.** Le Site est hébergé sur GitHub Pages. L'hébergeur peut traiter des données techniques de requête, comme votre adresse IP, pour diffuser les pages. Nous ne les recevons ni ne les utilisons.
+- **Stockage du navigateur.** Le Site enregistre deux petites préférences, votre thème clair ou sombre et la langue choisie, dans le stockage local de votre navigateur. Elles restent sur votre appareil et ne nous sont jamais envoyées.
+- **Liens.** Le Site contient des liens vers ipe.rest et d'autres sites. Leurs pratiques de confidentialité leur sont propres.
 
-## 2. The App (in development)
+## 2. L'Application (en développement)
 
-The App is not released. The privacy details (advertising and analytics included) will be decided before release and the store privacy statement will match them. Until then, treat this section as a plan, not a promise about a shipped product. [TODO: fill in once the ad and analytics setup is decided]
+L'Application n'est pas publiée ; cette section décrit donc un projet, et non un produit livré. Nous la mettrons à jour avant la sortie, et les informations de confidentialité sur les stores y correspondront.
 
-## 3. Children
+- **Publicité.** L'Application doit être gratuite et financée par des publicités de Google AdMob, principalement des publicités avec récompense que vous choisissez de regarder (par exemple pour continuer une partie). Pour diffuser et mesurer les publicités et prévenir la fraude, AdMob et ses partenaires peuvent collecter et utiliser des informations provenant de votre appareil, comme votre identifiant publicitaire, votre adresse IP, votre localisation approximative, des informations sur l'appareil et l'application, et la manière dont vous interagissez avec les publicités. Lorsque la loi l'exige, nous demanderons d'abord votre consentement (par exemple un message de consentement dans l'EEE et au Royaume-Uni, ou la fenêtre App Tracking Transparency sur iOS). Vous pouvez limiter la personnalisation des publicités ou réinitialiser votre identifiant publicitaire dans les réglages de votre appareil. Google décrit ses pratiques sur https://policies.google.com/privacy.
+- **Achat pour supprimer les publicités.** L'Application doit proposer un achat intégré facultatif qui supprime les publicités. Le paiement est géré par l'Apple App Store ou Google Play ; nous ne recevons ni votre carte ni vos données de paiement, seulement l'état de l'achat nécessaire pour débloquer la fonctionnalité.
+- **Données de jeu.** Les réglages et la progression, comme votre meilleur score, doivent être stockés sur votre appareil. Nous ne prévoyons pas d'exiger de compte.
+- **Analyses.** Nous n'avons pas décidé si l'Application utilisera des outils d'analyse ou de rapport de plantage. Si c'est le cas, cette section indiquera avant la sortie ce qui est collecté.
+- **Conservation et vos droits.** [법무 확인 필요: formulation sur la conservation des données et les droits selon les régions (RGPD, CCPA, PIPA coréenne) à confirmer avant la soumission aux stores.]
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information.
+## 3. Enfants
 
-## 4. Changes
+Le Site et l'Application ne s'adressent pas aux enfants de moins de 13 ans, et nous ne collectons pas sciemment leurs informations. [법무 확인 필요: paramètres publicitaires pour un traitement destiné aux enfants et classification d'âge à confirmer avant la sortie.]
 
-If this policy changes, the new text and its effective date will be published on this page.
+## 4. Modifications
+
+Si cette politique change, le nouveau texte et sa date d'entrée en vigueur seront publiés sur cette page.

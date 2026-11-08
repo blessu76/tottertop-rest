@@ -1,10 +1,10 @@
 ---
-title: Contact
+title: اتصل بنا
 translation_of: en
-description: How to reach the people making Tilt Tower.
+description: كيف تتواصل مع صانعي Tottertop.
 ---
-Write to us at **{{EMAIL}}**. {{GAME}} is made by {{OPERATOR}}.
+راسلنا على **{{EMAIL}}**. {{GAME}} من صنع {{OPERATOR}}.
 
-- Questions, bug reports and feedback are welcome. We read every message but cannot promise a reply time.
-- For privacy requests, put "privacy" in the subject line.
-- There is no store page yet, so there is no support portal.
+- نرحب بالأسئلة وتقارير الأخطاء والملاحظات. نقرأ كل رسالة لكن لا نستطيع الوعد بموعد للرد.
+- لطلبات الخصوصية، اكتب "privacy" في سطر الموضوع.
+- لا توجد صفحة في المتجر بعد، ولذلك لا توجد بوابة دعم.

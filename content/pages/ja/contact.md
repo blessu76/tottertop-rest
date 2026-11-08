@@ -1,10 +1,10 @@
 ---
-title: Contact
+title: お問い合わせ
 translation_of: en
-description: How to reach the people making Tilt Tower.
+description: Tottertop を作っている人への連絡方法です。
 ---
-Write to us at **{{EMAIL}}**. {{GAME}} is made by {{OPERATOR}}.
+**{{EMAIL}}** までご連絡ください。{{GAME}} は {{OPERATOR}} が制作しています。
 
-- Questions, bug reports and feedback are welcome. We read every message but cannot promise a reply time.
-- For privacy requests, put "privacy" in the subject line.
-- There is no store page yet, so there is no support portal.
+- ご質問、不具合の報告、ご意見を歓迎します。すべてのメッセージに目を通しますが、返信までの時間はお約束できません。
+- プライバシーに関するご依頼は、件名に "privacy" と記載してください。
+- まだストアページがないため、サポートポータルもありません。
