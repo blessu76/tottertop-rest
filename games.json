@@ -1,0 +1,19 @@
+{
+  "_note": "The ONE place where the game's name and domain live. Everything else (build_site.py, CNAME check, llms.txt, JSON-LD, sitemap) reads this file. Name is provisional until tlt-0001 (trademark/domain/store check) is decided.",
+  "id": "tilttower",
+  "foundry": "F-026",
+  "name": "Tilt Tower",
+  "name_ko": "기우뚱탑",
+  "provisional_name": true,
+  "domain": "tilttower.ipe.rest",
+  "genre": "Puzzle",
+  "platforms": ["iOS", "Android"],
+  "operator": "Davy Kim (ipe Studio)",
+  "email": "ipe.haven@gmail.com",
+  "effective": "2026-11-08",
+  "pages_updated": "2026-11-08",
+  "theme_color": "#C97B1A",
+  "asset_version": "20261108a",
+  "langs": ["en", "ko", "ja", "zh", "es", "fr", "de", "pt", "ru", "ar", "hi"],
+  "main_langs": ["en", "ko"]
+}

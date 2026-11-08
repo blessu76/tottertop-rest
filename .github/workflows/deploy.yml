@@ -1,0 +1,58 @@
+# HOLD: do not push or enable Pages/DNS until the tlt-0001 trademark check is resolved (decided in room g00).
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install the private ipe_web_kit (pinned by vendor/ipe_web_kit.lock)
+        uses: ./.github/actions/ipe-web-kit
+        with:
+          ssh-key: ${{ secrets.IPE_WEB_KIT_DEPLOY_KEY }}
+      - name: Green gate (kit, sources, tests, up-to-date build, sitemap)
+        run: bash scripts/check.sh
+
+  deploy:
+    needs: check
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Assemble site (repo root minus sources)
+        # content/ (page sources), scripts/, tests/, docs/, ops/, vendor/ and games.json (kit pin; the private kit source is never committed) are build-time only — never public raw URLs.
+        run: |
+          mkdir -p "$RUNNER_TEMP/site"
+          rsync -a --exclude='.git' --exclude='.github' --exclude='content' --exclude='scripts' --exclude='tests' --exclude='docs' --exclude='ops' --exclude='vendor' --exclude='games.json' --exclude='*.md' ./ "$RUNNER_TEMP/site/"
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ runner.temp }}/site
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

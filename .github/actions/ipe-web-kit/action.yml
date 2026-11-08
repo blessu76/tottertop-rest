@@ -1,0 +1,26 @@
+name: Install ipe_web_kit
+description: Check out the private ipe_web_kit (read-only deploy key) and install the version pinned in vendor/ipe_web_kit.lock into vendor/ipe_web_kit
+inputs:
+  ssh-key:
+    description: read-only deploy key of the kit repo (secret IPE_WEB_KIT_DEPLOY_KEY)
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Read the lock
+      id: lock
+      shell: bash
+      run: echo "commit=$(sed -n 's/^commit=//p' vendor/ipe_web_kit.lock)" >> "$GITHUB_OUTPUT"
+    - name: Check out the private kit at the locked commit
+      uses: actions/checkout@v4
+      with:
+        repository: blessu76/ipe_web_kit
+        ssh-key: ${{ inputs.ssh-key }}
+        ref: ${{ steps.lock.outputs.commit }}
+        fetch-depth: 0   # the kit installer resolves the lock's tag (refs/tags/vX.Y.Z)
+        fetch-tags: true
+        path: vendor/_kit_src   # must be inside the workspace (gitignored)
+        persist-credentials: false
+    - name: Install and verify against the lock
+      shell: bash
+      run: python3 scripts/kit_lock.py sync --kit vendor/_kit_src

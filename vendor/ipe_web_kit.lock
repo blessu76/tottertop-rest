@@ -1,0 +1,6 @@
+# Pin of the private ipe_web_kit (github.com/blessu76/ipe_web_kit). The kit source is NOT committed here (this repo is public):
+# CI / `python3 scripts/kit_lock.py sync --kit <local kit clone>` copies this tag into vendor/ipe_web_kit/ and checks it against these values.
+# To move to another tag: sync it from a kit clone with --update --tag vX.Y.Z (rewrites this file), run scripts/check.sh, commit the lock.
+tag=v0.2.3
+commit=2c9dd3172879de0ae92757a9184ef6795bf7a54e
+manifest_sha256=0d26975fcae58a18aeaacf57274241d47a1b503a9f896ba28042f2841905f26f

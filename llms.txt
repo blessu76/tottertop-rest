@@ -1,0 +1,28 @@
+# Tilt Tower
+
+> Tilt Tower is a one-tap physics game for phones, now in development. A swaying crane drops blocks onto a wobbling tower; stack it as high as you can. One round takes about a minute.
+
+Tilt Tower is a single-player mobile game by ipe() (https://ipe.rest/). It is in development and has NOT been released: no store page, release date or final price exists yet. This site is the game's home page.
+
+## Key facts
+
+- Simple physics balance game, single player.
+- One tap to play; a round lasts about one minute.
+- Free to play, supported by optional rewarded ads.
+- Planned for iOS and Android, in 11 languages.
+- No release date yet.
+
+## Pages
+
+- [Home](https://tilttower.ipe.rest/): Tilt Tower is a quick physics game for your phone. A crane swings above a wobbling tower: tap once to drop the block and try to stack it so the tower stays balanced. One round takes about a minute.
+- [Privacy Policy](https://tilttower.ipe.rest/privacy/)
+- [Terms of Use](https://tilttower.ipe.rest/terms/)
+- [Contact](https://tilttower.ipe.rest/contact/)
+
+## Languages
+
+The site is available in 11 languages (English and Korean are written by hand, the others are AI translations): English, 한국어, 日本語, 简体中文, Español, Français, Deutsch, Português, Русский, العربية, हिन्दी. Each language lives under /<code>/ (English at the root).
+
+## Contact and operator
+
+Davy Kim (ipe Studio) — ipe.haven@gmail.com
