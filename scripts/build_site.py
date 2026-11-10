@@ -4,12 +4,17 @@
 Sources
   games.json                          name / domain / operator / languages (single source of truth)
   content/i18n/<lang>.json            UI strings + home copy (same keys in every language, see KEYS)
-  content/pages/<lang>/<slug>.md      privacy / terms / contact (front matter title+description, Markdown body,
+  content/pages/<lang>/<slug>.md      contact / changelog (front matter title+description, Markdown body,
                                       placeholders {{GAME}} {{DOMAIN}} {{OPERATOR}} {{EMAIL}} {{EFFECTIVE}})
+  content/journal/<slug>.<lang>.md    journal posts, en + ko pairs sharing one slug (front matter title, description,
+                                      published [KST, YYYY-MM-DDTHH:MM+09:00], optional updated / excerpt; Markdown body).
+                                      A post dated after today (KST) is validated but written nowhere.
 
 Output (generated — never edit by hand)
   en lives at the root, every other language under /<lang>/:
-  /  /privacy/  /terms/  /contact/        /<lang>/ ...same...
+  /  /contact/  /changelog/        /<lang>/ ...same...
+  /journal/  /journal/<slug>/  /journal/feed.xml  and the same under /ko/   (journal = en + ko only; the other
+  languages' nav/footer link to the English journal, marked hreflang="en")
   sitemap.xml  robots.txt  llms.txt  404.html
 
 Usage
@@ -59,7 +64,17 @@ OG_IMAGE = "/assets/og-image.png"
 # privacy/terms are hidden until the app exists (legal review pending): sources stay in content/pages, nothing is built or linked.
 # To bring them back: move the slugs from HIDDEN_PAGES into PAGE_SLUGS and rebuild.
 HIDDEN_PAGES = ("privacy", "terms")
-PAGE_SLUGS = ("contact",)
+PAGE_SLUGS = ("contact", "changelog")
+# Journal (play-rest convention, adapted): posts are written in en + ko only, as content/journal/<slug>.<en>.md + .ko.md
+# pairs sharing one slug. URLs: /journal/ /journal/<slug>/ /journal/feed.xml and the same under /ko/. AI-translated
+# languages get no journal pages: their nav and footer links go to the English journal (label journal_en, hreflang="en").
+JOURNAL_DIR = "journal"
+JOURNAL_LANGS = ("en", "ko")
+JOURNAL_RESERVED_SLUGS = ("feed",)  # /journal/feed.xml is the RSS file; no post may take that URL segment
+SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+PUBLISHED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}\+09:00$")  # published time is always recorded in KST
+TITLE_MAX, DESC_MAX, EXCERPT_MAX = 60, 160, 200
+HOME_JOURNAL_CARDS = 3  # newest posts shown on the home page (journal languages only)
 
 _ALL_LANGS = {
     "en": ("English", "en_US", "ltr"), "ko": ("한국어", "ko_KR", "ltr"), "ja": ("日本語", "ja_JP", "ltr"),
@@ -71,9 +86,10 @@ _ALL_LANGS = {
 LANGS = {l: _ALL_LANGS[l] for l in GAME["langs"]}
 MAIN_LANGS = tuple(GAME["main_langs"])
 KEYS = (
-    "nav_home nav_privacy nav_terms nav_contact skip theme_dark theme_light lang_label status_badge "
+    "nav_home nav_privacy nav_terms nav_contact nav_changelog nav_journal skip theme_dark theme_light lang_label status_badge "
     "ai_note ai_orig crumb_home footer_line home_title home_desc hero_h1 hero_lead hero_note "
-    "card1_h card1_p card2_h card2_p card3_h card3_p facts_h fact1 fact2 fact3 fact4 fact5 contact_cta not_found"
+    "card1_h card1_p card2_h card2_p card3_h card3_p facts_h fact1 fact2 fact3 fact4 fact5 contact_cta not_found "
+    "journal_h journal_lead journal_all journal_more journal_empty journal_desc journal_rss journal_back journal_feed_title journal_en"
 ).split()
 # never in public text: local paths, internal tools, secrets
 FORBIDDEN = ("/Users/", "ipe-harness", "ipe-room", "claude.ai/", "AuthKey_", "api_key", "sk-ant", "SLACK_BOT_TOKEN", ".env")
@@ -96,6 +112,18 @@ def path_home(lang):
 
 def path_page(lang, slug):
     return "%s/%s/" % (lp(lang), slug)
+
+
+def path_journal(lang):
+    return "%s/%s/" % (lp(lang), JOURNAL_DIR)
+
+
+def path_post(lang, slug):
+    return "%s/%s/%s/" % (lp(lang), JOURNAL_DIR, slug)
+
+
+def path_feed(lang):
+    return path_journal(lang) + "feed.xml"
 
 
 def url(path):
@@ -278,17 +306,91 @@ def load_pages(root):
     return pages, errs
 
 
+def load_journal(root):
+    """content/journal/<slug>.<lang>.md -> (posts newest first, errors).
+    post = {slug, published, updated, langs: {lang: {title, description, excerpt, body}}}; every post needs an en and a ko
+    version with the same published time. Builders only render the languages a post really has."""
+    jdir = Path(root) / "content" / JOURNAL_DIR
+    errs, found = [], {}
+    for f in sorted(jdir.glob("*.md")) if jdir.is_dir() else []:
+        stem, _, lang = f.stem.rpartition(".")
+        tag = "%s/%s" % (JOURNAL_DIR, f.name)
+        if not stem or lang not in JOURNAL_LANGS:
+            errs.append("%s: file name must be <slug>.<%s>.md (journal posts are written in %s only)" % (
+                tag, "|".join(JOURNAL_LANGS), " + ".join(JOURNAL_LANGS))); continue
+        if not SLUG_RE.match(stem) or stem in JOURNAL_RESERVED_SLUGS:
+            errs.append("%s: slug %r must be lowercase letters, digits and single hyphens (and not %s)" % (
+                tag, stem, "/".join(JOURNAL_RESERVED_SLUGS))); continue
+        try:
+            meta, body = parse_front(f.read_text(encoding="utf-8"))
+        except ValueError as ex:
+            errs.append("%s: %s" % (tag, ex)); continue
+        for k in ("title", "description", "published"):
+            if not meta.get(k):
+                errs.append("%s: missing %s" % (tag, k))
+        if meta.get("published") and not PUBLISHED_RE.match(meta["published"]):
+            errs.append("%s: published must be a KST time like 2026-11-01T09:30+09:00" % tag)
+        if meta.get("updated"):
+            upd_ok = bool(re.match(r"^\d{4}-\d{2}-\d{2}$", meta["updated"]))
+            try:
+                dt.date.fromisoformat(meta["updated"])
+            except ValueError:
+                upd_ok = False
+            if not upd_ok or (meta.get("published") and meta["updated"] < meta["published"][:10]):
+                errs.append("%s: updated must look like 2026-11-01 and not be before published" % tag)
+        if len(meta.get("title", "")) > TITLE_MAX:
+            errs.append("%s: title longer than %d characters" % (tag, TITLE_MAX))
+        if len(meta.get("description", "")) > DESC_MAX:
+            errs.append("%s: description longer than %d characters" % (tag, DESC_MAX))
+        if len(meta.get("excerpt", "")) > EXCERPT_MAX:
+            errs.append("%s: excerpt longer than %d characters" % (tag, EXCERPT_MAX))
+        if meta.get("lang") and meta["lang"] != lang:
+            errs.append("%s: front matter lang %r does not match the file name" % (tag, meta["lang"]))
+        if not body.strip():
+            errs.append("%s: empty body" % tag)
+        if re.search(r"(?m)^#\s", re.sub(r"(?ms)^`{3,}.*?(?:^`{3,}[ \t]*$|\Z)", "", body)):  # '# ' inside a code fence is fine
+            errs.append("%s: body must not contain a '# ' heading (the title is the h1); use ## and below" % tag)
+        for bad in FORBIDDEN:
+            if bad in meta.get("title", "") + " " + meta.get("description", "") + " " + meta.get("excerpt", "") + " " + body:
+                errs.append("%s: forbidden text %r" % (tag, bad))
+        if not any(e.startswith(tag + ":") for e in errs):
+            found.setdefault(stem, {})[lang] = {"title": meta.get("title", ""), "description": meta.get("description", ""),
+                                                "excerpt": meta.get("excerpt") or meta.get("description", ""), "body": body,
+                                                "published": meta.get("published", ""), "updated": meta.get("updated") or meta.get("published", "")[:10]}
+    posts = []
+    for slug, langs in found.items():
+        missing = [l for l in JOURNAL_LANGS if l not in langs]
+        if missing:
+            errs.append("journal/%s: missing the %s version (every post needs en and ko)" % (slug, "/".join(missing))); continue
+        if len({v["published"] for v in langs.values()}) != 1:
+            errs.append("journal/%s: en and ko must have the same published time" % slug); continue
+        posts.append({"slug": slug, "published": langs["en"]["published"],
+                      "updated": max(v["updated"] for v in langs.values()), "langs": langs})
+    posts.sort(key=lambda p: (p["published"], p["slug"]), reverse=True)
+    return posts, errs
+
+
 def theme_script():
     return ("<script>try{var t=localStorage.getItem('site-theme');if(t==='dark'||t==='light')"
             "document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>")
 
 
 class Ctx:
-    def __init__(self, root, i18n, pages, langs, now):
+    def __init__(self, root, i18n, pages, langs, now, posts=()):
         self.root, self.i18n, self.pages, self.langs, self.now = root, i18n, pages, langs, now
+        self.posts = list(posts)
+        self.journal_langs = [l for l in langs if l in JOURNAL_LANGS]
 
     def t(self, lang, key):
         return self.i18n[lang][key]
+
+    def posts_in(self, lang):
+        """posts that have a version in this language (newest first); [] for a language with no journal"""
+        return [p for p in self.posts if lang in self.journal_langs and lang in p["langs"]]
+
+    def journal_lang(self, lang):
+        """the language whose journal a page in `lang` links to: its own, else the English original"""
+        return lang if lang in self.journal_langs else "en"
 
     def sub(self, text):
         return (text.replace("{{GAME}}", NAME).replace("{{DOMAIN}}", DOMAIN).replace("{{OPERATOR}}", OPERATOR)
@@ -298,6 +400,8 @@ class Ctx:
 def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website", noindex=False, hreflang=True, nav=""):
     t = lambda k: ctx.t(lang, k)  # noqa: E731
     name, og_loc, direction = LANGS[lang]
+    jl = ctx.journal_lang(lang)  # a language without its own journal links to the English one
+    jattr = ' hreflang="en"' if jl != lang else ""
     canonical = url(path)
     head = ['<meta charset="utf-8">', '<meta name="viewport" content="width=device-width,initial-scale=1">',
             "<title>%s</title>" % esc(title), '<meta name="description" content="%s">' % esc(desc)]
@@ -317,13 +421,16 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
              '<meta name="theme-color" content="%s">' % esc(GAME["theme_color"]), '<meta name="color-scheme" content="light dark">',
              '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">',
              '<link rel="apple-touch-icon" href="/assets/icon-180.png">',
+             '<link rel="alternate" type="application/rss+xml" title="%s" href="%s">' % (esc(t("journal_feed_title")), esc(path_feed(jl))),
              '<link rel="stylesheet" href="/assets/site.css?v=%s">' % ASSET_V, theme_script(),
              '<script type="application/ld+json">%s</script>' % json.dumps({"@context": "https://schema.org", "@graph": graph},
                                                                             ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")]
     switch = "".join('<li><a href="%s" hreflang="%s" lang="%s"%s>%s</a></li>' % (
         esc(pth), l, l, ' aria-current="true"' if l == lang else "", esc(LANGS[l][0])) for l, pth in alt.items())
-    navlinks = [(path_home(lang), t("nav_home"), "home")] + [(path_page(lang, s), t("nav_" + s), s) for s in PAGE_SLUGS]
-    nav_html = "".join('<a href="%s"%s>%s</a>' % (esc(h), ' aria-current="page"' if nav == k else "", esc(label)) for h, label, k in navlinks)
+    journal_label = t("nav_journal") if jl == lang else t("journal_en")
+    navlinks = [(path_home(lang), t("nav_home"), "home", "")] + [(path_page(lang, s), t("nav_" + s), s, "") for s in PAGE_SLUGS]
+    navlinks.append((path_journal(jl), journal_label, "journal", jattr))
+    nav_html = "".join('<a href="%s"%s%s>%s</a>' % (esc(h), extra, ' aria-current="page"' if nav == k else "", esc(label)) for h, label, k, extra in navlinks)
     header = ('<header class="site-header"><div class="wrap bar"><a class="brand" href="%s" aria-label="%s">'
               '<img src="/assets/logo.svg" alt="" width="28" height="28"><span>%s</span></a>'
               '<nav class="nav" aria-label="main">%s</nav><div class="tools">'
@@ -335,10 +442,11 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
     foot_langs = ('<p class="foot-langs" aria-label="%s">%s</p>' % (esc(t("lang_label")), " ".join(
         '<a href="%s" hreflang="%s" lang="%s"%s>%s</a>' % (esc(pth), l, l, ' aria-current="true"' if l == lang else "", esc(LANGS[l][0]))
         for l, pth in alt.items()))) if len(alt) > 1 else ""
+    foot_links = " · ".join(['<a href="%s">%s</a>' % (esc(path_page(lang, s)), esc(t("nav_" + s))) for s in PAGE_SLUGS] +
+                            ['<a href="%s"%s>%s</a>' % (esc(path_journal(jl)), jattr, esc(journal_label))])
     footer = ('<footer class="site-footer"><div class="wrap"><p class="foot-tag">%s <a href="https://ipe.rest/">ipe.rest</a></p>'
               '<p class="foot-links">%s</p>%s<p class="foot-small">© 2026 ipe() · %s</p></div></footer>') % (
-        esc(t("footer_line")), " · ".join('<a href="%s">%s</a>' % (esc(path_page(lang, s)), esc(t("nav_" + s))) for s in PAGE_SLUGS),
-        foot_langs, esc(t("status_badge")))
+        esc(t("footer_line")), foot_links, foot_langs, esc(t("status_badge")))
     return ('<!doctype html>\n<!-- %s -->\n<html lang="%s" dir="%s" data-ads="off"><head>%s</head><body>'
             '<a class="skip" href="#main">%s</a>%s<main id="main" class="wrap">%s</main>%s'
             '<script src="/assets/site.js?v=%s" defer></script></body></html>\n') % (
@@ -378,6 +486,15 @@ def build_home(ctx, lang):
             '<section class="section facts"><h2>%s</h2><ul>%s</ul></section>') % (
         esc(t("status_badge")), esc(t("hero_h1")), esc(t("hero_lead")), esc(path_page(lang, "contact")), esc(t("contact_cta")),
         esc(t("hero_note")), cards, esc(t("facts_h")), facts)
+    # recent journal posts only where the journal is written in this language (en/ko): a post list inside a page that
+    # says lang="ja" would mix languages; ja readers reach the English journal from the nav and footer
+    posts = ctx.posts_in(lang)
+    if posts:
+        jcards = "".join(post_card(lang, p, t("journal_more")) for p in posts[:HOME_JOURNAL_CARDS])
+        body += ('<section class="section"><div class="sec-head"><h2>%s</h2>'
+                 '<a class="more" href="%s">%s <span aria-hidden="true">→</span></a></div>'
+                 '<p class="lead">%s</p><div class="grid">%s</div></section>') % (
+            esc(t("journal_h")), esc(path_journal(lang)), esc(t("journal_all")), esc(t("journal_lead")), jcards)
     alt = {l: path_home(l) for l in ctx.langs}
     graph = [ORG, website_ld(lang), game_ld(lang, ctx)]
     return path_home(lang), render(ctx, lang, path=path_home(lang), title=t("home_title"), desc=t("home_desc"), body=body,
@@ -402,6 +519,93 @@ def build_page(ctx, lang, slug):
                                          desc=meta["description"], body=body, graph=graph, alt=alt, nav=slug)
 
 
+# ---------------------------------------------------------------- journal
+def time_tag(published):
+    """<time> of a post: ISO with +09:00 for machines, 'YYYY-MM-DD HH:MM KST' as the static text (no JS)"""
+    return '<time datetime="%s" dir="ltr">%s %s KST</time>' % (esc(published), esc(published[:10]), esc(published[11:16]))
+
+
+def post_card(lang, p, read_more):
+    v = p["langs"][lang]  # callers pass only posts from ctx.posts_in(lang)
+    return ('<article class="card post-card"><div class="body"><p class="meta">%s</p><h3><a href="%s">%s</a></h3>'
+            '<p>%s</p><p><a class="more" href="%s">%s <span aria-hidden="true">→</span></a></p></div></article>') % (
+        time_tag(p["published"]), esc(path_post(lang, p["slug"])), esc(v["title"]), esc(v["excerpt"]),
+        esc(path_post(lang, p["slug"])), esc(read_more))
+
+
+def build_journal_list(ctx, lang):
+    t = lambda k: ctx.t(lang, k)  # noqa: E731
+    pth = path_journal(lang)
+    crumbs = [(path_home(lang), t("crumb_home")), (None, t("journal_h"))]
+    posts = ctx.posts_in(lang)
+    if posts:
+        items = "".join('<li><p class="meta">%s</p><h2><a href="%s">%s</a></h2><p>%s</p></li>' % (
+            time_tag(p["published"]), esc(path_post(lang, p["slug"])), esc(p["langs"][lang]["title"]), esc(p["langs"][lang]["excerpt"])) for p in posts)
+        main = "<ul>%s</ul>" % items
+    else:
+        main = '<p class="empty">%s</p>' % esc(t("journal_empty"))
+    body = ('%s<section class="prose"><h1>%s</h1><p class="lead">%s</p></section>%s'
+            '<p class="note"><a href="%s">%s</a></p>') % (
+        breadcrumb_html(crumbs), esc(t("journal_h")), esc(t("journal_lead")), main, esc(path_feed(lang)), esc(t("journal_rss")))
+    page_ld = {"@type": "CollectionPage", "@id": url(pth) + "#page", "url": url(pth), "name": t("journal_h"), "description": t("journal_desc"),
+               "inLanguage": lang, "isPartOf": {"@id": SITE + "/#website"}}
+    if posts:
+        page_ld["mainEntity"] = {"@type": "ItemList", "itemListElement": [
+            {"@type": "ListItem", "position": i + 1, "url": url(path_post(lang, p["slug"]))} for i, p in enumerate(posts)]}
+    return pth, render(ctx, lang, path=pth, title="%s — %s" % (t("journal_h"), NAME), desc=t("journal_desc"), body=body,
+                       graph=[ORG, website_ld(lang), page_ld, breadcrumb_ld(crumbs)],
+                       alt={l: path_journal(l) for l in ctx.journal_langs if ctx.posts_in(l)},
+                       noindex=not posts, nav="journal")
+
+
+def build_post(ctx, lang, p):
+    t = lambda k: ctx.t(lang, k)  # noqa: E731
+    v = p["langs"][lang]
+    pth = path_post(lang, p["slug"])
+    crumbs = [(path_home(lang), t("crumb_home")), (path_journal(lang), t("journal_h")), (None, v["title"])]
+    body = ('%s<article class="prose"><h1>%s</h1><p class="meta">%s</p>%s'
+            '<p class="note"><a href="%s"><span aria-hidden="true">←</span> %s</a></p></article>') % (
+        breadcrumb_html(crumbs), esc(v["title"]), time_tag(p["published"]), markdown(ctx.sub(v["body"]), ctx.root, heading_offset=0),
+        esc(path_journal(lang)), esc(t("journal_back")))
+    ld = {"@type": "BlogPosting", "@id": url(pth) + "#article", "url": url(pth),
+          "mainEntityOfPage": {"@type": "WebPage", "@id": url(pth)}, "headline": v["title"], "description": v["description"],
+          "inLanguage": lang, "datePublished": p["published"],
+          "dateModified": p["published"] if v["updated"] == p["published"][:10] else v["updated"],
+          "image": SITE + OG_IMAGE, "isAccessibleForFree": True, "author": {"@id": ORG_ID}, "publisher": {"@id": ORG_ID},
+          "isPartOf": {"@id": SITE + "/#website"}}
+    pl = [l for l in ctx.journal_langs if l in p["langs"]]
+    title = "%s — %s" % (v["title"], NAME)
+    return pth, render(ctx, lang, path=pth, title=title if len(title) <= TITLE_MAX else v["title"], desc=v["description"],
+                       body=body, graph=[ORG, website_ld(lang), ld, breadcrumb_ld(crumbs)], alt={l: path_post(l, p["slug"]) for l in pl},
+                       og_type="article", nav="journal")
+
+
+def rfc822(published):
+    d = dt.datetime.strptime(published, "%Y-%m-%dT%H:%M+09:00")
+    return "%s, %02d %s %d %02d:%02d:00 +0900" % ("Mon Tue Wed Thu Fri Sat Sun".split()[d.weekday()], d.day,
+                                                  "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()[d.month - 1],
+                                                  d.year, d.hour, d.minute)
+
+
+def build_feed(ctx, lang):
+    """RSS 2.0 of the journal in one language; lastBuildDate = newest post (deterministic, not the build time)"""
+    t = lambda k: ctx.t(lang, k)  # noqa: E731
+    rows = ['<?xml version="1.0" encoding="UTF-8"?>', "<!-- %s -->" % GEN_MARK,
+            '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>',
+            "<title>%s</title>" % esc(t("journal_feed_title")), "<link>%s</link>" % esc(url(path_journal(lang))),
+            '<atom:link href="%s" rel="self" type="application/rss+xml"/>' % esc(url(path_feed(lang))),
+            "<description>%s</description>" % esc(t("journal_desc")), "<language>%s</language>" % lang]
+    posts = ctx.posts_in(lang)
+    if posts:
+        rows.append("<lastBuildDate>%s</lastBuildDate>" % rfc822(posts[0]["published"]))
+    for p in posts:
+        link = esc(url(path_post(lang, p["slug"])))
+        rows.append("<item><title>%s</title><link>%s</link><guid isPermaLink=\"true\">%s</guid><pubDate>%s</pubDate><description>%s</description></item>" % (
+            esc(p["langs"][lang]["title"]), link, link, rfc822(p["published"]), esc(p["langs"][lang]["excerpt"])))
+    rows.append("</channel></rss>")
+    return "\n".join(rows) + "\n"
+
+
 def build_404(ctx):
     lang = "en"
     body = '<h1>404</h1><p class="lead">%s</p><p><a class="btn" href="/">%s</a></p>' % (esc(ctx.t(lang, "not_found")), esc(ctx.t(lang, "nav_home")))
@@ -418,6 +622,14 @@ def sitemap_entries(ctx):
         for slug in PAGE_SLUGS:
             if (l, slug) in ctx.pages:
                 ents.append((path_page(l, slug), PAGES_UPDATED, {x: path_page(x, slug) for x in ctx.langs if (x, slug) in ctx.pages}))
+    # the journal exists in JOURNAL_LANGS only; a journal list with no post is noindex and stays out of the sitemap
+    jl = [l for l in ctx.journal_langs if ctx.posts_in(l)]
+    for l in jl:
+        ents.append((path_journal(l), max(p["langs"][l]["updated"] for p in ctx.posts_in(l)), {x: path_journal(x) for x in jl}))
+    for p in ctx.posts:
+        pl = [l for l in ctx.journal_langs if l in p["langs"]]
+        for l in pl:
+            ents.append((path_post(l, p["slug"]), p["langs"][l]["updated"], {x: path_post(x, p["slug"]) for x in pl}))
     return ents
 
 
@@ -453,6 +665,10 @@ def build_llms(ctx):
     rows += ["", "## Pages", "", "- [Home](%s/): %s" % (SITE, en["hero_lead"])]
     for slug in PAGE_SLUGS:
         rows.append("- [%s](%s%s)" % (ctx.pages[("en", slug)][0]["title"], SITE, path_page("en", slug)))
+    if ctx.posts:
+        rows += ["", "## Journal", "", "RSS: %s%s" % (SITE, path_feed("en")), ""]
+        rows += ["- [%s](%s%s): %s" % (p["langs"]["en"]["title"], SITE, path_post("en", p["slug"]), p["langs"]["en"]["description"]) for p in ctx.posts]
+        rows += ["", "The journal is written in English and Korean only: %s and %s." % (SITE + path_journal("en"), SITE + path_journal("ko"))]
     rows += ["", "## Languages", "", "The site is available in %d languages (English and Korean are written by hand, the others are AI translations): %s. "
              "Each language lives under /<code>/ (English at the root)." % (len(ctx.langs), ", ".join(LANGS[l][0] for l in ctx.langs)), "",
              "## Contact and operator", "", "%s — %s" % (OPERATOR, EMAIL), ""]
@@ -465,7 +681,10 @@ def make_ctx(root, now=None, require_all=False):
     now = now or dt.datetime.now(KST)
     i18n, errs = load_i18n(root)
     pages, e2 = load_pages(root)
-    errs += e2
+    posts, e3 = load_journal(root)
+    # date gate: a post dated after today (KST) is validated but written nowhere (no page, list, feed, sitemap or llms line)
+    posts = [p for p in posts if p["published"][:10] <= now.strftime("%Y-%m-%d")]
+    errs += e2 + e3
     langs = [l for l in LANGS if l in i18n and all((l, s) in pages for s in PAGE_SLUGS)]
     if not all(m in langs for m in MAIN_LANGS):
         errs.append("%s must be complete (i18n + %s)" % (" and ".join(MAIN_LANGS), " + ".join(PAGE_SLUGS)))
@@ -475,7 +694,7 @@ def make_ctx(root, now=None, require_all=False):
     cname = root / "CNAME"
     if cname.is_file() and cname.read_text(encoding="utf-8").strip() != DOMAIN:
         errs.append("CNAME (%s) does not match games.json domain (%s)" % (cname.read_text(encoding="utf-8").strip(), DOMAIN))
-    return Ctx(root, i18n, pages, langs, now), errs
+    return Ctx(root, i18n, pages, langs, now, posts), errs
 
 
 def build_all(ctx):
@@ -489,6 +708,11 @@ def build_all(ctx):
         put(*build_home(ctx, l))
         for slug in PAGE_SLUGS:
             put(*build_page(ctx, l, slug))
+    for l in ctx.journal_langs:  # no /ja/journal/: the journal is written in en + ko only
+        put(*build_journal_list(ctx, l))
+        files[path_feed(l).lstrip("/")] = build_feed(ctx, l)
+        for p in ctx.posts_in(l):
+            put(*build_post(ctx, l, p))
     files["404.html"] = build_404(ctx)
     files["sitemap.xml"] = build_sitemap(ctx)
     files["robots.txt"] = build_robots()
@@ -498,7 +722,7 @@ def build_all(ctx):
 
 def clean(root):
     root = Path(root)
-    for name in list(PAGE_SLUGS) + list(HIDDEN_PAGES) + [l for l in LANGS if l != "en"]:
+    for name in list(PAGE_SLUGS) + list(HIDDEN_PAGES) + [JOURNAL_DIR] + [l for l in LANGS if l != "en"]:
         d = root / name
         if d.is_dir():
             shutil.rmtree(d)

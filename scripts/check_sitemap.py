@@ -9,8 +9,9 @@ Offline checks
   2. every <loc> has a file on disk (index.html of that path).
   3. (reserved)
   4. home + every page in PAGE_SLUGS exist for every language that has a home page.
-  5. hreflang: lists itself + x-default, every target is itself in the sitemap, references are reciprocal.
-  6. no <lastmod> or post time is in the future.
+  5. every journal list/post page on disk (the list only when it is indexed) is in the sitemap.
+  6. hreflang: lists itself + x-default, every target is itself in the sitemap, references are reciprocal.
+  7. no <lastmod> or post time is in the future.
 """
 import argparse
 import datetime as dt
@@ -51,6 +52,15 @@ def check(root, now=None):
         for path in tuple(bs.path_page(l, p) for p in bs.PAGE_SLUGS):
             if bs.url(path) not in urls:
                 errs.append("missing from sitemap: %s" % bs.url(path))
+    for l in homes:
+        base = root / bs.path_journal(l).strip("/")
+        pages = [f.parent for f in sorted(base.glob("*/index.html"))] if base.is_dir() else []
+        if (base / "index.html").is_file() and "noindex" not in (base / "index.html").read_text(encoding="utf-8"):
+            pages.append(base)
+        for d in pages:
+            loc = bs.url("/" + d.relative_to(root).as_posix() + "/")
+            if loc not in urls:
+                errs.append("missing from sitemap: %s" % loc)
     for loc, links in urls.items():
         if not links:
             continue
