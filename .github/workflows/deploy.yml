@@ -1,4 +1,3 @@
-# HOLD: do not push or enable Pages/DNS until the owner approves (name is now Tottertop).
 name: Deploy to GitHub Pages
 
 on:

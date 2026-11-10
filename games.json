@@ -1,6 +1,6 @@
 {
   "_note": "The ONE place where the game's name and domain live. Everything else (build_site.py, CNAME check, llms.txt, JSON-LD, sitemap) reads this file. Name changed to Tottertop on 2026-11-09 after a store-name conflict.",
-  "id": "tilttower",
+  "id": "tottertop",
   "foundry": "F-026",
   "name": "Tottertop",
   "name_ko": "기우뚱탑",

@@ -8,9 +8,9 @@ Intro site for **Tottertop / 기우뚱탑** (F-026). Static site, Python 3.8+ st
 - Private `ipe_web_kit` is pinned by `vendor/ipe_web_kit.lock`; install with `python3 scripts/kit_lock.py sync --kit ~/Developer/ipe_web_kit`.
 - Page text: `content/i18n/<lang>.json` and `content/pages/<lang>/{privacy,terms,contact}.md` (non-en/ko pages need `translation_of: en|ko`).
 
-## HOLD
-Do not push, create the GitHub repo, or touch DNS until the owner (Davy) says so. The name is final: Tottertop (tottertop.ipe.rest).
+## Hidden pages
+privacy/terms are hidden (not built, not linked) until the app exists: see `HIDDEN_PAGES` in `scripts/build_site.py`. Sources stay in `content/pages/`.
 
 ## TODO
 - Real art (assets/ are brand-neutral placeholders).
-- Resolve the `[법무 확인 필요]` markers in privacy §2/§3 and terms §2 before the store submission.
+- Resolve the `[법무 확인 필요]` markers in privacy §2/§3 and terms §2, then move the slugs back into `PAGE_SLUGS` before the store submission.
