@@ -404,16 +404,18 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
     jattr = ' hreflang="en"' if jl != lang else ""
     canonical = url(path)
     head = ['<meta charset="utf-8">', '<meta name="viewport" content="width=device-width,initial-scale=1">',
-            "<title>%s</title>" % esc(title), '<meta name="description" content="%s">' % esc(desc)]
+            "<title>%s</title>" % esc(title), '<meta name="description" content="%s">' % esc(desc),
+            '<meta name="author" content="ipe()">']
     head.append('<meta name="robots" content="%s">' % ("noindex,follow" if noindex else "index,follow,max-image-preview:large"))
     head.append('<link rel="canonical" href="%s">' % esc(canonical))
     if hreflang and len(alt) > 1:
         for l, pth in alt.items():
             head.append('<link rel="alternate" hreflang="%s" href="%s">' % (l, esc(url(pth))))
         head.append('<link rel="alternate" hreflang="x-default" href="%s">' % esc(url(alt.get("en", next(iter(alt.values()))))))
+    og_alt = ['<meta property="og:locale:alternate" content="%s">' % LANGS[l][1] for l in alt if l != lang]
     head += ['<meta property="og:type" content="%s">' % og_type, '<meta property="og:site_name" content="%s">' % esc(NAME),
              '<meta property="og:title" content="%s">' % esc(title), '<meta property="og:description" content="%s">' % esc(desc),
-             '<meta property="og:url" content="%s">' % esc(canonical), '<meta property="og:locale" content="%s">' % og_loc,
+             '<meta property="og:url" content="%s">' % esc(canonical), '<meta property="og:locale" content="%s">' % og_loc] + og_alt + [
              '<meta property="og:image" content="%s">' % (SITE + OG_IMAGE), '<meta property="og:image:width" content="1200">',
              '<meta property="og:image:height" content="630">', '<meta name="twitter:card" content="summary_large_image">',
              '<meta name="twitter:title" content="%s">' % esc(title), '<meta name="twitter:description" content="%s">' % esc(desc),
