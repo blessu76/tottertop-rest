@@ -1,0 +1,176 @@
+{
+  "releases": [
+    {
+      "id": "1.0.0-2",
+      "version": "1.0.0",
+      "build": "2",
+      "status": "testflight",
+      "date": "2026-11-11",
+      "notes": {
+        "en": [
+          "New look: night sky, stone blocks with soft contact shadows, a bigger result screen.",
+          "Landing calls now come in three grades — Perfect / Great / OK — and blocks squash slightly when they land.",
+          "Crumbling pieces and falling debris when the tower topples.",
+          "Fixed: a drop could be called \"Perfect\" even when the block fell off right away.",
+          "Fixed: the first block now sits on the base, and the tower's tilt is measured from it.",
+          "Fixed: your best floor is saved the moment the tower falls, even if you leave during the slow-motion."
+        ],
+        "ko": [
+          "새 화면 — 밤하늘, 부드러운 착지 그림자가 있는 돌 블록, 더 큰 결과 화면.",
+          "착지 판정이 3단계(정확·좋음·OK)가 되었고, 블록이 닿는 순간 살짝 눌리는 반동이 생겼습니다.",
+          "탑이 무너지면 부서지는 조각과 흩어지는 파편이 나옵니다.",
+          "수정: 블록이 바로 떨어질 수도 있는 착지를 「정확」으로 판정하는 경우가 있었습니다.",
+          "수정: 첫 블록은 이제 받침 위에 안착하고, 탑의 기울기는 이를 기준으로 잽니다.",
+          "수정: 탑이 무너지는 순간 최고 기록이 저장됩니다. 슬로모션 중에 화면을 떠나도 저장됩니다."
+        ],
+        "ja": [
+          "新しい外観 — 夜空、柔らかな着地影のある石のブロック、より大きな結果画面。",
+          "着地の判定が3段階（Perfect / Great / OK）になり、ブロックが着地する瞬間に少し潰れる反動が加わりました。",
+          "塔が崩れると、破片が砕けて散り、残骸が舞い落ちます。",
+          "修正: ブロックがすぐにずれて落ちる着地でも「Perfect」と判定されることがありました。",
+          "修正: 最初のブロックは必ず台の上に収まり、塔の傾きはそれを基準に測られます。",
+          "修正: 塔が落ちた瞬間に最高記録が保存されます。スローモーションの途中で画面を出ても保存されます。"
+        ],
+        "zh": [
+          "全新画面——夜空,带柔和接触阴影的石块,更大的结算画面。",
+          "落点判定现在分为三级（Perfect / Great / OK）,石块落地时会轻微下压回弹。",
+          "塔倒塌时会有碎裂的碎片和坠落的残骸。",
+          "修复:即使石块马上会掉下去,落点也曾被判为 \"Perfect\"。",
+          "修复:第一块石块现在会稳稳落在基座上,塔的倾斜以它为基准计算。",
+          "修复:塔倒塌的瞬间立即保存最高纪录,即使在慢动作中离开画面也会保存。"
+        ],
+        "es": [
+          "Nuevo aspecto: cielo nocturno, bloques de piedra con sombras de contacto suaves, una pantalla de resultados más grande.",
+          "La valoración del aterrizaje ahora viene en tres grados — Perfect / Great / OK — y los bloques se comprimen ligeramente al aterrizar.",
+          "Piezas que se desmoronan y escombros que caen cuando la torre se derrumba.",
+          "Corregido: un lanzamiento podía ser llamado \"Perfect\" incluso cuando el bloque se caía enseguida.",
+          "Corregido: el primer bloque ahora se apoya en la base, y la inclinación de la torre se mide desde él.",
+          "Corregido: tu mejor piso se guarda en el momento en que la torre cae, aunque salgas durante la cámara lenta."
+        ],
+        "fr": [
+          "Nouveau look : ciel nocturne, blocs de pierre avec ombres de contact douces, écran de résultat plus grand.",
+          "Les jugements d'atterrissage viennent maintenant en trois niveaux — Perfect / Great / OK — et les blocs s'écrasent légèrement à l'impact.",
+          "Morceaux qui s'effritent et débris qui tombent quand la tour s'effondre.",
+          "Corrigé : une chute pouvait être jugée « Perfect » même si le bloc tombait aussitôt.",
+          "Corrigé : le premier bloc s'appuie désormais sur la base, et l'inclinaison de la tour est mesurée à partir de lui.",
+          "Corrigé : votre meilleur étage est enregistré au moment où la tour tombe, même si vous quittez l'écran pendant la ralenti."
+        ],
+        "de": [
+          "Neues Aussehen: Nachthimmel, Steinblöcke mit weichen Kontakt-Schatten, größeres Ergebnisfenster.",
+          "Landungen werden jetzt in drei Stufen bewertet — Perfect / Great / OK — und Blöcke drücken sich beim Aufsetzen leicht zusammen.",
+          "Krümelnde Stücke und fallende Trümmerteile, wenn der Turm einstürzt.",
+          "Behoben: Ein Abwurf konnte als „Perfect\" gewertet werden, obwohl der Block sofort abfiel.",
+          "Behoben: Der erste Block sitzt jetzt auf dem Sockel, und die Neigung des Turms wird von ihm aus gemessen.",
+          "Behoben: Deine beste Etage wird im Moment des Einsturzes gespeichert, auch wenn du während der Zeitlupen-Szene weggehst."
+        ],
+        "pt": [
+          "Novo visual: céu noturno, blocos de pedra com sombras de contato suaves, uma tela de resultado maior.",
+          "As avaliações de pouso agora vêm em três graus — Perfect / Great / OK — e os blocos comprimem levemente ao pousar.",
+          "Pedacinhos que desmoronam e destroços caindo quando a torre desaba.",
+          "Corrigido: uma queda podia ser chamada de \"Perfect\" mesmo quando o bloco caía na hora.",
+          "Corrigido: o primeiro bloco agora fica na base, e a inclinação da torre é medida a partir dele.",
+          "Corrigido: seu melhor andar é salvo no momento em que a torre cai, mesmo se você sair durante a câmera lenta."
+        ],
+        "ru": [
+          "Новый вид: ночное небо, каменные блоки с мягкими контактными тенями, больший экран результатов.",
+          "Оценки приземления теперь трёхступенчатые — Perfect / Great / OK — и блоки слегка сжимаются при приземлении.",
+          "Осыпающиеся куски и падающие обломки, когда башня рушится.",
+          "Исправлено: бросок мог получиться «Perfect», даже если блок сразу же падал.",
+          "Исправлено: первый блок теперь стоит на основании, и наклон башни измеряется от него.",
+          "Исправлено: ваш лучший этаж сохраняется в момент падения башни, даже если вы уйдёте во время замедленной съёмки."
+        ],
+        "ar": [
+          "مظهر جديد: سماء ليلية، كتل حجرية بظلال تلامس ناعمة، وشاشة نتائج أكبر.",
+          "أصبحت تسميات الهبوط بثلاث درجات — Perfect / Great / OK — وتميل الكتل إلى الانضغاط قليلاً عند الهبوط.",
+          "قطع متفتتة وأنقاض ساقطة عندما ينهار البرج.",
+          "إصلاح: كان يمكن أن يُطلق على الإسقاط \"Perfect\" حتى عندما كانت الكتلة تسقط على الفور.",
+          "إصلاح: الكتلة الأولى الآن تستقر على القاعدة، ويُقاس ميل البرج انطلاقاً منها.",
+          "إصلاح: يتم حفظ أفضل طابق لك في اللحظة التي يسقط فيها البرج، حتى إذا غادرت أثناء الحركة البطيئة."
+        ],
+        "hi": [
+          "नया लुक — रात का आसमान, नरम संपर्क छाया वाले पत्थर के ब्लॉक, बड़ी रिज़ल्ट स्क्रीन।",
+          "अब लैंडिंग तीन ग्रेड में आती है — Perfect / Great / OK — और ब्लॉक पड़ते ही हल्के से दब जाते हैं।",
+          "टॉवर गिरने पर टूटते टुकड़े और गिरता मलबा।",
+          "ठीक किया: ब्लॉक तुरंत गिर जाने पर भी ड्रॉप को \"Perfect\" कहा जा सकता था।",
+          "ठीक किया: पहला ब्लॉक अब बेस पर बैठता है, और टॉवर का झुकाव उसी से मापा जाता है।",
+          "ठीक किया: टॉवर गिरते ही आपका सर्वोच्च फ्लोर सेव हो जाता है — भले ही आप स्लो-मोशन के बीच से निकल जाएँ।"
+        ]
+      }
+    },
+    {
+      "id": "1.0.0-1",
+      "version": "1.0.0",
+      "build": "1",
+      "status": "testflight",
+      "date": "2026-11-11",
+      "notes": {
+        "en": [
+          "First internal TestFlight build of Tottertop.",
+          "Core loop: a crane swings, tap to drop, stack blocks; the tower tilts with its center of mass and topples if you miss.",
+          "Five block shapes unlock as you climb; next-block preview; Daily seed (same order worldwide) and free play.",
+          "Best floor saved on the device. 11 languages. No ads, no purchases in this build."
+        ],
+        "ko": [
+          "Tottertop의 첫 내부 테스트 빌드입니다.",
+          "핵심 루프: 크레인이 흔들리고, 누르면 블록이 떨어져 쌓입니다. 탑은 무게중심에 따라 기울고, 빗나가면 무너집니다.",
+          "올라갈수록 블록 모양 5종이 열립니다. 다음 블록 미리보기, 데일리 시드(전 세계 같은 순서)와 자유 플레이가 있습니다.",
+          "최고 층은 기기에 저장됩니다. 11개 언어. 이 빌드에는 광고와 구매가 없습니다."
+        ],
+        "ja": [
+          "Tottertopの最初の内部TestFlightビルドです。",
+          "コアルール: クレーンが揺れ、タップでブロックを落として積みます。塔は重心で傾き、外すと崩れます。",
+          "登るほどブロックの形5種が解放されます。次ブロックのプレビュー、デイリーシード（世界中で同じ順番）、自由プレイ。",
+          "最高フロアは端末に保存されます。11言語対応。このビルドには広告も課金もありません。"
+        ],
+        "zh": [
+          "Tottertop 的第一个内部 TestFlight 构建。",
+          "核心玩法:起重机摆动,点按放下,堆叠石块;塔会随重心倾斜,放偏就会倒塌。",
+          "随着层数升高解锁 5 种石块形状;下一块预览;每日种子（全球相同顺序）和自由模式。",
+          "最高层数保存在设备上。11 种语言。此版本无广告、无内购。"
+        ],
+        "es": [
+          "Primera build interna de TestFlight de Tottertop.",
+          "Bucle principal: una grúa oscila, tocas para soltar, apilas bloques; la torre se inclina con su centro de masas y se derrumba si fallas.",
+          "Cinco formas de bloque se desbloquean mientras subes; vista previa del siguiente bloque; semilla diaria (mismo orden en el mundo entero) y juego libre.",
+          "Mejor piso guardado en el dispositivo. 11 idiomas. Sin anuncios ni compras en esta build."
+        ],
+        "fr": [
+          "Première build interne TestFlight de Tottertop.",
+          "Boucle principale : une grue oscille, on tape pour lâcher, on empile des blocs ; la tour penche avec son centre de masse et s'effondre si on rate.",
+          "Cinq formes de blocs se débloquent en montant ; aperçu du bloc suivant ; seed du jour (même ordre dans le monde) et jeu libre.",
+          "Meilleur étage sauvegardé sur l'appareil. 11 langues. Pas d'annonces ni d'achats dans cette build."
+        ],
+        "de": [
+          "Erster interner TestFlight-Build von Tottertop.",
+          "Kernschleife: Ein Kran schwingt, Tippen zum Abwerfen, Blöcke stapeln; der Turm neigt sich nach seinem Schwerpunkt und stürzt um, wenn man daneben trifft.",
+          "Fünf Blockformen beim Klettern freischalten; Vorschau des nächsten Blocks; Tages-Seed (gleiche Reihenfolge weltweit) und Freies Spiel.",
+          "Beste Etage wird auf dem Gerät gespeichert. 11 Sprachen. Keine Werbung, keine Käufe in diesem Build."
+        ],
+        "pt": [
+          "Primeiro build interno de TestFlight do Tottertop.",
+          "Loop principal: uma grua balança, toque para soltar, empilhe blocos; a torre inclina com seu centro de massa e desaba se você errar.",
+          "Cinco formas de bloco desbloqueiam enquanto você sobe; prévia do próximo bloco; semente diária (mesma ordem no mundo inteiro) e jogo livre.",
+          "Melhor andar salvo no dispositivo. 11 idiomas. Sem anúncios nem compras neste build."
+        ],
+        "ru": [
+          "Первая внутренняя сборка TestFlight Tottertop.",
+          "Основной цикл: кран качается, тапните, чтобы сбросить, стройте блоки; башня наклоняется по центру масс и рушится, если промахнётесь.",
+          "Пять форм блоков открываются по мере подъёма; предпросмотр следующего блока; ежедневный сид (одинаковый порядок по всему миру) и свободная игра.",
+          "Лучший этаж сохраняется на устройстве. 11 языков. В этой сборке нет рекламы и покупок."
+        ],
+        "ar": [
+          "أول عملية بناء داخلية لـ TestFlight لـ Tottertop.",
+          "الدورة الأساسية: رافعة تتأرجح، اضغط للإفلات، ارفع الكتل فوق بعضها؛ البرج يميل مع مركز ثقله وينهار إذا أخطأت.",
+          "خمسة أشكال للكتل تنفتح أثناء الصعود؛ معاينة الكتلة التالية؛ بذرة يومية (نفس الترتيب عالمياً) ولعب حر.",
+          "أفضل طابق محفوظ على الجهاز. 11 لغة. لا إعلانات ولا مشتريات في هذا البناء."
+        ],
+        "hi": [
+          "Tottertop का पहला आंतरिक TestFlight बिल्ड।",
+          "मुख्य लूप: क्रेन लहराता है, टैप करके ब्लॉक गिराएँ और जमाएँ; टॉवर अपने गुरुत्व-केंद्र के अनुसार झुकता है और गलती होने पर गिर जाता है।",
+          "चढ़ते-चढ़ते पाँच ब्लॉक के आकार खुलते हैं; अगले ब्लॉक की झलक; डेली सीड (पूरी दुनिया में एक ही क्रम) और फ्री प्ले।",
+          "सर्वोच्च फ्लोर डिवाइस पर सेव होता है। 11 भाषाएँ। इस बिल्ड में न विज्ञापन, न खरीदारी।"
+        ]
+      }
+    }
+  ]
+}

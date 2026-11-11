@@ -50,10 +50,51 @@
 <link rel="stylesheet" href="/assets/site.css?v=20261108a">
 <script>try{var t=localStorage.getItem('site-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ipe.rest/#organization","name":"ipe()","url":"https://ipe.rest/"},{"@type":"WebSite","@id":"https://tottertop.ipe.rest/#website","url":"https://tottertop.ipe.rest/","name":"Tottertop","inLanguage":"pt","publisher":{"@id":"https://ipe.rest/#organization"}},{"@type":"WebPage","@id":"https://tottertop.ipe.rest/pt/changelog/#page","url":"https://tottertop.ipe.rest/pt/changelog/","name":"Notas de versão","description":"O que aconteceu com o Tottertop até agora. O jogo ainda está em preparação, então a lista é curta por enquanto.","inLanguage":"pt","isPartOf":{"@id":"https://tottertop.ipe.rest/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://tottertop.ipe.rest/pt/"},{"@type":"ListItem","position":2,"name":"Notas de versão"}]}]}</script></head><body><a class="skip" href="#main">Pular para o conteúdo</a><header class="site-header"><div class="wrap bar"><a class="brand" href="/pt/" aria-label="Tottertop"><img src="/assets/logo.svg" alt="" width="28" height="28"><span>Tottertop</span></a><nav class="nav" aria-label="main"><a href="/pt/">Início</a><a href="/pt/contact/">Contato</a><a href="/pt/changelog/" aria-current="page">Notas de versão</a><a href="/journal/" hreflang="en">Diário (em inglês)</a></nav><div class="tools"><a class="ipe-link" href="https://ipe.rest/">ipe.rest<span aria-hidden="true"> ↗</span></a><details class="lang"><summary aria-label="Idioma">Português</summary><ul><li><a href="/changelog/" hreflang="en" lang="en">English</a></li><li><a href="/ko/changelog/" hreflang="ko" lang="ko">한국어</a></li><li><a href="/ja/changelog/" hreflang="ja" lang="ja">日本語</a></li><li><a href="/zh/changelog/" hreflang="zh" lang="zh">简体中文</a></li><li><a href="/es/changelog/" hreflang="es" lang="es">Español</a></li><li><a href="/fr/changelog/" hreflang="fr" lang="fr">Français</a></li><li><a href="/de/changelog/" hreflang="de" lang="de">Deutsch</a></li><li><a href="/pt/changelog/" hreflang="pt" lang="pt" aria-current="true">Português</a></li><li><a href="/ru/changelog/" hreflang="ru" lang="ru">Русский</a></li><li><a href="/ar/changelog/" hreflang="ar" lang="ar">العربية</a></li><li><a href="/hi/changelog/" hreflang="hi" lang="hi">हिन्दी</a></li></ul></details><button class="theme" type="button" aria-label="Mudar para o tema escuro" data-dark="Mudar para o tema escuro" data-light="Mudar para o tema claro"><span aria-hidden="true">◐</span></button></div></div></header><main id="main" class="wrap"><nav class="crumbs" aria-label="breadcrumb"><a href="/pt/">Início</a> › <span>Notas de versão</span></nav><article class="prose"><h1>Notas de versão</h1><p class="ai-note">Esta página foi traduzida por IA. <a href="/changelog/">Ler o original</a></p><p>Estas são as notas dos builds de teste interno (TestFlight). O lançamento na loja ainda não saiu.</p>
-<h2>1.0.0 (2) — 2026-11-11</h2>
-<ul><li>Novo visual: céu noturno, blocos de pedra com sombras de contato suaves, uma tela de resultado maior.</li><li>As avaliações de pouso agora vêm em três graus — Perfect / Great / OK — e os blocos comprimem levemente ao pousar.</li><li>Pedacinhos que desmoronam e destroços caindo quando a torre desaba.</li><li>Corrigido: uma queda podia ser chamada de &quot;Perfect&quot; mesmo quando o bloco caía na hora.</li><li>Corrigido: o primeiro bloco agora fica na base, e a inclinação da torre é medida a partir dele.</li><li>Corrigido: seu melhor andar é salvo no momento em que a torre cai, mesmo se você sair durante a câmera lenta.</li></ul>
-<h2>1.0.0 (1) — 2026-11-11</h2>
-<ul><li>Primeiro build interno de TestFlight do Tottertop.</li><li>Loop principal: uma grua balança, toque para soltar, empilhe blocos; a torre inclina com seu centro de massa e desaba se você errar.</li><li>Cinco formas de bloco desbloqueiam enquanto você sobe; prévia do próximo bloco; semente diária (mesma ordem no mundo todo) e jogo livre.</li><li>Melhor andar salvo no dispositivo. 11 idiomas. Sem anúncios nem compras neste build.</li></ul>
+<style id="ipe-kit">/* ipe-kit.css · ipe_web_kit — 조각은 --ipe-* 토큰만 본다. 기본 토큰 블록은 theme.default_css() 와 같아야 한다(시험). */
+:where(:root){--ipe-bg:#ffffff;--ipe-surface:#f6f6f4;--ipe-text:#1a1a1a;--ipe-muted:#6b6b6b;--ipe-line:#e3e3df;--ipe-accent:#2f5d50;--ipe-accent-text:#ffffff;--ipe-font-sans:system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;--ipe-font-mono:ui-monospace, SFMono-Regular, Menlo, monospace;--ipe-radius:12px;--ipe-gap:16px;--ipe-max:960px}
+@media (prefers-color-scheme: dark){:where(:root[data-ipe-scheme="auto"]){--ipe-bg:#111214;--ipe-surface:#1b1c1f;--ipe-text:#ececec;--ipe-muted:#a0a0a0;--ipe-line:#2e3034;--ipe-accent:#8cc7b4;--ipe-accent-text:#0f1a17}}
+:where(:root[data-ipe-scheme="dark"]){--ipe-bg:#111214;--ipe-surface:#1b1c1f;--ipe-text:#ececec;--ipe-muted:#a0a0a0;--ipe-line:#2e3034;--ipe-accent:#8cc7b4;--ipe-accent-text:#0f1a17}
+
+/* studio_line — 푸터 아래 회사 서명 줄 */
+.ipe-studio{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 8px;margin:var(--ipe-gap) auto 0;
+  max-width:var(--ipe-max);padding:0 var(--ipe-gap);font-family:var(--ipe-font-sans);font-size:12px;line-height:1.6;
+  letter-spacing:.04em;color:var(--ipe-muted);text-align:center;overflow-wrap:anywhere}
+.ipe-studio a{color:inherit;text-decoration:none;border-bottom:1px solid var(--ipe-line)}
+.ipe-studio a:hover,.ipe-studio a:focus-visible{color:var(--ipe-accent);border-bottom-color:currentColor}
+.ipe-studio__ver{font-family:var(--ipe-font-mono);letter-spacing:0}
+.ipe-studio__sep{opacity:.6}
+
+/* release_card — 릴리스 노트 카드(id = 앵커 1.0.0-73) */
+.ipe-rel{margin:0 0 var(--ipe-gap);padding:var(--ipe-gap);background:var(--ipe-surface);color:var(--ipe-text);
+  border:1px solid var(--ipe-line);border-radius:var(--ipe-radius);font-family:var(--ipe-font-sans);scroll-margin-top:72px}
+.ipe-rel:target{border-color:var(--ipe-accent);box-shadow:0 0 0 2px var(--ipe-accent)}
+.ipe-rel__head{margin:0;font-size:1rem;line-height:1.4}
+.ipe-rel__build{font-family:var(--ipe-font-mono);color:var(--ipe-accent)}
+.ipe-rel__at{margin:4px 0 8px;font-size:.8125rem;color:var(--ipe-muted)}
+.ipe-rel ul{margin:0;padding-inline-start:1.2em}
+.ipe-rel li{margin:2px 0;line-height:1.6}
+</style><article class="ipe-rel" id="1.0.0-2"><span id="b2"></span>
+  <h2 class="ipe-rel__head"><span class="ipe-rel__build">1.0.0 (2)</span></h2>
+  <p class="ipe-rel__at"><time data-ipe-time datetime="2026-11-11T00:00+09:00">2026-11-11</time></p>
+  <ul>
+    <li>Novo visual: céu noturno, blocos de pedra com sombras de contato suaves, uma tela de resultado maior.</li>
+    <li>As avaliações de pouso agora vêm em três graus — Perfect / Great / OK — e os blocos comprimem levemente ao pousar.</li>
+    <li>Pedacinhos que desmoronam e destroços caindo quando a torre desaba.</li>
+    <li>Corrigido: uma queda podia ser chamada de &quot;Perfect&quot; mesmo quando o bloco caía na hora.</li>
+    <li>Corrigido: o primeiro bloco agora fica na base, e a inclinação da torre é medida a partir dele.</li>
+    <li>Corrigido: seu melhor andar é salvo no momento em que a torre cai, mesmo se você sair durante a câmera lenta.</li>
+  </ul>
+</article>
+<article class="ipe-rel" id="1.0.0-1"><span id="b1"></span>
+  <h2 class="ipe-rel__head"><span class="ipe-rel__build">1.0.0 (1)</span></h2>
+  <p class="ipe-rel__at"><time data-ipe-time datetime="2026-11-11T00:00+09:00">2026-11-11</time></p>
+  <ul>
+    <li>Primeiro build interno de TestFlight do Tottertop.</li>
+    <li>Loop principal: uma grua balança, toque para soltar, empilhe blocos; a torre inclina com seu centro de massa e desaba se você errar.</li>
+    <li>Cinco formas de bloco desbloqueiam enquanto você sobe; prévia do próximo bloco; semente diária (mesma ordem no mundo inteiro) e jogo livre.</li>
+    <li>Melhor andar salvo no dispositivo. 11 idiomas. Sem anúncios nem compras neste build.</li>
+  </ul>
+</article>
 <h2>2026-11-09 — Renomeado para Tottertop(기우뚱탑)</h2>
 <ul><li>O nome do jogo mudou para Tottertop(기우뚱탑) após um conflito de nomes na loja. O site e todo o seu conteúdo agora usam o novo nome.</li></ul>
 <h2>2026-11-08 — O site de apresentação foi aberto</h2>

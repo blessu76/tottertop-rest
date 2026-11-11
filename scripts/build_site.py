@@ -33,6 +33,11 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "vendor"))
+from ipe_web_kit import releases  # noqa: E402
+from ipe_web_kit.ui import inline_css  # noqa: E402
+RELEASES_FILE = "content/releases.json"
+RELEASES_MARK = "<p>{{RELEASES}}</p>"
 GAMES_FILE = "games.json"
 GAME_KEYS = ("id", "foundry", "name", "name_ko", "domain", "genre", "platforms", "operator", "email", "effective", "pages_updated",
              "theme_color", "asset_version", "langs", "main_langs")
@@ -503,6 +508,11 @@ def build_home(ctx, lang):
                                    graph=graph, alt=alt, nav="home")
 
 
+def releases_html(ctx, lang):
+    site = releases.load_site(Path(ctx.root) / RELEASES_FILE)
+    return releases.cards_html(site, lang)
+
+
 def build_page(ctx, lang, slug):
     meta, md = ctx.pages[(lang, slug)]
     t = lambda k: ctx.t(lang, k)  # noqa: E731
@@ -510,8 +520,11 @@ def build_page(ctx, lang, slug):
     ai = ""
     if lang not in MAIN_LANGS:
         ai = '<p class="ai-note">%s <a href="%s">%s</a></p>' % (esc(t("ai_note")), esc(path_page(meta.get("translation_of"), slug)), esc(t("ai_orig")))
+    content = markdown(ctx.sub(md), ctx.root, heading_offset=0)
+    if slug == "changelog":
+        content = content.replace(RELEASES_MARK, inline_css() + releases_html(ctx, lang))
     body = '%s<article class="prose"><h1>%s</h1>%s%s</article>' % (
-        breadcrumb_html(crumbs), esc(meta["title"]), ai, markdown(ctx.sub(md), ctx.root, heading_offset=0))
+        breadcrumb_html(crumbs), esc(meta["title"]), ai, content)
     page_ld = {"@type": "ContactPage" if slug == "contact" else "WebPage", "@id": url(path_page(lang, slug)) + "#page",
                "url": url(path_page(lang, slug)), "name": meta["title"], "description": meta["description"], "inLanguage": lang,
                "isPartOf": {"@id": SITE + "/#website"}}

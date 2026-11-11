@@ -40,6 +40,14 @@ class SiteTests(unittest.TestCase):
         h = files["index.html"]
         self.assertIn('href="/changelog/"', h)
 
+    def test_changelog_renders_release_cards_in_every_language(self):
+        files = bs.build_all(bs.make_ctx(REPO, require_all=True)[0])
+        for l in bs.LANGS:
+            h = files[bs.path_page(l, "changelog").lstrip("/") + "index.html"]
+            self.assertIn('class="ipe-rel" id="1.0.0-2"', h, l)
+            self.assertIn('class="ipe-rel" id="1.0.0-1"', h, l)
+            self.assertNotIn("{{RELEASES}}", h, l)
+
 
 class JournalTests(unittest.TestCase):
     """Journal posts are en+ko pairs in content/journal/<slug>.<lang>.md; validate and build them."""

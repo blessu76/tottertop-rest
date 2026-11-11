@@ -50,10 +50,51 @@
 <link rel="stylesheet" href="/assets/site.css?v=20261108a">
 <script>try{var t=localStorage.getItem('site-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://ipe.rest/#organization","name":"ipe()","url":"https://ipe.rest/"},{"@type":"WebSite","@id":"https://tottertop.ipe.rest/#website","url":"https://tottertop.ipe.rest/","name":"Tottertop","inLanguage":"ar","publisher":{"@id":"https://ipe.rest/#organization"}},{"@type":"WebPage","@id":"https://tottertop.ipe.rest/ar/changelog/#page","url":"https://tottertop.ipe.rest/ar/changelog/","name":"سجل الإصدارات","description":"ما الذي حدث مع Tottertop حتى الآن. اللعبة ما زالت قيد التحضير، لذلك القائمة قصيرة حتى الآن.","inLanguage":"ar","isPartOf":{"@id":"https://tottertop.ipe.rest/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"الرئيسية","item":"https://tottertop.ipe.rest/ar/"},{"@type":"ListItem","position":2,"name":"سجل الإصدارات"}]}]}</script></head><body><a class="skip" href="#main">انتقل إلى المحتوى</a><header class="site-header"><div class="wrap bar"><a class="brand" href="/ar/" aria-label="Tottertop"><img src="/assets/logo.svg" alt="" width="28" height="28"><span>Tottertop</span></a><nav class="nav" aria-label="main"><a href="/ar/">الرئيسية</a><a href="/ar/contact/">اتصل بنا</a><a href="/ar/changelog/" aria-current="page">سجل الإصدارات</a><a href="/journal/" hreflang="en">اليوميات (بالإنجليزية)</a></nav><div class="tools"><a class="ipe-link" href="https://ipe.rest/">ipe.rest<span aria-hidden="true"> ↗</span></a><details class="lang"><summary aria-label="اللغة">العربية</summary><ul><li><a href="/changelog/" hreflang="en" lang="en">English</a></li><li><a href="/ko/changelog/" hreflang="ko" lang="ko">한국어</a></li><li><a href="/ja/changelog/" hreflang="ja" lang="ja">日本語</a></li><li><a href="/zh/changelog/" hreflang="zh" lang="zh">简体中文</a></li><li><a href="/es/changelog/" hreflang="es" lang="es">Español</a></li><li><a href="/fr/changelog/" hreflang="fr" lang="fr">Français</a></li><li><a href="/de/changelog/" hreflang="de" lang="de">Deutsch</a></li><li><a href="/pt/changelog/" hreflang="pt" lang="pt">Português</a></li><li><a href="/ru/changelog/" hreflang="ru" lang="ru">Русский</a></li><li><a href="/ar/changelog/" hreflang="ar" lang="ar" aria-current="true">العربية</a></li><li><a href="/hi/changelog/" hreflang="hi" lang="hi">हिन्दी</a></li></ul></details><button class="theme" type="button" aria-label="التبديل إلى المظهر الداكن" data-dark="التبديل إلى المظهر الداكن" data-light="التبديل إلى المظهر الفاتح"><span aria-hidden="true">◐</span></button></div></div></header><main id="main" class="wrap"><nav class="crumbs" aria-label="breadcrumb"><a href="/ar/">الرئيسية</a> › <span>سجل الإصدارات</span></nav><article class="prose"><h1>سجل الإصدارات</h1><p class="ai-note">تمت ترجمة هذه الصفحة بواسطة الذكاء الاصطناعي. <a href="/changelog/">اقرأ النص الأصلي</a></p><p>هذه ملاحظات عمليات البناء للاختبار الداخلي (TestFlight). الإطلاق في المتجر لم يحدث بعد.</p>
-<h2>1.0.0 (2) — 2026-11-11</h2>
-<ul><li>مظهر جديد: سماء ليلية، كتل حجرية بظلال تلامس ناعمة، وشاشة نتائج أكبر.</li><li>أصبحت تسميات الهبوط بثلاث درجات — Perfect / Great / OK — وتميل الكتل إلى الانضغاط قليلاً عند الهبوط.</li><li>قطع متفتتة وأنقاض ساقطة عندما ينهار البرج.</li><li>إصلاح: كان يمكن أن يُطلق على الإسقاط &quot;Perfect&quot; حتى عندما كانت الكتلة تسقط على الفور.</li><li>إصلاح: الكتلة الأولى الآن تستقر على القاعدة، ويُقاس ميل البرج انطلاقاً منها.</li><li>إصلاح: يتم حفظ أفضل طابق لك في اللحظة التي يسقط فيها البرج، حتى إذا غادرت أثناء الحركة البطيئة.</li></ul>
-<h2>1.0.0 (1) — 2026-11-11</h2>
-<ul><li>أول عملية بناء داخلية لـ TestFlight لـ Tottertop.</li><li>الدورة الأساسية: رافعة تتأرجح، اضغط للإفلات، ارفع الكتل فوق بعضها؛ البرج يميل مع مركز ثقله وينهار إذا أخطأت.</li><li>خمسة أشكال للكتل تنفتح أثناء الصعود؛ معاينة الكتلة التالية؛ بذرة يومية (نفس الترتيب عالمياً) ولعب حر.</li><li>أفضل طابق محفوظ على الجهاز. 11 لغة. لا إعلانات ولا مشتريات في هذا البناء.</li></ul>
+<style id="ipe-kit">/* ipe-kit.css · ipe_web_kit — 조각은 --ipe-* 토큰만 본다. 기본 토큰 블록은 theme.default_css() 와 같아야 한다(시험). */
+:where(:root){--ipe-bg:#ffffff;--ipe-surface:#f6f6f4;--ipe-text:#1a1a1a;--ipe-muted:#6b6b6b;--ipe-line:#e3e3df;--ipe-accent:#2f5d50;--ipe-accent-text:#ffffff;--ipe-font-sans:system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;--ipe-font-mono:ui-monospace, SFMono-Regular, Menlo, monospace;--ipe-radius:12px;--ipe-gap:16px;--ipe-max:960px}
+@media (prefers-color-scheme: dark){:where(:root[data-ipe-scheme="auto"]){--ipe-bg:#111214;--ipe-surface:#1b1c1f;--ipe-text:#ececec;--ipe-muted:#a0a0a0;--ipe-line:#2e3034;--ipe-accent:#8cc7b4;--ipe-accent-text:#0f1a17}}
+:where(:root[data-ipe-scheme="dark"]){--ipe-bg:#111214;--ipe-surface:#1b1c1f;--ipe-text:#ececec;--ipe-muted:#a0a0a0;--ipe-line:#2e3034;--ipe-accent:#8cc7b4;--ipe-accent-text:#0f1a17}
+
+/* studio_line — 푸터 아래 회사 서명 줄 */
+.ipe-studio{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 8px;margin:var(--ipe-gap) auto 0;
+  max-width:var(--ipe-max);padding:0 var(--ipe-gap);font-family:var(--ipe-font-sans);font-size:12px;line-height:1.6;
+  letter-spacing:.04em;color:var(--ipe-muted);text-align:center;overflow-wrap:anywhere}
+.ipe-studio a{color:inherit;text-decoration:none;border-bottom:1px solid var(--ipe-line)}
+.ipe-studio a:hover,.ipe-studio a:focus-visible{color:var(--ipe-accent);border-bottom-color:currentColor}
+.ipe-studio__ver{font-family:var(--ipe-font-mono);letter-spacing:0}
+.ipe-studio__sep{opacity:.6}
+
+/* release_card — 릴리스 노트 카드(id = 앵커 1.0.0-73) */
+.ipe-rel{margin:0 0 var(--ipe-gap);padding:var(--ipe-gap);background:var(--ipe-surface);color:var(--ipe-text);
+  border:1px solid var(--ipe-line);border-radius:var(--ipe-radius);font-family:var(--ipe-font-sans);scroll-margin-top:72px}
+.ipe-rel:target{border-color:var(--ipe-accent);box-shadow:0 0 0 2px var(--ipe-accent)}
+.ipe-rel__head{margin:0;font-size:1rem;line-height:1.4}
+.ipe-rel__build{font-family:var(--ipe-font-mono);color:var(--ipe-accent)}
+.ipe-rel__at{margin:4px 0 8px;font-size:.8125rem;color:var(--ipe-muted)}
+.ipe-rel ul{margin:0;padding-inline-start:1.2em}
+.ipe-rel li{margin:2px 0;line-height:1.6}
+</style><article class="ipe-rel" id="1.0.0-2"><span id="b2"></span>
+  <h2 class="ipe-rel__head"><span class="ipe-rel__build">1.0.0 (2)</span></h2>
+  <p class="ipe-rel__at"><time data-ipe-time datetime="2026-11-11T00:00+09:00">2026-11-11</time></p>
+  <ul>
+    <li>مظهر جديد: سماء ليلية، كتل حجرية بظلال تلامس ناعمة، وشاشة نتائج أكبر.</li>
+    <li>أصبحت تسميات الهبوط بثلاث درجات — Perfect / Great / OK — وتميل الكتل إلى الانضغاط قليلاً عند الهبوط.</li>
+    <li>قطع متفتتة وأنقاض ساقطة عندما ينهار البرج.</li>
+    <li>إصلاح: كان يمكن أن يُطلق على الإسقاط &quot;Perfect&quot; حتى عندما كانت الكتلة تسقط على الفور.</li>
+    <li>إصلاح: الكتلة الأولى الآن تستقر على القاعدة، ويُقاس ميل البرج انطلاقاً منها.</li>
+    <li>إصلاح: يتم حفظ أفضل طابق لك في اللحظة التي يسقط فيها البرج، حتى إذا غادرت أثناء الحركة البطيئة.</li>
+  </ul>
+</article>
+<article class="ipe-rel" id="1.0.0-1"><span id="b1"></span>
+  <h2 class="ipe-rel__head"><span class="ipe-rel__build">1.0.0 (1)</span></h2>
+  <p class="ipe-rel__at"><time data-ipe-time datetime="2026-11-11T00:00+09:00">2026-11-11</time></p>
+  <ul>
+    <li>أول عملية بناء داخلية لـ TestFlight لـ Tottertop.</li>
+    <li>الدورة الأساسية: رافعة تتأرجح، اضغط للإفلات، ارفع الكتل فوق بعضها؛ البرج يميل مع مركز ثقله وينهار إذا أخطأت.</li>
+    <li>خمسة أشكال للكتل تنفتح أثناء الصعود؛ معاينة الكتلة التالية؛ بذرة يومية (نفس الترتيب عالمياً) ولعب حر.</li>
+    <li>أفضل طابق محفوظ على الجهاز. 11 لغة. لا إعلانات ولا مشتريات في هذا البناء.</li>
+  </ul>
+</article>
 <h2>2026-11-09 — أُعيدت التسمية إلى Tottertop(기우뚱탑)</h2>
 <ul><li>تغيّر اسم اللعبة إلى Tottertop(기우뚱탑) بعد تعارض أسماء في المتجر. الموقع وكل ما فيه يستخدم الآن الاسم الجديد.</li></ul>
 <h2>2026-11-08 — فُتِح موقع التعريف</h2>
