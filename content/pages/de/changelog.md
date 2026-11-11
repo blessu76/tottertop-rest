@@ -7,7 +7,7 @@ Das sind die Notizen der internen Test- (TestFlight-)Builds. Der Store-Release i
 
 ## 1.0.0 (2) — 2026-11-11
 - Neues Aussehen: Nachthimmel, Steinblöcke mit weichen Kontakt-Schatten, größeres Ergebnisfenster.
-- Landungen gibt es jetzt in drei Stufen — Perfect / Great / OK — und Blöcke drücken sich beim Aufsetzen leicht zusammen.
+- Landungen werden jetzt in drei Stufen bewertet — Perfect / Great / OK — und Blöcke drücken sich beim Aufsetzen leicht zusammen.
 - Krümelnde Stücke und fallende Trümmerteile, wenn der Turm einstürzt.
 - Behoben: Ein Abwurf konnte als „Perfect" gewertet werden, obwohl der Block sofort abfiel.
 - Behoben: Der erste Block sitzt jetzt auf dem Sockel, und die Neigung des Turms wird von ihm aus gemessen.

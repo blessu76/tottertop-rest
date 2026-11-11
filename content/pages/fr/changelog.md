@@ -7,7 +7,7 @@ Ce sont les notes des builds de test interne (TestFlight). La sortie en boutique
 
 ## 1.0.0 (2) — 2026-11-11
 - Nouveau look : ciel nocturne, blocs de pierre avec ombres de contact douces, écran de résultat plus grand.
-- Les appels d'atterrissage viennent maintenant en trois niveaux — Perfect / Great / OK — et les blocs s'écrasent légèrement à l'impact.
+- Les jugements d'atterrissage viennent maintenant en trois niveaux — Perfect / Great / OK — et les blocs s'écrasent légèrement à l'impact.
 - Morceaux qui s'effritent et débris qui tombent quand la tour s'effondre.
 - Corrigé : une chute pouvait être jugée « Perfect » même si le bloc tombait aussitôt.
 - Corrigé : le premier bloc s'appuie désormais sur la base, et l'inclinaison de la tour est mesurée à partir de lui.

@@ -7,7 +7,7 @@ Estas são as notas dos builds de teste interno (TestFlight). O lançamento na l
 
 ## 1.0.0 (2) — 2026-11-11
 - Novo visual: céu noturno, blocos de pedra com sombras de contato suaves, uma tela de resultado maior.
-- As chamadas de pouso agora vêm em três graus — Perfect / Great / OK — e os blocos comprimem levemente ao pousar.
+- As avaliações de pouso agora vêm em três graus — Perfect / Great / OK — e os blocos comprimem levemente ao pousar.
 - Pedacinhos que desmoronam e destroços caindo quando a torre desaba.
 - Corrigido: uma queda podia ser chamada de "Perfect" mesmo quando o bloco caía na hora.
 - Corrigido: o primeiro bloco agora fica na base, e a inclinação da torre é medida a partir dele.

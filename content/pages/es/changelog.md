@@ -7,9 +7,9 @@ Estas son las notas de las builds de prueba interna (TestFlight). El lanzamiento
 
 ## 1.0.0 (2) — 2026-11-11
 - Nuevo aspecto: cielo nocturno, bloques de piedra con sombras de contacto suaves, una pantalla de resultados más grande.
-- La llamada de aterrizaje ahora viene en tres grados — Perfect / Great / OK — y los bloques se comprimen ligeramente al aterrizar.
+- La valoración del aterrizaje ahora viene en tres grados — Perfect / Great / OK — y los bloques se comprimen ligeramente al aterrizar.
 - Piezas que se desmoronan y escombros que caen cuando la torre se derrumba.
-- Corregido: un golpe podía ser llamado "Perfect" incluso cuando el bloque se caía enseguida.
+- Corregido: un lanzamiento podía ser llamado "Perfect" incluso cuando el bloque se caía enseguida.
 - Corregido: el primer bloque ahora se apoya en la base, y la inclinación de la torre se mide desde él.
 - Corregido: tu mejor piso se guarda en el momento en que la torre cae, aunque salgas durante la cámara lenta.
 
