@@ -24,7 +24,7 @@ class SiteTests(unittest.TestCase):
         files = bs.build_all(ctx)
         for want in ("index.html", "404.html", "sitemap.xml", "robots.txt", "llms.txt"):
             self.assertIn(want, files)
-        # every page slug (contact + changelog) is built for every language
+        # every page slug (contact) is built for every language
         for l in ctx.langs:
             for slug in bs.PAGE_SLUGS:
                 rel = bs.path_page(l, slug).lstrip("/") + "index.html"
@@ -35,18 +35,10 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(errs, [])
         self.assertTrue(urls)
 
-    def test_changelog_in_nav_and_footer(self):
+    def test_no_release_notes_page(self):
         files = bs.build_all(bs.make_ctx(REPO, require_all=True)[0])
-        h = files["index.html"]
-        self.assertIn('href="/changelog/"', h)
-
-    def test_changelog_renders_release_cards_in_every_language(self):
-        files = bs.build_all(bs.make_ctx(REPO, require_all=True)[0])
-        for l in bs.LANGS:
-            h = files[bs.path_page(l, "changelog").lstrip("/") + "index.html"]
-            self.assertIn('class="ipe-rel" id="1.0.0-2"', h, l)
-            self.assertIn('class="ipe-rel" id="1.0.0-1"', h, l)
-            self.assertNotIn("{{RELEASES}}", h, l)
+        self.assertFalse([f for f in files if "changelog" in f])
+        self.assertNotIn('href="/changelog/"', files["index.html"])
 
 
 class JournalTests(unittest.TestCase):

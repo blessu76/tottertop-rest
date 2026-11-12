@@ -93,12 +93,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 @media (min-width:860px){.hero{grid-template-columns:1.1fr .9fr}.wrap{padding:0 24px}}
 @media (max-width:420px){.ipe-link{padding:5px 8px;font-size:13px}.brand{font-size:17px}}
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
-.releases{display:grid;gap:16px;margin-top:20px}
-.release h2{margin-top:.3em}
-.release ul{padding-inline-start:1.2em;margin:.4em 0 0}
-.release li{margin:.35em 0}
-.rel-fallback{font-size:14px;color:var(--muted);margin:0 0 .4em}
-.release{padding:16px 18px}
 .foot-langs{display:flex;flex-wrap:wrap;gap:4px 14px;margin:.6em 0;font-size:14px}
 .foot-langs a{color:var(--muted)}
 .foot-langs a[aria-current]{color:var(--fg);font-weight:700}

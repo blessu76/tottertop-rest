@@ -4,7 +4,7 @@
 Sources
   games.json                          name / domain / operator / languages (single source of truth)
   content/i18n/<lang>.json            UI strings + home copy (same keys in every language, see KEYS)
-  content/pages/<lang>/<slug>.md      contact / changelog (front matter title+description, Markdown body,
+  content/pages/<lang>/<slug>.md      contact (front matter title+description, Markdown body,
                                       placeholders {{GAME}} {{DOMAIN}} {{OPERATOR}} {{EMAIL}} {{EFFECTIVE}})
   content/journal/<slug>.<lang>.md    journal posts, en + ko pairs sharing one slug (front matter title, description,
                                       published [KST, YYYY-MM-DDTHH:MM+09:00], optional updated / excerpt; Markdown body).
@@ -12,7 +12,7 @@ Sources
 
 Output (generated — never edit by hand)
   en lives at the root, every other language under /<lang>/:
-  /  /contact/  /changelog/        /<lang>/ ...same...
+  /  /contact/                     /<lang>/ ...same...
   /journal/  /journal/<slug>/  /journal/feed.xml  and the same under /ko/   (journal = en + ko only; the other
   languages' nav/footer link to the English journal, marked hreflang="en")
   sitemap.xml  robots.txt  llms.txt  404.html
@@ -33,11 +33,6 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "vendor"))
-from ipe_web_kit import releases  # noqa: E402
-from ipe_web_kit.ui import inline_css  # noqa: E402
-RELEASES_FILE = "content/releases.json"
-RELEASES_MARK = "<p>{{RELEASES}}</p>"
 GAMES_FILE = "games.json"
 GAME_KEYS = ("id", "foundry", "name", "name_ko", "domain", "genre", "platforms", "operator", "email", "effective", "pages_updated",
              "theme_color", "asset_version", "langs", "main_langs")
@@ -69,7 +64,7 @@ OG_IMAGE = "/assets/og-image.png"
 # privacy/terms are hidden until the app exists (legal review pending): sources stay in content/pages, nothing is built or linked.
 # To bring them back: move the slugs from HIDDEN_PAGES into PAGE_SLUGS and rebuild.
 HIDDEN_PAGES = ("privacy", "terms")
-PAGE_SLUGS = ("contact", "changelog")
+PAGE_SLUGS = ("contact",)
 # Journal (play-rest convention, adapted): posts are written in en + ko only, as content/journal/<slug>.<en>.md + .ko.md
 # pairs sharing one slug. URLs: /journal/ /journal/<slug>/ /journal/feed.xml and the same under /ko/. AI-translated
 # languages get no journal pages: their nav and footer links go to the English journal (label journal_en, hreflang="en").
@@ -91,7 +86,7 @@ _ALL_LANGS = {
 LANGS = {l: _ALL_LANGS[l] for l in GAME["langs"]}
 MAIN_LANGS = tuple(GAME["main_langs"])
 KEYS = (
-    "nav_home nav_privacy nav_terms nav_contact nav_changelog nav_journal skip theme_dark theme_light lang_label status_badge "
+    "nav_home nav_privacy nav_terms nav_contact nav_journal skip theme_dark theme_light lang_label status_badge "
     "ai_note ai_orig crumb_home footer_line home_title home_desc hero_h1 hero_lead hero_note "
     "card1_h card1_p card2_h card2_p card3_h card3_p facts_h fact1 fact2 fact3 fact4 fact5 contact_cta not_found "
     "journal_h journal_lead journal_all journal_more journal_empty journal_desc journal_rss journal_back journal_feed_title journal_en"
@@ -508,11 +503,6 @@ def build_home(ctx, lang):
                                    graph=graph, alt=alt, nav="home")
 
 
-def releases_html(ctx, lang):
-    site = releases.load_site(Path(ctx.root) / RELEASES_FILE)
-    return releases.cards_html(site, lang)
-
-
 def build_page(ctx, lang, slug):
     meta, md = ctx.pages[(lang, slug)]
     t = lambda k: ctx.t(lang, k)  # noqa: E731
@@ -521,8 +511,6 @@ def build_page(ctx, lang, slug):
     if lang not in MAIN_LANGS:
         ai = '<p class="ai-note">%s <a href="%s">%s</a></p>' % (esc(t("ai_note")), esc(path_page(meta.get("translation_of"), slug)), esc(t("ai_orig")))
     content = markdown(ctx.sub(md), ctx.root, heading_offset=0)
-    if slug == "changelog":
-        content = content.replace(RELEASES_MARK, inline_css() + releases_html(ctx, lang))
     body = '%s<article class="prose"><h1>%s</h1>%s%s</article>' % (
         breadcrumb_html(crumbs), esc(meta["title"]), ai, content)
     page_ld = {"@type": "ContactPage" if slug == "contact" else "WebPage", "@id": url(path_page(lang, slug)) + "#page",

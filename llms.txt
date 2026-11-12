@@ -16,7 +16,6 @@ Tottertop is a single-player mobile game by ipe() (https://ipe.rest/). It is in 
 
 - [Home](https://tottertop.ipe.rest/): Tottertop is a quick physics game for your phone. A crane swings above a wobbling tower: tap once to drop the block and try to stack it so the tower stays balanced. One round takes about a minute.
 - [Contact](https://tottertop.ipe.rest/contact/)
-- [Release notes](https://tottertop.ipe.rest/changelog/)
 
 ## Journal
 
