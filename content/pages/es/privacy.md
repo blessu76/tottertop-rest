@@ -24,9 +24,9 @@ La Aplicación no está lanzada, por lo que esta sección describe el plan, no u
 - **Analítica.** Aún no hemos decidido si la Aplicación usará analítica o informes de fallos. Si lo hace, esta sección indicará qué se recopila antes del lanzamiento.
 - **Conservación y tus derechos.** [법무 확인 필요: redacción sobre la conservación de datos y derechos por región (GDPR, CCPA, PIPA de Corea), por confirmar antes del envío a las tiendas.]
 
-## 3. Menores
+## 3. Edad mínima
 
-El Sitio y la Aplicación no están dirigidos a menores de 13 años, y no recopilamos a sabiendas su información. [법무 확인 필요: ajustes de anuncios para el tratamiento dirigido a menores y clasificación por edades, por confirmar antes del lanzamiento.]
+El Sitio y la Aplicación no están dirigidos a menores de 16 años, y no recopilamos a sabiendas información personal de menores de 16 años. Solo pueden usar el Sitio y la Aplicación las personas de 16 años o más. [법무 확인 필요: ajustes de anuncios para el tratamiento dirigido a menores de 16 años y clasificación por edades, por confirmar antes del lanzamiento.]
 
 ## 4. Cambios
 

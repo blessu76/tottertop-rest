@@ -5,6 +5,8 @@ description: Les conditions d'utilisation de tottertop.ipe.rest et, une fois pub
 ---
 Date d'entrée en vigueur : **{{EFFECTIVE}}**. Ces conditions couvrent le site web {{DOMAIN}} (le « Site ») et, une fois publiée, l'application mobile {{GAME}} (l'« Application »), exploités par **{{OPERATOR}}** (« nous »).
 
+Seules les personnes âgées de 16 ans ou plus peuvent utiliser le Site et l'Application.
+
 ## 1. Le Site
 
 Le Site est fourni tel quel, pour informer sur l'Application. {{GAME}} est en développement et n'est pas publié : rien sur le Site ne constitue une promesse de fonctionnalité, de date ou de prix.

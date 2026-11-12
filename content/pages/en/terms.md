@@ -4,6 +4,8 @@ description: The terms for using tottertop.ipe.rest and, once released, the Tott
 ---
 Effective date: **{{EFFECTIVE}}**. These terms cover the website {{DOMAIN}} (the "Site") and, once it is released, the {{GAME}} mobile app (the "App"), operated by **{{OPERATOR}}** ("we").
 
+Only users aged 16 or older may use the Site and the App.
+
 ## 1. The Site
 
 The Site is provided as is, for information about the App. {{GAME}} is in development and has not been released: nothing on the Site is a promise of a feature, date or price.

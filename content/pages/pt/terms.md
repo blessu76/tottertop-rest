@@ -5,6 +5,8 @@ description: Os termos para usar o tottertop.ipe.rest e, depois de lançado, o a
 ---
 Data de vigência: **{{EFFECTIVE}}**. Estes termos abrangem o site {{DOMAIN}} (o "Site") e, depois de lançado, o aplicativo móvel {{GAME}} (o "App"), operados por **{{OPERATOR}}** ("nós").
 
+Somente pessoas com 16 anos ou mais podem usar o Site e o App.
+
 ## 1. O Site
 
 O Site é fornecido no estado em que se encontra, para informar sobre o App. {{GAME}} está em desenvolvimento e não foi lançado: nada no Site é promessa de recurso, data ou preço.

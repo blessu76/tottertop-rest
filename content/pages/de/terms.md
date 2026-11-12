@@ -5,6 +5,8 @@ description: Die Bedingungen für die Nutzung von tottertop.ipe.rest und, sobald
 ---
 Gültig ab: **{{EFFECTIVE}}**. Diese Bedingungen gelten für die Website {{DOMAIN}} (die „Website") und, sobald sie veröffentlicht ist, für die mobile App {{GAME}} (die „App"), betrieben von **{{OPERATOR}}** („wir").
 
+Die Website und die App dürfen nur von Personen ab 16 Jahren genutzt werden.
+
 ## 1. Die Website
 
 Die Website wird wie besehen bereitgestellt und dient der Information über die App. {{GAME}} befindet sich in Entwicklung und ist nicht veröffentlicht: Nichts auf der Website ist ein Versprechen für eine Funktion, ein Datum oder einen Preis.

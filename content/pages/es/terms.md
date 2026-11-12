@@ -5,6 +5,8 @@ description: Los términos para usar tottertop.ipe.rest y, una vez lanzada, la a
 ---
 Fecha de entrada en vigor: **{{EFFECTIVE}}**. Estos términos abarcan el sitio web {{DOMAIN}} (el "Sitio") y, una vez lanzada, la aplicación móvil {{GAME}} (la "Aplicación"), operados por **{{OPERATOR}}** ("nosotros").
 
+Solo pueden usar el Sitio y la Aplicación las personas de 16 años o más.
+
 ## 1. El Sitio
 
 El Sitio se ofrece tal cual, para dar información sobre la Aplicación. {{GAME}} está en desarrollo y no se ha lanzado: nada en el Sitio es una promesa de una función, una fecha o un precio.

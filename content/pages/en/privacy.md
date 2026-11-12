@@ -23,9 +23,9 @@ The App is not released, so this section describes the plan, not a shipped produ
 - **Analytics.** We have not decided whether the App will use analytics or crash reporting. If it does, this section will list what is collected before release.
 - **Retention and your rights.** [법무 확인 필요: data retention wording and rights by region (GDPR, CCPA, Korean PIPA) to be confirmed before the store submission.]
 
-## 3. Children
+## 3. Age Limit
 
-The Site and the App are not directed at children under 13, and we do not knowingly collect their information. [법무 확인 필요: ad settings for child-directed treatment and age rating to be confirmed before release.]
+The Site and the App are not directed at users under 16, and we do not knowingly collect personal information from anyone under 16. Only users aged 16 or older may use the Site and the App. [법무 확인 필요: ad settings for under-16 treatment and age rating to be confirmed before release.]
 
 ## 4. Changes
 

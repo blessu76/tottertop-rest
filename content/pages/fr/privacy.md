@@ -24,9 +24,9 @@ L'Application n'est pas publiée ; cette section décrit donc un projet, et non 
 - **Analyses.** Nous n'avons pas décidé si l'Application utilisera des outils d'analyse ou de rapport de plantage. Si c'est le cas, cette section indiquera avant la sortie ce qui est collecté.
 - **Conservation et vos droits.** [법무 확인 필요: formulation sur la conservation des données et les droits selon les régions (RGPD, CCPA, PIPA coréenne) à confirmer avant la soumission aux stores.]
 
-## 3. Enfants
+## 3. Âge minimum
 
-Le Site et l'Application ne s'adressent pas aux enfants de moins de 13 ans, et nous ne collectons pas sciemment leurs informations. [법무 확인 필요: paramètres publicitaires pour un traitement destiné aux enfants et classification d'âge à confirmer avant la sortie.]
+Le Site et l'Application ne s'adressent pas aux personnes de moins de 16 ans, et nous ne collectons pas sciemment de données personnelles auprès de personnes de moins de 16 ans. Seules les personnes âgées de 16 ans ou plus peuvent utiliser le Site et l'Application. [법무 확인 필요: paramètres publicitaires pour un traitement destiné aux moins de 16 ans et classification d'âge à confirmer avant la sortie.]
 
 ## 4. Modifications
 

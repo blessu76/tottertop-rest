@@ -24,9 +24,9 @@ O App não foi lançado, então esta seção descreve um plano, não um produto 
 - **Análises.** Ainda não decidimos se o App usará análises ou relatórios de falhas. Se usar, esta seção listará o que é coletado antes do lançamento.
 - **Retenção e seus direitos.** [법무 확인 필요: texto sobre retenção de dados e direitos por região (GDPR, CCPA, PIPA coreana) a ser confirmado antes do envio às lojas.]
 
-## 3. Crianças
+## 3. Idade mínima
 
-O Site e o App não são direcionados a crianças menores de 13 anos, e não coletamos intencionalmente informações delas. [법무 확인 필요: configurações de anúncios para tratamento direcionado a crianças e classificação etária a serem confirmadas antes do lançamento.]
+O Site e o App não são direcionados a menores de 16 anos, e não coletamos intencionalmente informações pessoais de menores de 16 anos. Somente pessoas com 16 anos ou mais podem usar o Site e o App. [법무 확인 필요: configurações de anúncios para tratamento direcionado a menores de 16 anos e classificação etária a serem confirmadas antes do lançamento.]
 
 ## 4. Alterações
 

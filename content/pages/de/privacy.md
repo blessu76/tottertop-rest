@@ -24,9 +24,9 @@ Die App ist nicht veröffentlicht, daher beschreibt dieser Abschnitt einen Plan 
 - **Analyse.** Wir haben noch nicht entschieden, ob die App Analyse- oder Absturzberichte nutzen wird. Falls ja, wird dieser Abschnitt vor der Veröffentlichung auflisten, was erfasst wird.
 - **Speicherdauer und deine Rechte.** [법무 확인 필요: Formulierung zu Speicherdauer und Rechten je Region (DSGVO, CCPA, koreanisches PIPA) vor der Store-Einreichung zu bestätigen.]
 
-## 3. Kinder
+## 3. Altersgrenze
 
-Die Website und die App richten sich nicht an Kinder unter 13 Jahren, und wir erfassen wissentlich keine Informationen von ihnen. [법무 확인 필요: Werbeeinstellungen für kindgerichtete Behandlung und Altersfreigabe vor der Veröffentlichung zu bestätigen.]
+Die Website und die App richten sich nicht an Personen unter 16 Jahren, und wir erfassen wissentlich keine personenbezogenen Daten von Personen unter 16 Jahren. Die Website und die App dürfen nur von Personen ab 16 Jahren genutzt werden. [법무 확인 필요: Werbeeinstellungen für die Behandlung von Personen unter 16 Jahren und Altersfreigabe vor der Veröffentlichung zu bestätigen.]
 
 ## 4. Änderungen
 
