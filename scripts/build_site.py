@@ -33,6 +33,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "vendor"))
+from ipe_web_kit import languages  # noqa: E402  (common 12 languages, kit >= v0.5.0; pinned by vendor/ipe_web_kit.lock)
 GAMES_FILE = "games.json"
 GAME_KEYS = ("id", "foundry", "name", "name_ko", "domain", "genre", "platforms", "operator", "email", "effective", "pages_updated",
              "theme_color", "asset_version", "langs", "main_langs")
@@ -76,14 +78,14 @@ PUBLISHED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}\+09:00$")  # publishe
 TITLE_MAX, DESC_MAX, EXCERPT_MAX = 60, 160, 200
 HOME_JOURNAL_CARDS = 3  # newest posts shown on the home page (journal languages only)
 
-_ALL_LANGS = {
-    "en": ("English", "en_US", "ltr"), "ko": ("한국어", "ko_KR", "ltr"), "ja": ("日本語", "ja_JP", "ltr"),
-    "zh": ("简体中文", "zh_CN", "ltr"), "es": ("Español", "es_ES", "ltr"), "fr": ("Français", "fr_FR", "ltr"),
-    "de": ("Deutsch", "de_DE", "ltr"), "pt": ("Português", "pt_BR", "ltr"), "ru": ("Русский", "ru_RU", "ltr"),
-    "ar": ("العربية", "ar_AR", "rtl"), "hi": ("हिन्दी", "hi_IN", "ltr"), "id": ("Bahasa Indonesia", "id_ID", "ltr"),
-}
-# order = language switcher order (games.json "langs"); en = root, ko = human original, the rest are AI translations
-LANGS = {l: _ALL_LANGS[l] for l in GAME["langs"]}
+# og:locale per common language (order, names and tags come from the kit: languages.SUPPORTED / NAMES)
+_OG_LOCALE = {"en": "en_US", "ko": "ko_KR", "ja": "ja_JP", "zh-Hant": "zh_TW", "es": "es_ES", "pt-BR": "pt_BR", "fr": "fr_FR",
+              "de": "de_DE", "id": "id_ID", "th": "th_TH", "vi": "vi_VN", "tr": "tr_TR"}
+# order = language switcher order = languages.SUPPORTED (games.json "langs" must equal it); en = root, ko = human original,
+# the rest are AI translations. Every language here is left-to-right (ar/he are not in the common list).
+LANGS = {l: (languages.NAMES[l], _OG_LOCALE[l], "ltr") for l in languages.SUPPORTED}
+if list(GAME["langs"]) != list(languages.SUPPORTED):
+    raise SystemExit("games.json langs must equal the kit's common languages in order: %s" % " ".join(languages.SUPPORTED))
 MAIN_LANGS = tuple(GAME["main_langs"])
 KEYS = (
     "nav_home nav_privacy nav_terms nav_contact nav_journal skip theme_dark theme_light lang_label status_badge "
@@ -410,7 +412,7 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
     head.append('<link rel="canonical" href="%s">' % esc(canonical))
     if hreflang and len(alt) > 1:
         for l, pth in alt.items():
-            head.append('<link rel="alternate" hreflang="%s" href="%s">' % (l, esc(url(pth))))
+            head.append('<link rel="alternate" hreflang="%s" href="%s">' % (languages.hreflang(l), esc(url(pth))))
         head.append('<link rel="alternate" hreflang="x-default" href="%s">' % esc(url(alt.get("en", next(iter(alt.values()))))))
     og_alt = ['<meta property="og:locale:alternate" content="%s">' % LANGS[l][1] for l in alt if l != lang]
     head += ['<meta property="og:type" content="%s">' % og_type, '<meta property="og:site_name" content="%s">' % esc(NAME),

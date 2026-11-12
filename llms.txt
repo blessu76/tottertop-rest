@@ -9,7 +9,7 @@ Tottertop is a single-player mobile game by ipe() (https://ipe.rest/). It is in 
 - Simple physics stacking game, single player.
 - One tap to play; a round lasts about one minute.
 - Planned as free to play, supported by rewarded ads you choose to watch, with an optional purchase to remove ads.
-- Planned for iOS and Android, in 11 languages.
+- Planned for iOS and Android, in 12 languages.
 - No release date yet.
 
 ## Pages
@@ -27,7 +27,7 @@ The journal is written in English and Korean only: https://tottertop.ipe.rest/jo
 
 ## Languages
 
-The site is available in 11 languages (English and Korean are written by hand, the others are AI translations): English, 한국어, 日本語, 简体中文, Español, Français, Deutsch, Português, Русский, العربية, हिन्दी. Each language lives under /<code>/ (English at the root).
+The site is available in 12 languages (English and Korean are written by hand, the others are AI translations): English, 한국어, 日本語, 繁體中文, Español, Português (Brasil), Français, Deutsch, Bahasa Indonesia, ไทย, Tiếng Việt, Türkçe. Each language lives under /<code>/ (English at the root).
 
 ## Contact and operator
 

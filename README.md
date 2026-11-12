@@ -1,6 +1,6 @@
 # tilttower-rest
 
-Intro site for **Tottertop / 기우뚱탑** (F-026). Static site, Python 3.8+ stdlib only, 11 languages.
+Intro site for **Tottertop / 기우뚱탑** (F-026). Static site, Python 3.8+ stdlib only, 12 languages.
 
 - Game name / domain / operator live in ONE place: `games.json` (+ root `CNAME` must equal its `domain`).
 - Build: `python3 scripts/build_site.py` — writes the generated pages, sitemap.xml, robots.txt, llms.txt.
