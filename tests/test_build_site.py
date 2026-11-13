@@ -1,4 +1,5 @@
 import json
+import re
 import shutil
 import tempfile
 import unittest
@@ -144,6 +145,58 @@ class JournalTests(unittest.TestCase):
         late, errs = bs.make_ctx(root, now=dt.datetime(2027, 1, 2, 12, 0, tzinfo=bs.KST))
         self.assertEqual(errs, [])
         self.assertEqual(len(late.posts), len(list((root / "content" / "journal").glob("*.en.md"))))
+
+
+class HeaderFooterTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.ctx = bs.make_ctx(REPO, require_all=True)[0]
+        cls.files = bs.build_all(cls.ctx)
+
+    def _block(self, text, tag, cls):
+        m = re.search(r'<%s class="%s".*?</%s>' % (tag, cls, tag), text, re.S)
+        self.assertIsNotNone(m, "%s.%s missing" % (tag, cls))
+        return m.group(0)
+
+    def test_nav_has_no_legal_links(self):
+        for l in self.ctx.langs:
+            nav = self._block(self.files[bs.path_home(l).lstrip("/") + "index.html"], "nav", "nav")
+            for slug in ("privacy", "terms"):
+                self.assertNotIn("/%s/" % slug, nav, "%s nav links %s" % (l, slug))
+
+    def test_footer_links_only_built_pages(self):
+        for l in self.ctx.langs:
+            footer = self._block(self.files[bs.path_home(l).lstrip("/") + "index.html"], "footer", "site-footer")
+            for slug in bs.HIDDEN_PAGES:
+                self.assertNotIn('href="%s"' % bs.path_page(l, slug), footer)
+
+    def test_language_select_has_all_languages_and_current_selected(self):
+        for l in self.ctx.langs:
+            page = self.files[bs.path_home(l).lstrip("/") + "index.html"]
+            header = self._block(page, "div", "tools")
+            sel = re.search(r'<select class="lang-select"[^>]*>(.*?)</select>', header, re.S)
+            self.assertIsNotNone(sel)
+            opts = re.findall(r'<option value="([^"]+)" lang="([^"]+)"( selected)?>', sel.group(1))
+            self.assertEqual(len(opts), 12)
+            self.assertEqual({o[1] for o in opts}, set(bs.LANGS))
+            self.assertEqual([o[1] for o in opts if o[2]], [l])
+            for value, _, _ in opts:
+                self.assertIn(value.lstrip("/") + "index.html", self.files, value)
+            self.assertIn("<noscript><ul class=\"lang-list\">", header)
+
+    def test_footer_language_select_present(self):
+        footer = self._block(self.files["index.html"], "footer", "site-footer")
+        self.assertEqual(footer.count('<select class="lang-select"'), 1)
+
+    def test_hreflang_links_kept(self):
+        head = self.files["index.html"].split("</head>")[0]
+        self.assertEqual(len(re.findall(r'rel="alternate" hreflang="[^"]+"', head)), len(bs.LANGS) + 1)
+
+    def test_journal_json_ld_parses(self):
+        pages = [f for f in self.files if f.endswith(".html")]
+        for f in pages:
+            for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', self.files[f], re.S):
+                json.loads(block.replace("<\\/", "</"))
 
 
 if __name__ == "__main__":

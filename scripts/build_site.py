@@ -429,8 +429,12 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
              '<link rel="stylesheet" href="/assets/site.css?v=%s">' % ASSET_V, theme_script(),
              '<script type="application/ld+json">%s</script>' % json.dumps({"@context": "https://schema.org", "@graph": graph},
                                                                             ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")]
-    switch = "".join('<li><a href="%s" hreflang="%s" lang="%s"%s>%s</a></li>' % (
+    options = "".join('<option value="%s" lang="%s"%s>%s</option>' % (
+        esc(pth), l, " selected" if l == lang else "", esc(LANGS[l][0])) for l, pth in alt.items())
+    lang_links = "".join('<li><a href="%s" hreflang="%s" lang="%s"%s>%s</a></li>' % (
         esc(pth), l, l, ' aria-current="true"' if l == lang else "", esc(LANGS[l][0])) for l, pth in alt.items())
+    switch = '<select class="lang-select" aria-label="%s" data-lang-switch>%s</select><noscript><ul class="lang-list">%s</ul></noscript>' % (
+        esc(t("lang_label")), options, lang_links)
     journal_label = t("nav_journal") if jl == lang else t("journal_en")
     navlinks = [(path_home(lang), t("nav_home"), "home", "")] + [(path_page(lang, s), t("nav_" + s), s, "") for s in PAGE_SLUGS]
     navlinks.append((path_journal(jl), journal_label, "journal", jattr))
@@ -439,13 +443,11 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
               '<img src="/assets/logo.svg" alt="" width="28" height="28"><span>%s</span></a>'
               '<nav class="nav" aria-label="main">%s</nav><div class="tools">'
               '<a class="ipe-link" href="https://ipe.rest/">ipe.rest<span aria-hidden="true"> ↗</span></a>'
-              '<details class="lang"><summary aria-label="%s">%s</summary><ul>%s</ul></details>'
+              '%s'
               '<button class="theme" type="button" aria-label="%s" data-dark="%s" data-light="%s"><span aria-hidden="true">◐</span></button>'
-              '</div></div></header>') % (esc(path_home(lang)), esc(NAME), esc(NAME), nav_html, esc(t("lang_label")), esc(name), switch,
-                                         esc(t("theme_dark")), esc(t("theme_dark")), esc(t("theme_light")))
-    foot_langs = ('<p class="foot-langs" aria-label="%s">%s</p>' % (esc(t("lang_label")), " ".join(
-        '<a href="%s" hreflang="%s" lang="%s"%s>%s</a>' % (esc(pth), l, l, ' aria-current="true"' if l == lang else "", esc(LANGS[l][0]))
-        for l, pth in alt.items()))) if len(alt) > 1 else ""
+              '</div></div></header>') % (esc(path_home(lang)), esc(NAME), esc(NAME), nav_html,
+                                         switch, esc(t("theme_dark")), esc(t("theme_dark")), esc(t("theme_light")))
+    foot_langs = ('<div class="foot-langs">%s</div>' % switch) if len(alt) > 1 else ""
     foot_links = " · ".join(['<a href="%s">%s</a>' % (esc(path_page(lang, s)), esc(t("nav_" + s))) for s in PAGE_SLUGS] +
                             ['<a href="%s"%s>%s</a>' % (esc(path_journal(jl)), jattr, esc(journal_label))])
     footer = ('<footer class="site-footer"><div class="wrap"><p class="foot-tag">%s <a href="https://ipe.rest/">ipe.rest</a></p>'
