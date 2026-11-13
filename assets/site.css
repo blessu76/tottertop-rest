@@ -165,7 +165,7 @@ h1{font-size:clamp(2.2rem,11vw,3rem)}
 .card,.post-card .body,.facts,.follow,.langs,.ai-note,.release{padding:.9rem}
 .hero{gap:1rem;padding-block:1.75rem 2.25rem}
 .hero-art{min-height:16rem;border-radius:20px}}
-@media (max-width:360px){.bar{justify-content:stretch}.brand{width:100%;justify-content:center}.tools{justify-content:stretch}.tools>*{flex:1 1 0}.nav a{white-space:nowrap}.post-card .thumb{min-height:10rem}}
+@media (max-width:360px){.bar{justify-content:stretch}.brand{width:100%;justify-content:center}.tools{justify-content:stretch}.tools>*{flex:1 1 auto;justify-content:center;white-space:nowrap}.tools>.theme{flex:0 0 auto}.nav a{white-space:nowrap}.post-card .thumb{min-height:10rem}}
 
 /* 7) Lighter chrome: breadcrumbs, facts, pager; markdown and journal details */
 .crumbs,.pager,.facts{padding:0;border:0;background:none;box-shadow:none;border-radius:0}
