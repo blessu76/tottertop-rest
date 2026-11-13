@@ -132,8 +132,9 @@ class JournalTests(unittest.TestCase):
         """a post dated after `now` (KST) is validated but published nowhere"""
         import datetime as dt
         root = self._repo_copy()
-        for f in sorted((root / "content" / "journal").glob("*.md")):
-            f.write_text(f.read_text(encoding="utf-8").replace("2026-11-10T", "2027-01-01T"), encoding="utf-8")
+        import re
+        for f in sorted((root / "content" / "journal").glob("*.md")):  # every post moves to the future (the queue adds posts over time)
+            f.write_text(re.sub(r"(?m)^published: \d{4}-\d{2}-\d{2}T", "published: 2027-01-01T", f.read_text(encoding="utf-8")), encoding="utf-8")
         early, errs = bs.make_ctx(root, now=dt.datetime(2026, 11, 10, 12, 0, tzinfo=bs.KST))
         self.assertEqual(errs, [])
         self.assertEqual(early.posts, [])
@@ -142,7 +143,7 @@ class JournalTests(unittest.TestCase):
         self.assertNotIn(bs.SITE + "/journal/", files["sitemap.xml"])
         late, errs = bs.make_ctx(root, now=dt.datetime(2027, 1, 2, 12, 0, tzinfo=bs.KST))
         self.assertEqual(errs, [])
-        self.assertEqual(len(late.posts), 1)
+        self.assertEqual(len(late.posts), len(list((root / "content" / "journal").glob("*.en.md"))))
 
 
 if __name__ == "__main__":
