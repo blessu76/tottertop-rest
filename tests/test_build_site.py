@@ -39,10 +39,11 @@ class SiteTests(unittest.TestCase):
         self.assertEqual(errs, [])
         self.assertTrue(urls)
 
-    def test_no_release_notes_page(self):
+    def test_releases_redirects_to_each_home(self):
         files = bs.build_all(bs.make_ctx(REPO, require_all=True)[0])
-        self.assertFalse([f for f in files if "changelog" in f])
-        self.assertNotIn('href="/changelog/"', files["index.html"])
+        self.assertIn('url=%s/"' % bs.SITE, files["releases/index.html"])
+        self.assertIn('url=%s/ja/"' % bs.SITE, files["ja/releases/index.html"])
+        self.assertNotIn("/releases/", files["sitemap.xml"])
 
 
 class JournalTests(unittest.TestCase):

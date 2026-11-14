@@ -17,6 +17,7 @@ Output (generated — never edit by hand)
   /  /contact/                     /<lang>/ ...same...
   /journal/  /journal/<slug>/  /journal/feed.xml  and the same under every /<lang>/ (journal = all 12 languages)
   /pt /zh /ar /hi /ru  redirect pages for the retired language URLs (kit redirects; noindex, not in the sitemap)
+  /releases/ and /<lang>/releases/  redirect to the game home of that language (release notes live in the app only)
   assets/ipe-lang.js   browser language detection (kit langswitch), loaded on the root home page only
   sitemap.xml  robots.txt  llms.txt  404.html
 
@@ -738,6 +739,8 @@ def build_all(ctx):
     have = set(files)
     files.update(redirects.generate(rpaths, SITE, en_root=True,
                                     available=lambda l, rest: (lp(l).lstrip("/") + "/" + rest + "index.html") in have))
+    for l in ctx.langs:  # 릴리즈 노트는 앱 안에만 있다 — 웹의 /releases/ 는 각 언어 홈으로 보낸다
+        files[(lp(l).lstrip("/") + "/" if l != "en" else "") + "releases/index.html"] = redirects.redirect_page(url(lp(l) + "/"), lang=l)
     files["404.html"] = build_404(ctx)
     files["sitemap.xml"] = build_sitemap(ctx)
     files["robots.txt"] = build_robots()
@@ -747,7 +750,7 @@ def build_all(ctx):
 
 def clean(root):
     root = Path(root)
-    for name in list(PAGE_SLUGS) + [JOURNAL_DIR] + [l for l in LANGS if l != "en"] + list(redirects.LEGACY_REDIRECTS):
+    for name in list(PAGE_SLUGS) + [JOURNAL_DIR, "releases"] + [l for l in LANGS if l != "en"] + list(redirects.LEGACY_REDIRECTS):
         d = root / name
         if d.is_dir():
             shutil.rmtree(d)

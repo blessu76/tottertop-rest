@@ -105,7 +105,7 @@ h3{font-size:clamp(1.08rem,1.8vw,1.35rem)}
 .sec-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:clamp(1rem,2vw,1.5rem)}
 .grid{display:grid;gap:1rem}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card,.post-card,.facts,.follow,.crumbs,.table-wrap,.ai-note,.pager,.langs,.releases .release,.prose blockquote,.prose pre{border:1px solid var(--border);background:color-mix(in srgb,var(--surface) 78%,transparent);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
+.card,.post-card,.facts,.follow,.crumbs,.table-wrap,.ai-note,.pager,.langs,.prose blockquote,.prose pre{border:1px solid var(--border);background:color-mix(in srgb,var(--surface) 78%,transparent);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)}
 .card{padding:1.1rem;display:grid;gap:.65rem}
 .feat{display:grid;gap:.5rem}
 .feat .icon{inline-size:2.55rem;block-size:2.55rem;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,color-mix(in srgb,var(--brand) 16%,transparent),color-mix(in srgb,var(--indigo) 12%,transparent));color:var(--brand)}
@@ -135,13 +135,12 @@ tbody tr:hover td{background:color-mix(in srgb,var(--brand) 6%,transparent)}
 .pager{display:flex;justify-content:space-between;gap:1rem;padding:.75rem}
 .pager a{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;padding:.65rem .9rem;color:var(--text);border-radius:var(--radius-pill);border:1px solid var(--border);background:color-mix(in srgb,var(--surface) 72%,transparent)}
 .pager a:hover{background:color-mix(in srgb,var(--surface) 88%,white);border-color:var(--border-strong)}
-.langs,.releases{display:grid;gap:.75rem}
+.langs{display:grid;gap:.75rem}
 .langs{padding:1rem 1.1rem}
 .langs a{display:inline-flex;align-items:center;padding:.55rem .8rem;color:var(--text-2);border-radius:var(--radius-pill);border:1px solid var(--border);background:color-mix(in srgb,var(--surface) 72%,transparent)}
 .langs a:hover{color:var(--text);background:color-mix(in srgb,var(--surface) 90%,white)}
 .site-footer{padding-block:2rem 3rem;color:var(--text-2);border-top:1px solid var(--border)}
 .foot-tag{display:inline-flex;align-items:center;gap:.45rem;padding:.45rem .72rem;border-radius:var(--radius-pill);border:1px solid var(--border);background:color-mix(in srgb,var(--surface) 72%,transparent);color:var(--text)}
-.releases{margin-top:1rem}
 .release{padding:1rem 1.1rem}
 .release+.release{margin-top:.75rem}
 .release time{color:var(--muted);font-size:.92rem}
