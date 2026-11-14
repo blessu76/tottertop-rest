@@ -49,7 +49,7 @@ def check(root, now=None):
             errs.append("lastmod in the future: %s %s" % (u, lastmod[u]))
     homes = [l for l in bs.LANGS if bs.url(bs.path_home(l)) in urls]
     for l in homes:
-        for path in tuple(bs.path_page(l, p) for p in bs.PAGE_SLUGS):
+        for path in tuple(bs.path_page(l, p) for p in bs.PAGE_SLUGS if (root / "content" / "pages" / l / (p + ".md")).is_file()):
             if bs.url(path) not in urls:
                 errs.append("missing from sitemap: %s" % bs.url(path))
     for l in homes:

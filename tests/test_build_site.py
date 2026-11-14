@@ -29,6 +29,8 @@ class SiteTests(unittest.TestCase):
         # every page slug (contact) is built for every language
         for l in ctx.langs:
             for slug in bs.PAGE_SLUGS:
+                if slug not in bs.REQUIRED_PAGE_SLUGS and (l, slug) not in ctx.pages:
+                    continue  # privacy/terms bodies exist in 7 languages only
                 rel = bs.path_page(l, slug).lstrip("/") + "index.html"
                 self.assertIn(rel, files, "%s/%s" % (l, slug))
 
@@ -197,11 +199,13 @@ class HeaderFooterTests(unittest.TestCase):
             for slug in ("privacy", "terms"):
                 self.assertNotIn("/%s/" % slug, nav, "%s nav links %s" % (l, slug))
 
-    def test_footer_links_only_built_pages(self):
+    def test_footer_links_privacy_terms_to_built_pages(self):
         for l in self.ctx.langs:
             footer = self._block(self.files[bs.path_home(l).lstrip("/") + "index.html"], "footer", "site-footer")
-            for slug in bs.HIDDEN_PAGES:
-                self.assertNotIn('href="%s"' % bs.path_page(l, slug), footer)
+            for slug in ("privacy", "terms"):
+                want = bs.path_page(l if (l, slug) in self.ctx.pages else "en", slug)
+                self.assertIn('href="%s"' % want, footer, "%s footer links %s" % (l, slug))
+                self.assertIn(want.lstrip("/") + "index.html", self.files)
 
     def test_language_select_has_all_languages_and_current_selected(self):
         for l in self.ctx.langs:
