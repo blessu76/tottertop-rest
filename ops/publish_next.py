@@ -35,7 +35,8 @@ KST = dt.timezone(dt.timedelta(hours=9))
 MAIN_LANGS = ("en", "ko", "ja", "zh-Hant", "es", "pt-BR", "fr", "de", "id", "th", "vi", "tr")
 LEGACY_LANGS = "pt|zh|ar|hi|ru"  # retired language URLs: build_site writes redirect pages for each new post under them
 REVIEW_RE = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")  # front matter `copy_review: iris YYYY-MM-DD` = the copy review gate
-SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+LIMITS = {"title": 60, "description": 200, "excerpt": 200}  # mirrors TITLE_MAX/DESC_MAX/EXCERPT_MAX in scripts/build_site.py (tested)
+SLUG_RE =re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 # the only paths a publish may touch (everything else staged = hard fail)
 ALLOWED_PATH = re.compile(
     r"^(content/journal/[a-z0-9-]+\.(%(l)s)\.md|journal/.*|(%(o)s)/journal/.*|index\.html|(%(o)s)/index\.html|sitemap\.xml|llms\.txt)$"
@@ -135,6 +136,10 @@ def load_item(folder):
             raise HardFail("%s/%s.md: lang is %r" % (folder.name, lang, metas[lang]["lang"]))
         if "published" in metas[lang]:
             raise HardFail("%s/%s.md: published: is set at publish time, not in the queue" % (folder.name, lang))
+    toolong = ["%s %s %d>%d" % (l, k, len(metas[l].get(k, "")), lim)
+               for l in MAIN_LANGS for k, lim in LIMITS.items() if len(metas[l].get(k, "")) > lim]
+    if toolong:  # build_site would reject it: wait for the translator to shorten it, never FAILED
+        raise NotReady("%s: waiting — too long for the build (%s)" % (folder.name, ", ".join(toolong)))
     slug = metas["en"]["slug"]
     for lang in MAIN_LANGS:
         if metas[lang]["slug"] != slug:
