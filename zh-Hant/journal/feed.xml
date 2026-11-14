@@ -6,6 +6,7 @@
 <atom:link href="https://tottertop.ipe.rest/zh-Hant/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop 開發筆記 — 這款遊戲是什麼，以及我們為什麼要做它。</description>
 <language>zh-Hant</language>
-<lastBuildDate>Tue, 10 Nov 2026 22:13:00 +0900</lastBuildDate>
+<lastBuildDate>Sat, 14 Nov 2026 23:13:00 +0900</lastBuildDate>
+<item><title>為什麼我們從暗色夜空改成薄荷與天空藍</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>暗色夜空風格誕生兩天後,一輪修飾幾乎沒有帶來肉眼可見的改變。所以我們把整款遊戲重新畫過,變得明亮、圓潤又可愛。</description></item>
 <item><title>Tottertop 是什麼遊戲，我們為什麼要做它</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-10-what-tottertop-is/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-10-what-tottertop-is/</guid><pubDate>Tue, 10 Nov 2026 22:13:00 +0900</pubDate><description>Tottertop 是什麼遊戲——起重機把積木丟向搖搖欲墜的高塔、只需輕點一下的物理疊塔——以及 ipe() 為什麼想做一款這麼小的遊戲。</description></item>
 </channel></rss>

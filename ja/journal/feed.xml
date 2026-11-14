@@ -6,6 +6,7 @@
 <atom:link href="https://tottertop.ipe.rest/ja/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop の開発ノート — ゲームの内容と、作る理由。</description>
 <language>ja</language>
-<lastBuildDate>Tue, 10 Nov 2026 22:13:00 +0900</lastBuildDate>
+<lastBuildDate>Sat, 14 Nov 2026 23:13:00 +0900</lastBuildDate>
+<item><title>夜空のダークな見た目から、ミントとスカイブルーに変えた理由</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>ダークな夜空の見た目から2日後、仕上げの調整をしても目に見える変化はほとんどありませんでした。そこでゲーム全体を、明るく、丸く、かわいく描き直しました。</description></item>
 <item><title>Tottertopとは何か、そしてなぜ作っているのか</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-10-what-tottertop-is/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-10-what-tottertop-is/</guid><pubDate>Tue, 10 Nov 2026 22:13:00 +0900</pubDate><description>Tottertopがどんなゲームか——クレーンがぐらつくタワーにブロックを落とす、タップひとつの物理積み——そして、ipe()がなぜこんなに小さなゲームを作りたいのか。</description></item>
 </channel></rss>

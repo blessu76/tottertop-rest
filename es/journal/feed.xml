@@ -6,6 +6,7 @@
 <atom:link href="https://tottertop.ipe.rest/es/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notas de desarrollo de Tottertop: qué es el juego y por qué lo hacemos.</description>
 <language>es</language>
-<lastBuildDate>Tue, 10 Nov 2026 22:13:00 +0900</lastBuildDate>
+<lastBuildDate>Sat, 14 Nov 2026 23:13:00 +0900</lastBuildDate>
+<item><title>Por qué pasamos del cielo nocturno a menta y celeste</title><link>https://tottertop.ipe.rest/es/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/es/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>Dos días después del look de cielo nocturno oscuro, una ronda de retoques apenas cambió nada visible. Así que redibujamos todo el juego en versión luminosa, redondeada y adorable.</description></item>
 <item><title>Qué es Tottertop y por qué lo estamos haciendo</title><link>https://tottertop.ipe.rest/es/journal/2026-11-10-what-tottertop-is/</link><guid isPermaLink="true">https://tottertop.ipe.rest/es/journal/2026-11-10-what-tottertop-is/</guid><pubDate>Tue, 10 Nov 2026 22:13:00 +0900</pubDate><description>Qué es Tottertop —un apilador con física y un solo toque en el que una grúa deja caer bloques sobre una torre que se tambalea— y por qué ipe() quiere hacer un juego tan pequeño.</description></item>
 </channel></rss>
