@@ -5,6 +5,7 @@ title: "O que é o Tottertop e por que estamos fazendo este jogo"
 description: "Um empilhador de torres com física e um único toque: um guindaste solta blocos sobre uma torre balançando, e uma partida dura cerca de um minuto. Por que a ipe() está fazendo um jogo tão pequeno."
 excerpt: "O que é o Tottertop — um empilhador com física e um toque só, em que um guindaste solta blocos sobre uma torre balançando — e por que a ipe() quer fazer um jogo tão pequeno."
 published: 2026-11-10T22:13+09:00
+copy_review: iris 2026-11-14
 ---
 Tottertop é um jogo de física que se joga com um dedo só, nos pequenos intervalos do dia. Este é o primeiro post do diário, então vamos começar pelo básico: o que é o jogo e por que estamos fazendo ele.
 

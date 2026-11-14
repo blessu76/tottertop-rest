@@ -5,16 +5,17 @@ title: "Tottertop nedir ve onu neden yapıyoruz"
 description: "Tek dokunuşla oynanan bir fizik kule oyunu: bir vinç sallanan bir kuleye blok bırakır ve bir tur yaklaşık bir dakika sürer. ipe() neden bu kadar küçük bir oyun yapıyor."
 excerpt: "Tottertop nedir — bir vincin sallanan bir kuleye blok bıraktığı, tek dokunuşlu bir fizik istifleme oyunu — ve ipe() neden bu kadar küçük bir oyun yapmak istiyor."
 published: 2026-11-10T22:13+09:00
+copy_review: iris 2026-11-14
 ---
 Tottertop, günün küçük boşluklarında tek parmakla oynanan bir fizik oyunudur. Bu, günlüğün ilk yazısı; o yüzden temelden başlayalım: oyun nedir ve onu neden yapıyoruz.
 
 ## Oyun nedir
 
-Bir vinç, bir kulenin üzerinde sallanıyor. Kule zaten sallanıyor. Bir kez dokunduğunuzda vinç taşıdığı bloğu bırakır ve bloğun nereye düştüğü, kulenin biraz daha eğilip eğilmeyeceğini ya da devrilip devrilmeyeceğini belirler.
+Bir vinç, bir kulenin üzerinde sallanıyor. Kule zaten sallanıyor. Bir kez dokunduğunuzda vinç taşıdığı bloğu bırakır ve bloğun nereye düştüğü, kulenin biraz daha eğilmesine mi yoksa devrilmesine mi yol açacağını belirler.
 
 Kontroller bundan ibaret. Öğrenilecek menü yok, toplanacak eşya yok: vinci izlersiniz, bloğun nereye düşeceğini kestirirsiniz ve dokunacağınız anı seçersiniz. Kule devrilince tur biter ve yenisine başlarsınız.
 
-Bir tur yaklaşık bir dakika sürer ve oyun tek oyunculudur. iOS ve Android için planlanıyor; site ve oyun geldiğinde oyunun kendisi de 12 dilde planlanıyor.
+Bir tur yaklaşık bir dakika sürer ve oyun tek oyunculudur. iOS ve Android için planlanıyor; site ve — oyun çıktığında — oyunun kendisi de 12 dilde planlanıyor.
 
 ## Neden bu oyun
 

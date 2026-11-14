@@ -5,6 +5,7 @@ title: "Qué es Tottertop y por qué lo estamos haciendo"
 description: "Un apilador de torres con física y un solo toque: una grúa deja caer bloques sobre una torre que se tambalea, y una partida dura cerca de un minuto. Por qué ipe() hace un juego tan pequeño."
 excerpt: "Qué es Tottertop —un apilador con física y un solo toque en el que una grúa deja caer bloques sobre una torre que se tambalea— y por qué ipe() quiere hacer un juego tan pequeño."
 published: 2026-11-10T22:13+09:00
+copy_review: iris 2026-11-14
 ---
 Tottertop es un juego de física que se juega con un solo dedo, en los huecos pequeños del día. Esta es la primera entrada del diario, así que empecemos por lo básico: qué es el juego y por qué lo estamos haciendo.
 
@@ -12,7 +13,7 @@ Tottertop es un juego de física que se juega con un solo dedo, en los huecos pe
 
 Una grúa se balancea sobre una torre. La torre ya se tambalea. Cuando tocas una vez, la grúa suelta el bloque que lleva, y el lugar donde cae decide si la torre se inclina un poco más o se derrumba.
 
-Esos son todos los controles. No hay menús que aprender ni objetos que coleccionar: miras la grúa, calculas dónde caerá el bloque y eliges el momento de tocar. Cuando la torre se vuelca, la partida termina y empiezas otra.
+Esos son todos los controles. No hay menús que aprender ni objetos que coleccionar: miras la grúa, calculas dónde caerá el bloque y eliges el momento de tocar. Cuando la torre se cae, la partida termina y empiezas otra.
 
 Una partida dura cerca de un minuto y el juego es para un solo jugador. Está previsto para iOS y Android, y el sitio —y el juego, cuando llegue— está previsto en 12 idiomas.
 

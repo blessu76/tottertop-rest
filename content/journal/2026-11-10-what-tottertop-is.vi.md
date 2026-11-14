@@ -5,6 +5,7 @@ title: "Tottertop là gì, và vì sao chúng tôi làm nó"
 description: "Một trò xếp tháp vật lý chỉ cần chạm một lần: cần cẩu thả các khối xuống một tòa tháp đang chao đảo, và một ván kéo dài khoảng một phút. Vì sao ipe() làm một trò chơi nhỏ đến vậy."
 excerpt: "Tottertop là gì — trò xếp khối vật lý chạm một lần, nơi cần cẩu thả khối xuống tòa tháp đang chao đảo — và vì sao ipe() muốn làm một trò chơi nhỏ đến vậy."
 published: 2026-11-10T22:13+09:00
+copy_review: iris 2026-11-14
 ---
 Tottertop là một trò chơi vật lý chơi bằng một ngón tay, trong những khoảng trống nhỏ của một ngày. Đây là bài đầu tiên của nhật ký, nên hãy bắt đầu từ điều cơ bản: trò chơi là gì, và vì sao chúng tôi làm ra nó.
 

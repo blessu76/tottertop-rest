@@ -5,6 +5,7 @@ title: "Apa itu Tottertop, dan mengapa kami membuatnya"
 description: "Gim susun menara berbasis fisika dengan satu ketukan: sebuah derek menjatuhkan balok ke menara yang bergoyang, dan satu ronde berlangsung sekitar satu menit. Mengapa ipe() membuat gim sekecil ini."
 excerpt: "Apa itu Tottertop — gim susun berbasis fisika dengan satu ketukan, tempat derek menjatuhkan balok ke menara yang bergoyang — dan mengapa ipe() ingin membuat gim sekecil ini."
 published: 2026-11-10T22:13+09:00
+copy_review: iris 2026-11-14
 ---
 Tottertop adalah gim fisika yang dimainkan dengan satu jari, di sela-sela kecil dalam sehari. Ini adalah tulisan pertama di jurnal, jadi mari mulai dari dasar: gim ini apa, dan mengapa kami membuatnya.
 

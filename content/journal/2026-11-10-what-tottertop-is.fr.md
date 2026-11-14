@@ -5,6 +5,7 @@ title: "Ce qu'est Tottertop, et pourquoi nous le faisons"
 description: "Un jeu d'empilement physique à un seul toucher : une grue lâche des blocs sur une tour qui vacille, et une partie dure environ une minute. Pourquoi ipe() fait un jeu aussi petit."
 excerpt: "Ce qu'est Tottertop — un jeu d'empilement physique à un seul toucher où une grue lâche des blocs sur une tour qui vacille — et pourquoi ipe() veut faire un jeu aussi petit."
 published: 2026-11-10T22:13+09:00
+copy_review: iris 2026-11-14
 ---
 Tottertop est un jeu de physique qui se joue avec un seul doigt, dans les petits creux de la journée. C'est le premier billet du journal, alors commençons par les bases : ce qu'est le jeu, et pourquoi nous le faisons.
 

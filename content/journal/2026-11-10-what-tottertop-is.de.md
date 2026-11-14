@@ -5,6 +5,7 @@ title: "Was Tottertop ist – und warum wir es machen"
 description: "Ein Physik-Stapelspiel mit nur einem Tipp: Ein Kran lässt Blöcke auf einen wackelnden Turm fallen, eine Runde dauert etwa eine Minute. Warum ipe() ein so kleines Spiel macht."
 excerpt: "Was Tottertop ist – ein Physik-Stapelspiel mit einem Tipp, bei dem ein Kran Blöcke auf einen wackelnden Turm fallen lässt – und warum ipe() ein so kleines Spiel machen will."
 published: 2026-11-10T22:13+09:00
+copy_review: iris 2026-11-14
 ---
 Tottertop ist ein Physikspiel, das man mit einem Finger spielt, in den kleinen Lücken des Tages. Dies ist der erste Beitrag des Journals, also fangen wir mit den Grundlagen an: was das Spiel ist und warum wir es überhaupt machen.
 
