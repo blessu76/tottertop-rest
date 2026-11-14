@@ -8,6 +8,7 @@ from pathlib import Path
 from helpers import REPO
 import build_site as bs
 import check_sitemap as cs
+from ipe_web_kit import langswitch, redirects
 
 
 class SiteTests(unittest.TestCase):
@@ -43,7 +44,7 @@ class SiteTests(unittest.TestCase):
 
 
 class JournalTests(unittest.TestCase):
-    """Journal posts are en+ko pairs in content/journal/<slug>.<lang>.md; validate and build them."""
+    """Journal posts live in content/journal/<slug>.<lang>.md (all 12 languages, each with copy_review); validate and build them."""
 
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp(prefix="tt-journal-"))
@@ -55,9 +56,12 @@ class JournalTests(unittest.TestCase):
 
     def _write(self, name, body, published="2026-11-10T12:00+09:00", **meta):
         lang = name.rsplit(".", 1)[0].rsplit(".", 1)[-1]  # a.en.md -> en
+        meta = dict({"copy_review": "iris 2026-11-14"}, **meta)
         head = ["---", "slug: x", "lang: %s" % lang, "title: T", "description: D",
                 "published: %s" % published]
         for k, v in meta.items():
+            if v is None:
+                continue
             head.append("%s: %s" % (k, v))
         head.append("---")
         (self.jdir / name).write_text("\n".join(head + ["", body]), encoding="utf-8")
@@ -84,6 +88,21 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(posts, [])
         self.assertTrue(any("same published time" in e for e in errs), errs)
 
+    def test_missing_copy_review_is_error(self):
+        self._write("a.en.md", "body a")
+        self._write("a.ko.md", "몸 a", copy_review=None)
+        posts, errs = bs.load_journal(self.tmp)
+        self.assertEqual(posts, [])
+        self.assertTrue(any("a.ko.md: copy_review" in e for e in errs), errs)
+
+    def test_incomplete_post_fails_publish_gate(self):
+        """en + ko only: loads fine, but make_ctx refuses it (kit check_post needs all 12 languages)"""
+        root = self.tmp / "site"
+        shutil.copytree(REPO, root, ignore=shutil.ignore_patterns(".git", "__pycache__"))
+        (root / "content" / "journal" / "2026-11-10-what-tottertop-is.tr.md").unlink()
+        ctx, errs = bs.make_ctx(root)
+        self.assertTrue(any("언어판 없음: tr" in e for e in errs), errs)
+
     def test_bad_published_format_is_error(self):
         self._write("a.en.md", "body a", published="2026-11-10T12:00")
         self._write("a.ko.md", "몸 a", published="2026-11-10T12:00")
@@ -91,8 +110,8 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(posts, [])
         self.assertTrue(any("published must be" in e for e in errs), errs)
 
-    def test_non_journal_lang_file_is_error(self):
-        self._write("a.ja.md", "body")
+    def test_unknown_lang_file_is_error(self):
+        self._write("a.ru.md", "body")
         posts, errs = bs.load_journal(self.tmp)
         self.assertEqual(posts, [])
         self.assertTrue(any("file name must be" in e for e in errs), errs)
@@ -146,6 +165,20 @@ class JournalTests(unittest.TestCase):
         self.assertEqual(errs, [])
         self.assertEqual(len(late.posts), len(list((root / "content" / "journal").glob("*.en.md"))))
 
+    def test_journal_built_in_all_languages(self):
+        files = bs.build_all(bs.make_ctx(REPO, require_all=True)[0])
+        slug = "2026-11-10-what-tottertop-is"
+        for l in bs.LANGS:
+            base = bs.lp(l).lstrip("/") + "/" if l != "en" else ""
+            for rel in (base + "journal/index.html", base + "journal/feed.xml", base + "journal/%s/index.html" % slug):
+                self.assertIn(rel, files)
+        post = files["ja/journal/%s/index.html" % slug]
+        self.assertIn('"inLanguage":"ja"', post)
+        self.assertEqual(len(re.findall(r'rel="alternate" hreflang="', post)), 13)  # 12 + x-default
+        self.assertIn('hreflang="x-default" href="%s/journal/%s/"' % (bs.SITE, slug), post)
+        sm = files["sitemap.xml"]
+        self.assertEqual(sm.count("<loc>%s/pt-BR/journal/%s/</loc>" % (bs.SITE, slug)), 1)
+
 
 class HeaderFooterTests(unittest.TestCase):
     @classmethod
@@ -174,7 +207,8 @@ class HeaderFooterTests(unittest.TestCase):
         for l in self.ctx.langs:
             page = self.files[bs.path_home(l).lstrip("/") + "index.html"]
             header = self._block(page, "div", "tools")
-            sel = re.search(r'<select class="lang-select"[^>]*>(.*?)</select>', header, re.S)
+            self.assertEqual(header.count("<select"), 1)
+            sel = re.search(r'<select class="ipe-lang__select"[^>]*>(.*?)</select>', header, re.S)
             self.assertIsNotNone(sel)
             opts = re.findall(r'<option value="([^"]+)" lang="([^"]+)"( selected)?>', sel.group(1))
             self.assertEqual(len(opts), 12)
@@ -182,11 +216,26 @@ class HeaderFooterTests(unittest.TestCase):
             self.assertEqual([o[1] for o in opts if o[2]], [l])
             for value, _, _ in opts:
                 self.assertIn(value.lstrip("/") + "index.html", self.files, value)
-            self.assertIn("<noscript><ul class=\"lang-list\">", header)
+            self.assertIn('<noscript><nav class="ipe-lang__links"', header)
 
-    def test_footer_language_select_present(self):
-        footer = self._block(self.files["index.html"], "footer", "site-footer")
-        self.assertEqual(footer.count('<select class="lang-select"'), 1)
+    def test_footer_has_no_language_switch(self):
+        for l in self.ctx.langs:
+            footer = self._block(self.files[bs.path_home(l).lstrip("/") + "index.html"], "footer", "site-footer")
+            self.assertNotIn("<select", footer)
+            self.assertNotIn("ipe-lang", footer)
+
+    def test_detection_script_on_root_home_only(self):
+        self.assertIn('<script src="%s" data-redirect defer></script>' % bs.LANG_JS, self.files["index.html"])
+        for rel, text in self.files.items():
+            if rel.endswith(".html") and rel != "index.html" and not rel.split("/")[0] in redirects.LEGACY_REDIRECTS:
+                self.assertNotIn("ipe-lang.js", text, rel)
+        self.assertEqual((REPO / "assets" / "ipe-lang.js").read_bytes(), langswitch.JS.read_bytes())
+
+    def test_legacy_language_urls_redirect_and_stay_out_of_sitemap(self):
+        self.assertIn('url=%s/pt-BR/"' % bs.SITE, self.files["pt/index.html"])
+        self.assertIn('url=%s/zh-Hant/contact/"' % bs.SITE, self.files["zh/contact/index.html"])
+        self.assertIn('url=%s/journal/"' % bs.SITE, self.files["ru/journal/index.html"])
+        self.assertEqual(redirects.sitemap_leaks(self.files["sitemap.xml"]), [])
 
     def test_hreflang_links_kept(self):
         head = self.files["index.html"].split("</head>")[0]

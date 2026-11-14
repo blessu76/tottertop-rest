@@ -6,15 +6,18 @@ Sources
   content/i18n/<lang>.json            UI strings + home copy (same keys in every language, see KEYS)
   content/pages/<lang>/<slug>.md      contact (front matter title+description, Markdown body,
                                       placeholders {{GAME}} {{DOMAIN}} {{OPERATOR}} {{EMAIL}} {{EFFECTIVE}})
-  content/journal/<slug>.<lang>.md    journal posts, en + ko pairs sharing one slug (front matter title, description,
-                                      published [KST, YYYY-MM-DDTHH:MM+09:00], optional updated / excerpt; Markdown body).
-                                      A post dated after today (KST) is validated but written nowhere.
+  content/journal/<slug>.<lang>.md    journal posts: one file per language (all 12) sharing one slug (front matter title,
+                                      description, published [KST, YYYY-MM-DDTHH:MM+09:00], copy_review: iris YYYY-MM-DD,
+                                      optional updated / excerpt; Markdown body). A post missing a language or a copy_review
+                                      fails the build (kit journal.check_post). A post dated after today (KST) is validated
+                                      but written nowhere.
 
 Output (generated — never edit by hand)
   en lives at the root, every other language under /<lang>/:
   /  /contact/                     /<lang>/ ...same...
-  /journal/  /journal/<slug>/  /journal/feed.xml  and the same under /ko/   (journal = en + ko only; the other
-  languages' nav/footer link to the English journal, marked hreflang="en")
+  /journal/  /journal/<slug>/  /journal/feed.xml  and the same under every /<lang>/ (journal = all 12 languages)
+  /pt /zh /ar /hi /ru  redirect pages for the retired language URLs (kit redirects; noindex, not in the sitemap)
+  assets/ipe-lang.js   browser language detection (kit langswitch), loaded on the root home page only
   sitemap.xml  robots.txt  llms.txt  404.html
 
 Usage
@@ -34,7 +37,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "vendor"))
-from ipe_web_kit import languages  # noqa: E402  (common 12 languages, kit >= v0.5.0; pinned by vendor/ipe_web_kit.lock)
+from ipe_web_kit import journal as kit_journal, languages, langswitch, redirects  # noqa: E402  (kit >= v0.7.2; pinned by vendor/ipe_web_kit.lock)
 GAMES_FILE = "games.json"
 GAME_KEYS = ("id", "foundry", "name", "name_ko", "domain", "genre", "platforms", "operator", "email", "effective", "pages_updated",
              "theme_color", "asset_version", "langs", "main_langs")
@@ -67,16 +70,18 @@ OG_IMAGE = "/assets/og-image.png"
 # To bring them back: move the slugs from HIDDEN_PAGES into PAGE_SLUGS and rebuild.
 HIDDEN_PAGES = ("privacy", "terms")
 PAGE_SLUGS = ("contact",)
-# Journal (play-rest convention, adapted): posts are written in en + ko only, as content/journal/<slug>.<en>.md + .ko.md
-# pairs sharing one slug. URLs: /journal/ /journal/<slug>/ /journal/feed.xml and the same under /ko/. AI-translated
-# languages get no journal pages: their nav and footer links go to the English journal (label journal_en, hreflang="en").
+# Journal: every post exists in all 12 languages (en + ko by hand, the rest AI translations reviewed by iris), as
+# content/journal/<slug>.<lang>.md sharing one slug. URLs: /journal/ /journal/<slug>/ /journal/feed.xml and the same under /<lang>/.
 JOURNAL_DIR = "journal"
-JOURNAL_LANGS = ("en", "ko")
+JOURNAL_LANGS = tuple(languages.SUPPORTED)
+REQUIRED_JOURNAL_LANGS = ("en", "ko")  # load_journal needs at least these; the 12-language + copy_review gate is make_ctx (kit check_post)
+REVIEW_RE = re.compile(r"^iris (\d{4}-\d{2}-\d{2})$")  # front matter `copy_review: iris YYYY-MM-DD`
+LANG_JS = "/assets/ipe-lang.js?v=" + langswitch.asset_version()
 JOURNAL_RESERVED_SLUGS = ("feed",)  # /journal/feed.xml is the RSS file; no post may take that URL segment
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 PUBLISHED_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}\+09:00$")  # published time is always recorded in KST
-TITLE_MAX, DESC_MAX, EXCERPT_MAX = 60, 160, 200
-HOME_JOURNAL_CARDS = 3  # newest posts shown on the home page (journal languages only)
+TITLE_MAX, DESC_MAX, EXCERPT_MAX = 60, 200, 200  # DESC_MAX 160 -> 200: the reviewed id/pt-BR/es translations run 189-196 chars
+HOME_JOURNAL_CARDS = 3  # newest posts shown on the home page
 
 # og:locale per common language (order, names and tags come from the kit: languages.SUPPORTED / NAMES)
 _OG_LOCALE = {"en": "en_US", "ko": "ko_KR", "ja": "ja_JP", "zh-Hant": "zh_TW", "es": "es_ES", "pt-BR": "pt_BR", "fr": "fr_FR",
@@ -318,8 +323,7 @@ def load_journal(root):
         stem, _, lang = f.stem.rpartition(".")
         tag = "%s/%s" % (JOURNAL_DIR, f.name)
         if not stem or lang not in JOURNAL_LANGS:
-            errs.append("%s: file name must be <slug>.<%s>.md (journal posts are written in %s only)" % (
-                tag, "|".join(JOURNAL_LANGS), " + ".join(JOURNAL_LANGS))); continue
+            errs.append("%s: file name must be <slug>.<%s>.md" % (tag, "|".join(JOURNAL_LANGS))); continue
         if not SLUG_RE.match(stem) or stem in JOURNAL_RESERVED_SLUGS:
             errs.append("%s: slug %r must be lowercase letters, digits and single hyphens (and not %s)" % (
                 tag, stem, "/".join(JOURNAL_RESERVED_SLUGS))); continue
@@ -346,6 +350,8 @@ def load_journal(root):
             errs.append("%s: description longer than %d characters" % (tag, DESC_MAX))
         if len(meta.get("excerpt", "")) > EXCERPT_MAX:
             errs.append("%s: excerpt longer than %d characters" % (tag, EXCERPT_MAX))
+        if not REVIEW_RE.match(meta.get("copy_review", "")):
+            errs.append("%s: copy_review: iris YYYY-MM-DD required (copy review gate)" % tag)
         if meta.get("lang") and meta["lang"] != lang:
             errs.append("%s: front matter lang %r does not match the file name" % (tag, meta["lang"]))
         if not body.strip():
@@ -358,14 +364,14 @@ def load_journal(root):
         if not any(e.startswith(tag + ":") for e in errs):
             found.setdefault(stem, {})[lang] = {"title": meta.get("title", ""), "description": meta.get("description", ""),
                                                 "excerpt": meta.get("excerpt") or meta.get("description", ""), "body": body,
-                                                "published": meta.get("published", ""), "updated": meta.get("updated") or meta.get("published", "")[:10]}
+                                                "published": meta.get("published", ""), "copy_review": meta.get("copy_review", ""), "updated": meta.get("updated") or meta.get("published", "")[:10]}
     posts = []
     for slug, langs in found.items():
-        missing = [l for l in JOURNAL_LANGS if l not in langs]
+        missing = [l for l in REQUIRED_JOURNAL_LANGS if l not in langs]
         if missing:
             errs.append("journal/%s: missing the %s version (every post needs en and ko)" % (slug, "/".join(missing))); continue
         if len({v["published"] for v in langs.values()}) != 1:
-            errs.append("journal/%s: en and ko must have the same published time" % slug); continue
+            errs.append("journal/%s: all language versions must have the same published time" % slug); continue
         posts.append({"slug": slug, "published": langs["en"]["published"],
                       "updated": max(v["updated"] for v in langs.values()), "langs": langs})
     posts.sort(key=lambda p: (p["published"], p["slug"]), reverse=True)
@@ -391,7 +397,7 @@ class Ctx:
         return [p for p in self.posts if lang in self.journal_langs and lang in p["langs"]]
 
     def journal_lang(self, lang):
-        """the language whose journal a page in `lang` links to: its own, else the English original"""
+        """the language whose journal a page in `lang` links to: its own, else English"""
         return lang if lang in self.journal_langs else "en"
 
     def sub(self, text):
@@ -399,11 +405,10 @@ class Ctx:
                 .replace("{{EMAIL}}", EMAIL).replace("{{EFFECTIVE}}", EFFECTIVE).replace("{{SITE}}", SITE))
 
 
-def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website", noindex=False, hreflang=True, nav=""):
+def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website", noindex=False, hreflang=True, nav="", detect=False):
     t = lambda k: ctx.t(lang, k)  # noqa: E731
     name, og_loc, direction = LANGS[lang]
-    jl = ctx.journal_lang(lang)  # a language without its own journal links to the English one
-    jattr = ' hreflang="en"' if jl != lang else ""
+    jl = ctx.journal_lang(lang)
     canonical = url(path)
     head = ['<meta charset="utf-8">', '<meta name="viewport" content="width=device-width,initial-scale=1">',
             "<title>%s</title>" % esc(title), '<meta name="description" content="%s">' % esc(desc),
@@ -429,15 +434,12 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
              '<link rel="stylesheet" href="/assets/site.css?v=%s">' % ASSET_V, theme_script(),
              '<script type="application/ld+json">%s</script>' % json.dumps({"@context": "https://schema.org", "@graph": graph},
                                                                             ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")]
-    options = "".join('<option value="%s" lang="%s"%s>%s</option>' % (
-        esc(pth), l, " selected" if l == lang else "", esc(LANGS[l][0])) for l, pth in alt.items())
-    lang_links = "".join('<li><a href="%s" hreflang="%s" lang="%s"%s>%s</a></li>' % (
-        esc(pth), l, l, ' aria-current="true"' if l == lang else "", esc(LANGS[l][0])) for l, pth in alt.items())
-    switch = '<select class="lang-select" aria-label="%s" data-lang-switch>%s</select><noscript><ul class="lang-list">%s</ul></noscript>' % (
-        esc(t("lang_label")), options, lang_links)
-    journal_label = t("nav_journal") if jl == lang else t("journal_en")
+    sel_alt = dict(alt)
+    sel_alt.setdefault(lang, path)
+    switch = langswitch.select_html(lang, lambda l: sel_alt[l], langs=list(sel_alt)) if len(sel_alt) > 1 else ""
+    journal_label = t("nav_journal")
     navlinks = [(path_home(lang), t("nav_home"), "home", "")] + [(path_page(lang, s), t("nav_" + s), s, "") for s in PAGE_SLUGS]
-    navlinks.append((path_journal(jl), journal_label, "journal", jattr))
+    navlinks.append((path_journal(jl), journal_label, "journal", ""))
     nav_html = "".join('<a href="%s"%s%s>%s</a>' % (esc(h), extra, ' aria-current="page"' if nav == k else "", esc(label)) for h, label, k, extra in navlinks)
     header = ('<header class="site-header"><div class="wrap bar"><a class="brand" href="%s" aria-label="%s">'
               '<img src="/assets/logo.svg" alt="" width="28" height="28"><span>%s</span></a>'
@@ -447,16 +449,16 @@ def render(ctx, lang, *, path, title, desc, body, graph, alt, og_type="website",
               '<button class="theme" type="button" aria-label="%s" data-dark="%s" data-light="%s"><span aria-hidden="true">◐</span></button>'
               '</div></div></header>') % (esc(path_home(lang)), esc(NAME), esc(NAME), nav_html,
                                          switch, esc(t("theme_dark")), esc(t("theme_dark")), esc(t("theme_light")))
-    foot_langs = ('<div class="foot-langs">%s</div>' % switch) if len(alt) > 1 else ""
     foot_links = " · ".join(['<a href="%s">%s</a>' % (esc(path_page(lang, s)), esc(t("nav_" + s))) for s in PAGE_SLUGS] +
-                            ['<a href="%s"%s>%s</a>' % (esc(path_journal(jl)), jattr, esc(journal_label))])
+                            ['<a href="%s">%s</a>' % (esc(path_journal(jl)), esc(journal_label))])
     footer = ('<footer class="site-footer"><div class="wrap"><p class="foot-tag">%s <a href="https://ipe.rest/">ipe.rest</a></p>'
-              '<p class="foot-links">%s</p>%s<p class="foot-small">© 2026 ipe() · %s</p></div></footer>') % (
-        esc(t("footer_line")), foot_links, foot_langs, esc(t("status_badge")))
+              '<p class="foot-links">%s</p><p class="foot-small">© 2026 ipe() · %s</p></div></footer>') % (
+        esc(t("footer_line")), foot_links, esc(t("status_badge")))
     return ('<!doctype html>\n<!-- %s -->\n<html lang="%s" dir="%s" data-ads="off"><head>%s</head><body>'
             '<a class="skip" href="#main">%s</a>%s<main id="main" class="wrap">%s</main>%s'
-            '<script src="/assets/site.js?v=%s" defer></script></body></html>\n') % (
-        GEN_MARK, lang, direction, "\n".join(head), esc(t("skip")), header, body, footer, ASSET_V)
+            '<script src="/assets/site.js?v=%s" defer></script>%s</body></html>\n') % (
+        GEN_MARK, lang, direction, "\n".join(head), esc(t("skip")), header, body, footer, ASSET_V,
+        langswitch.script({"js": LANG_JS}, redirect=True) if detect else "")
 
 
 def breadcrumb_html(items):
@@ -492,8 +494,6 @@ def build_home(ctx, lang):
             '<section class="section facts"><h2>%s</h2><ul>%s</ul></section>') % (
         esc(t("status_badge")), esc(t("hero_h1")), esc(t("hero_lead")), esc(path_page(lang, "contact")), esc(t("contact_cta")),
         esc(t("hero_note")), cards, esc(t("facts_h")), facts)
-    # recent journal posts only where the journal is written in this language (en/ko): a post list inside a page that
-    # says lang="ja" would mix languages; ja readers reach the English journal from the nav and footer
     posts = ctx.posts_in(lang)
     if posts:
         jcards = "".join(post_card(lang, p, t("journal_more")) for p in posts[:HOME_JOURNAL_CARDS])
@@ -504,7 +504,7 @@ def build_home(ctx, lang):
     alt = {l: path_home(l) for l in ctx.langs}
     graph = [ORG, website_ld(lang), game_ld(lang, ctx)]
     return path_home(lang), render(ctx, lang, path=path_home(lang), title=t("home_title"), desc=t("home_desc"), body=body,
-                                   graph=graph, alt=alt, nav="home")
+                                   graph=graph, alt=alt, nav="home", detect=(lang == "en"))  # language detection redirects from the root home page only
 
 
 def build_page(ctx, lang, slug):
@@ -565,6 +565,12 @@ def build_journal_list(ctx, lang):
                        noindex=not posts, nav="journal")
 
 
+def post_editions(ctx, p):
+    """{lang: {url, title, copy_review, copy_review_date}} of one post — the shape the kit journal helpers take"""
+    return {l: {"url": url(path_post(l, p["slug"])), "title": v["title"], "copy_review": "iris", "copy_review_date": v["copy_review"].split()[-1]}
+            for l, v in p["langs"].items()}
+
+
 def build_post(ctx, lang, p):
     t = lambda k: ctx.t(lang, k)  # noqa: E731
     v = p["langs"][lang]
@@ -574,12 +580,12 @@ def build_post(ctx, lang, p):
             '<p class="note"><a href="%s"><span aria-hidden="true">←</span> %s</a></p></article>') % (
         breadcrumb_html(crumbs), esc(v["title"]), time_tag(p["published"]), markdown(ctx.sub(v["body"]), ctx.root, heading_offset=0),
         esc(path_journal(lang)), esc(t("journal_back")))
-    ld = {"@type": "BlogPosting", "@id": url(pth) + "#article", "url": url(pth),
-          "mainEntityOfPage": {"@type": "WebPage", "@id": url(pth)}, "headline": v["title"], "description": v["description"],
-          "inLanguage": lang, "datePublished": p["published"],
-          "dateModified": p["published"] if v["updated"] == p["published"][:10] else v["updated"],
-          "image": SITE + OG_IMAGE, "isAccessibleForFree": True, "author": {"@id": ORG_ID}, "publisher": {"@id": ORG_ID},
-          "isPartOf": {"@id": SITE + "/#website"}}
+    ld = kit_journal.blogposting(post_editions(ctx, p), lang, date_published=p["published"],
+                                 date_modified=p["published"] if v["updated"] == p["published"][:10] else v["updated"],
+                                 description=v["description"], author={"@id": ORG_ID}, publisher={"@id": ORG_ID}, image=SITE + OG_IMAGE)
+    ld.pop("@context")  # lives in the @graph
+    ld.update({"@id": url(pth) + "#article", "mainEntityOfPage": {"@type": "WebPage", "@id": url(pth)},
+               "isAccessibleForFree": True, "isPartOf": {"@id": SITE + "/#website"}})
     pl = [l for l in ctx.journal_langs if l in p["langs"]]
     title = "%s — %s" % (v["title"], NAME)
     return pth, render(ctx, lang, path=pth, title=title if len(title) <= TITLE_MAX else v["title"], desc=v["description"],
@@ -675,7 +681,7 @@ def build_llms(ctx):
     if ctx.posts:
         rows += ["", "## Journal", "", "RSS: %s%s" % (SITE, path_feed("en")), ""]
         rows += ["- [%s](%s%s): %s" % (p["langs"]["en"]["title"], SITE, path_post("en", p["slug"]), p["langs"]["en"]["description"]) for p in ctx.posts]
-        rows += ["", "The journal is written in English and Korean only: %s and %s." % (SITE + path_journal("en"), SITE + path_journal("ko"))]
+        rows += ["", "Every post is available in all %d languages, each under /<code>/journal/ (English at /journal/)." % len(ctx.journal_langs)]
     rows += ["", "## Languages", "", "The site is available in %d languages (English and Korean are written by hand, the others are AI translations): %s. "
              "Each language lives under /<code>/ (English at the root)." % (len(ctx.langs), ", ".join(LANGS[l][0] for l in ctx.langs)), "",
              "## Contact and operator", "", "%s — %s" % (OPERATOR, EMAIL), ""]
@@ -689,6 +695,8 @@ def make_ctx(root, now=None, require_all=False):
     i18n, errs = load_i18n(root)
     pages, e2 = load_pages(root)
     posts, e3 = load_journal(root)
+    for p in posts:  # publish gate (all 12 languages + copy_review: iris), checked even for a post still waiting for its date
+        e3 += ["journal/%s: %s" % (p["slug"], why) for why in kit_journal.check_post(post_editions(None, p))]
     # date gate: a post dated after today (KST) is validated but written nowhere (no page, list, feed, sitemap or llms line)
     posts = [p for p in posts if p["published"][:10] <= now.strftime("%Y-%m-%d")]
     errs += e2 + e3
@@ -720,6 +728,13 @@ def build_all(ctx):
         files[path_feed(l).lstrip("/")] = build_feed(ctx, l)
         for p in ctx.posts_in(l):
             put(*build_post(ctx, l, p))
+    # retired language URLs (pt zh ar hi ru) -> the new language's same page; en pages are the path list
+    rpaths = [""] + [path_page("en", s).lstrip("/") for s in PAGE_SLUGS]
+    if ctx.posts:
+        rpaths += [path_journal("en").lstrip("/")] + [path_post("en", p["slug"]).lstrip("/") for p in ctx.posts]
+    have = set(files)
+    files.update(redirects.generate(rpaths, SITE, en_root=True,
+                                    available=lambda l, rest: (lp(l).lstrip("/") + "/" + rest + "index.html") in have))
     files["404.html"] = build_404(ctx)
     files["sitemap.xml"] = build_sitemap(ctx)
     files["robots.txt"] = build_robots()
@@ -729,7 +744,7 @@ def build_all(ctx):
 
 def clean(root):
     root = Path(root)
-    for name in list(PAGE_SLUGS) + list(HIDDEN_PAGES) + [JOURNAL_DIR] + [l for l in LANGS if l != "en"]:
+    for name in list(PAGE_SLUGS) + list(HIDDEN_PAGES) + [JOURNAL_DIR] + [l for l in LANGS if l != "en"] + list(redirects.LEGACY_REDIRECTS):
         d = root / name
         if d.is_dir():
             shutil.rmtree(d)
@@ -755,6 +770,7 @@ def main(argv=None):
         print("build_site: sources OK — %d language(s), %d file(s) would be written" % (len(ctx.langs), len(files)))
         return 0
     clean(root)
+    langswitch.copy_assets(root / "assets")  # ipe-lang.js (the ?v= in LANG_JS is its content hash)
     for rel, text in files.items():
         f = root / rel
         f.parent.mkdir(parents=True, exist_ok=True)

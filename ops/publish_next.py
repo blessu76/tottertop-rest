@@ -33,12 +33,13 @@ from pathlib import Path
 
 KST = dt.timezone(dt.timedelta(hours=9))
 MAIN_LANGS = ("en", "ko", "ja", "zh-Hant", "es", "pt-BR", "fr", "de", "id", "th", "vi", "tr")
+LEGACY_LANGS = "pt|zh|ar|hi|ru"  # retired language URLs: build_site writes redirect pages for each new post under them
 REVIEW_RE = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")  # front matter `copy_review: iris YYYY-MM-DD` = the copy review gate
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 # the only paths a publish may touch (everything else staged = hard fail)
 ALLOWED_PATH = re.compile(
     r"^(content/journal/[a-z0-9-]+\.(%(l)s)\.md|journal/.*|(%(o)s)/journal/.*|index\.html|(%(o)s)/index\.html|sitemap\.xml|llms\.txt)$"
-    % {"l": "|".join(re.escape(l) for l in MAIN_LANGS), "o": "|".join(re.escape(l) for l in MAIN_LANGS if l != "en")})
+    % {"l": "|".join(re.escape(l) for l in MAIN_LANGS), "o": "|".join(re.escape(l) for l in MAIN_LANGS if l != "en") + "|" + LEGACY_LANGS})
 DEFAULT_REMOTE = "https://github.com/blessu76/tottertop-rest.git"
 DEFAULT_LIVE = "https://tottertop.ipe.rest"
 DEFAULT_KIT = str(Path.home() / "Developer" / "ipe_web_kit")

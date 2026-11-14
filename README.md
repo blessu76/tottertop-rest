@@ -9,7 +9,7 @@ Intro site for **Tottertop / 기우뚱탑** (F-026). Static site, Python 3.8+ st
 - Page text: `content/i18n/<lang>.json` and `content/pages/<lang>/{privacy,terms,contact}.md` (non-en/ko pages need `translation_of: en|ko`).
 
 ## Daily journal publishing (ops/)
-One journal post a day (en+ko), at a random time in 12:00-17:59 KST that is never in yesterday's hour. Nothing here ships in the site.
+One journal post a day (all 12 languages, each with copy_review), at a random time in 12:00-17:59 KST that is never in yesterday's hour. Nothing here ships in the site.
 
 - Queue (outside the repo): `~/.ipe/queue/tottertop/<NN-name>/{en,ko}.md` (front matter slug/lang/title/description/excerpt, no `published:`). Folders go out in name order and move to `.published/`.
 - `ops/publish_next.py` publishes the first entry: dated slug -> build -> `scripts/check.sh` GREEN -> commit -> push -> live 200. Works in its own clone `~/.ipe/tottertop-publish/repo` (hard-reset to origin/main each run).
