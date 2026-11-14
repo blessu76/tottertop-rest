@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Publish ONE queued journal post for tottertop.ipe.rest — stdlib only (Python 3.8+).
 
-Takes the first ready entry (en + ko) from a queue that lives OUTSIDE the repo, stamps today's date into the slug and the
+Takes the first ready entry (all 12 languages, each with `copy_review: iris YYYY-MM-DD`) from a queue that lives OUTSIDE the repo, stamps today's date into the slug and the
 real publish minute (KST) into `published:`, then build -> scripts/check.sh (must be GREEN) -> commit -> push -> live 200.
 Nothing is ever back-dated. The random afternoon slot lives in ops/slot_gate.py, which calls publish_one() here.
 
@@ -11,7 +11,9 @@ Nothing is ever back-dated. The random afternoon slot lives in ops/slot_gate.py,
 
 Queue (default ~/.ipe/queue/tottertop):
   <queue>/<NN-anything>/en.md   front matter slug · lang · title · description · excerpt, then the body (no `published:` line)
-  <queue>/<NN-anything>/ko.md   same slug
+  <queue>/<NN-anything>/<lang>.md   for lang in MAIN_LANGS (en ko ja zh-Hant es pt-BR fr de id th vi tr), same slug, each with
+                                    `copy_review: iris YYYY-MM-DD` (kept in the published file). A folder missing a language or a
+                                    review stamp is skipped with a warning (waiting, never FAILED); the next folder is tried.
 Folders go out in name order; a published folder moves to <queue>/.published/. The post's slug becomes <YYYY-MM-DD>-<slug>.
 
 Guards: dedicated clone hard-reset to origin/main every run · no deleted files · only allow-listed paths staged · no leftovers ·
@@ -30,11 +32,13 @@ import urllib.request
 from pathlib import Path
 
 KST = dt.timezone(dt.timedelta(hours=9))
-MAIN_LANGS = ("en", "ko")
+MAIN_LANGS = ("en", "ko", "ja", "zh-Hant", "es", "pt-BR", "fr", "de", "id", "th", "vi", "tr")
+REVIEW_RE = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")  # front matter `copy_review: iris YYYY-MM-DD` = the copy review gate
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 # the only paths a publish may touch (everything else staged = hard fail)
 ALLOWED_PATH = re.compile(
-    r"^(content/journal/[a-z0-9-]+\.(en|ko)\.md|journal/.*|ko/journal/.*|index\.html|ko/index\.html|sitemap\.xml|llms\.txt)$")
+    r"^(content/journal/[a-z0-9-]+\.(%(l)s)\.md|journal/.*|(%(o)s)/journal/.*|index\.html|(%(o)s)/index\.html|sitemap\.xml|llms\.txt)$"
+    % {"l": "|".join(re.escape(l) for l in MAIN_LANGS), "o": "|".join(re.escape(l) for l in MAIN_LANGS if l != "en")})
 DEFAULT_REMOTE = "https://github.com/blessu76/tottertop-rest.git"
 DEFAULT_LIVE = "https://tottertop.ipe.rest"
 DEFAULT_KIT = str(Path.home() / "Developer" / "ipe_web_kit")
@@ -42,6 +46,10 @@ DEFAULT_KIT = str(Path.home() / "Developer" / "ipe_web_kit")
 
 class HardFail(Exception):
     """bad manuscript / check red / guard tripped — stop until a human removes FAILED."""
+
+
+class NotReady(Exception):
+    """queue folder is not publishable yet (a language file missing / no copy_review) — wait; never a FAILED file."""
 
 
 class SoftFail(Exception):
@@ -100,15 +108,25 @@ def queue_items(queue):
 
 
 def load_item(folder):
-    """validate one queue folder -> {'slug','title','en','ko','folder'}. HardFail on anything off."""
+    """validate one queue folder -> {'slug','title','texts','folder'}.
+    NotReady while any of the 12 files is missing or lacks `copy_review: iris YYYY-MM-DD` (not reviewed yet = wait);
+    HardFail on a reviewed-looking folder whose front matter is off."""
     folder = Path(folder)
-    texts, metas = {}, {}
+    missing = [l for l in MAIN_LANGS if not (folder / (l + ".md")).is_file()]
+    if missing:
+        raise NotReady("%s: waiting — missing %s" % (folder.name, ", ".join(missing)))
+    texts, metas, unreviewed = {}, {}, []
     for lang in MAIN_LANGS:
-        f = folder / (lang + ".md")
-        if not f.is_file():
-            raise HardFail("%s: %s.md is missing" % (folder.name, lang))
-        texts[lang] = f.read_text(encoding="utf-8")
-        metas[lang] = front_meta(texts[lang])
+        texts[lang] = (folder / (lang + ".md")).read_text(encoding="utf-8")
+        try:
+            metas[lang] = front_meta(texts[lang])
+        except HardFail as e:
+            raise HardFail("%s/%s.md: %s" % (folder.name, lang, e))
+        if not REVIEW_RE.match(metas[lang].get("copy_review", "")):
+            unreviewed.append(lang)
+    if unreviewed:
+        raise NotReady("%s: waiting — no copy_review (iris) in %s" % (folder.name, ", ".join(unreviewed)))
+    for lang in MAIN_LANGS:
         for k in ("slug", "lang", "title", "description"):
             if not metas[lang].get(k):
                 raise HardFail("%s/%s.md: front matter `%s` is missing" % (folder.name, lang, k))
@@ -117,11 +135,24 @@ def load_item(folder):
         if "published" in metas[lang]:
             raise HardFail("%s/%s.md: published: is set at publish time, not in the queue" % (folder.name, lang))
     slug = metas["en"]["slug"]
-    if metas["ko"]["slug"] != slug:
-        raise HardFail("%s: en and ko slugs differ" % folder.name)
+    for lang in MAIN_LANGS:
+        if metas[lang]["slug"] != slug:
+            raise HardFail("%s: %s slug differs from en" % (folder.name, lang))
     if not SLUG_RE.match(slug) or slug == "feed":
         raise HardFail("%s: bad slug %r" % (folder.name, slug))
-    return {"slug": slug, "title": metas["en"]["title"], "en": texts["en"], "ko": texts["ko"], "folder": folder}
+    return {"slug": slug, "title": metas["en"]["title"], "texts": texts, "folder": folder}
+
+
+def ready_items(queue, log=None):
+    """[(folder, item)] publishable now, in name order. Not-ready folders are skipped (warned via log)."""
+    out = []
+    for p in queue_items(queue):
+        try:
+            out.append((p, load_item(p)))
+        except NotReady as e:
+            if log:
+                log("WARN %s" % e)
+    return out
 
 
 def today_posts(repo, day):
@@ -250,7 +281,7 @@ class Publisher:
         for k, v in (("user.name", "ipe() tottertop publisher"), ("user.email", "noreply@ipe.rest")):
             if not self.git("config", k, check=False).stdout.strip():
                 cfg += ["-c", "%s=%s" % (k, v)]
-        msg = "journal: %s (en+ko) — %s auto publish %s KST" % (slug, day.isoformat(), hm)
+        msg = "journal: %s (%d languages) — %s auto publish %s KST" % (slug, len(MAIN_LANGS), day.isoformat(), hm)
         body = "Unattended publish (ops/publish_next.py). published = push minute KST; never back-dated."
         self.git(*cfg, "commit", "--quiet", "-m", msg, "-m", body)
         sha = self.git("rev-parse", "--short", "HEAD").stdout.strip()
@@ -269,7 +300,7 @@ class Publisher:
         return sha
 
     def verify_live(self, slug):
-        """soft: wait for the Pages deploy, then en+ko post pages answer 200. Never fails the run."""
+        """soft: wait for the Pages deploy, then every language's post page answer 200. Never fails the run."""
         ok_all = True
         for lang in MAIN_LANGS:
             url = "%s/%sjournal/%s/" % (self.live.rstrip("/"), "" if lang == "en" else lang + "/", slug)
@@ -292,7 +323,7 @@ class Publisher:
         return ok_all
 
     def publish_one(self):
-        """-> ('published', slug) | ('already', slug) | ('empty', None). Raises HardFail / SoftFail."""
+        """-> ('published', slug) | ('already', slug) | ('empty', None) | ('waiting', None). Raises HardFail / SoftFail."""
         try:
             self.sync_clone()
             self.ensure_kit()
@@ -302,18 +333,21 @@ class Publisher:
             if done:
                 self.say("already published today: %s" % ", ".join(done))
                 return "already", done[0]
-            items = queue_items(self.queue)
-            if not items:
+            if not queue_items(self.queue):
                 self.say("queue EMPTY — nothing to publish")
                 return "empty", None
-            item = load_item(items[0])
+            ready = ready_items(self.queue, self.say)
+            if not ready:
+                self.say("queue has entries but none is ready (12 languages + copy_review) — waiting, nothing published")
+                return "waiting", None
+            item = ready[0][1]
             slug = "%s-%s" % (day.isoformat(), item["slug"])
             if (self.clone / "content" / "journal" / (slug + ".en.md")).exists():
                 raise HardFail("%s already exists in the repo" % slug)
             self.say("publishing %s (%s)" % (slug, item["folder"].name))
             for lang in MAIN_LANGS:
                 dest = self.clone / "content" / "journal" / ("%s.%s.md" % (slug, lang))
-                dest.write_text(stamp(item[lang], day, hm), encoding="utf-8")
+                dest.write_text(stamp(item["texts"][lang], day, hm), encoding="utf-8")
             self.steps([self.build_cmd], "build")
             self.steps(self.check_cmds, "check")
             if self.now().date() != day:
@@ -341,11 +375,16 @@ class Publisher:
     def status(self):
         items = queue_items(self.queue)
         self.say("queue: %d entr%s in %s" % (len(items), "y" if len(items) == 1 else "ies", self.queue))
+        nready = 0
         for p in items:
             try:
-                self.say("  %s -> %s" % (p.name, load_item(p)["slug"]))
+                self.say("  %s -> ready (%s)" % (p.name, load_item(p)["slug"]))
+                nready += 1
+            except NotReady as e:
+                self.say("  %s -> 대기 (%s)" % (p.name, str(e).split(": ", 1)[-1]))
             except HardFail as e:
                 self.say("  %s -> INVALID: %s" % (p.name, e))
+        self.say("ready %d / waiting-or-invalid %d" % (nready, len(items) - nready))
         if (self.clone / ".git").is_dir():
             self.say("today in clone: %s" % (", ".join(today_posts(self.clone, self.now().date())) or "none"))
         for name in ("FAILED", "LIVE_CHECK_FAILED"):
@@ -379,7 +418,7 @@ def main(argv=None):
         pub.say("soft fail: %s" % e)
         return 1
     pub.say("result: %s %s" % (status, slug or ""))
-    return 0 if status != "empty" else 3
+    return 0 if status not in ("empty", "waiting") else 3
 
 
 if __name__ == "__main__":

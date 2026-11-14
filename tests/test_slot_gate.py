@@ -24,16 +24,17 @@ def at(day, hm):
     return dt.datetime.combine(dt.date.fromisoformat(day), dt.time(int(h), int(m)), tzinfo=KST)
 
 
-def post_md(slug, lang, title="T"):
-    return "---\nslug: %s\nlang: %s\ntitle: %s\ndescription: D\nexcerpt: E\n---\nbody %s\n" % (slug, lang, title, lang)
+def post_md(slug, lang, title="T", review=True):
+    rv = "copy_review: iris 2026-11-14\n" if review else ""
+    return "---\nslug: %s\nlang: %s\ntitle: %s\ndescription: D\nexcerpt: E\n%s---\nbody %s\n" % (slug, lang, title, rv, lang)
 
 
-def make_queue(root, n):
+def make_queue(root, n, langs=pn.MAIN_LANGS):
     q = Path(root) / "queue"
     for i in range(n):
         d = q / ("%02d-post-%d" % (i + 1, i + 1))
         d.mkdir(parents=True)
-        for lang in ("en", "ko"):
+        for lang in langs:
             (d / (lang + ".md")).write_text(post_md("post-%d" % (i + 1), lang, "Title %d" % (i + 1)), encoding="utf-8")
     q.mkdir(parents=True, exist_ok=True)
     return q
@@ -212,22 +213,43 @@ class QueueItemTests(unittest.TestCase):
         with self.assertRaises(pn.HardFail):
             pn.stamp(post_md("why", "en").replace("excerpt: E", "excerpt: E\npublished: 2026-11-01T10:00+09:00"), dt.date(2026, 11, 13), "22:40")
 
-    def test_load_item_needs_both_languages_and_equal_slugs(self):
+    def test_load_item_needs_all_languages_review_and_equal_slugs(self):
         tmp = Path(tempfile.mkdtemp(prefix="tt-item-"))
         try:
-            (tmp / "en.md").write_text(post_md("a", "en"), encoding="utf-8")
+            for lang in ("en", "ko"):
+                (tmp / (lang + ".md")).write_text(post_md("a", lang), encoding="utf-8")
+            with self.assertRaises(pn.NotReady):
+                pn.load_item(tmp)  # ten languages missing: wait, not HardFail
+            for lang in pn.MAIN_LANGS:
+                (tmp / (lang + ".md")).write_text(post_md("a", lang, review=(lang != "tr")), encoding="utf-8")
+            with self.assertRaises(pn.NotReady):
+                pn.load_item(tmp)  # tr has no copy_review
+            (tmp / "tr.md").write_text(post_md("a", "tr").replace("iris 2026-11-14", "claude 2026-11-14"), encoding="utf-8")
+            with self.assertRaises(pn.NotReady):
+                pn.load_item(tmp)  # copy_review must be `iris YYYY-MM-DD`
+            (tmp / "tr.md").write_text(post_md("b", "tr"), encoding="utf-8")
             with self.assertRaises(pn.HardFail):
-                pn.load_item(tmp)  # ko.md missing
-            (tmp / "ko.md").write_text(post_md("b", "ko"), encoding="utf-8")
-            with self.assertRaises(pn.HardFail):
-                pn.load_item(tmp)  # slugs differ
-            (tmp / "ko.md").write_text(post_md("a", "ko"), encoding="utf-8")
+                pn.load_item(tmp)  # reviewed but slugs differ
+            (tmp / "tr.md").write_text(post_md("a", "tr"), encoding="utf-8")
             self.assertEqual(pn.load_item(tmp)["slug"], "a")
         finally:
             shutil.rmtree(str(tmp))
 
+    def test_stamp_keeps_copy_review(self):
+        out = pn.stamp(post_md("why", "ja"), dt.date(2026, 11, 13), "22:40")
+        self.assertEqual(pn.front_meta(out)["copy_review"], "iris 2026-11-14")
+
+    def test_main_langs_order(self):
+        self.assertEqual(pn.MAIN_LANGS, ("en", "ko", "ja", "zh-Hant", "es", "pt-BR", "fr", "de", "id", "th", "vi", "tr"))
+
     def test_check_staged_guards(self):
         pn.check_staged("A\tcontent/journal/2026-11-14-a.en.md\nM\tindex.html\nM\tko/journal/index.html\nM\tsitemap.xml\n")
+        pn.check_staged("A\tcontent/journal/2026-11-14-a.pt-BR.md\nA\tcontent/journal/2026-11-14-a.zh-Hant.md\n"
+                        "A\tzh-Hant/journal/2026-11-14-a/index.html\nM\tpt-BR/index.html\nM\tth/journal/feed.xml\n")
+        with self.assertRaises(pn.HardFail):
+            pn.check_staged("A\tcontent/journal/2026-11-14-a.xx.md\n")
+        with self.assertRaises(pn.HardFail):
+            pn.check_staged("M\tja/contact/index.html\n")
         with self.assertRaises(pn.HardFail):
             pn.check_staged("D\tcontent/journal/old.en.md\n")
         with self.assertRaises(pn.HardFail):
@@ -272,12 +294,13 @@ class PublishRoundTripTests(unittest.TestCase):
                              capture_output=True, text=True).stdout
         return out.split()
 
-    def test_publish_moves_queue_entry_and_pushes_en_and_ko(self):
+    def test_publish_moves_queue_entry_and_pushes_all_languages(self):
         status, slug = self.publisher().publish_one()
         self.assertEqual((status, slug), ("published", "2026-11-14-post-1"))
         files = self.remote_files()
         self.assertIn("content/journal/2026-11-14-post-1.en.md", files)
-        self.assertIn("content/journal/2026-11-14-post-1.ko.md", files)
+        for lang in pn.MAIN_LANGS:
+            self.assertIn("content/journal/2026-11-14-post-1.%s.md" % lang, files)
         self.assertIn("2026-11-10-first.en.md", " ".join(files))  # nothing deleted
         self.assertEqual(len(pn.queue_items(self.queue)), 2)
         self.assertTrue((self.queue / ".published" / "01-post-1").is_dir())
@@ -292,6 +315,37 @@ class PublishRoundTripTests(unittest.TestCase):
         shutil.rmtree(str(self.queue))
         self.queue.mkdir()
         self.assertEqual(self.publisher().publish_one(), ("empty", None))
+
+    def test_unready_folders_wait_and_the_next_ready_one_goes(self):
+        q = self.queue
+        for lang in pn.MAIN_LANGS[2:]:  # folder 01: only en+ko -> waiting
+            (q / "01-post-1" / (lang + ".md")).unlink(missing_ok=True)
+        (q / "02-post-2" / "ja.md").write_text(post_md("post-2", "ja", review=False), encoding="utf-8")  # unreviewed
+        logs = []
+        p = self.publisher()
+        p.log = logs.append
+        self.assertEqual(p.publish_one(), ("published", "2026-11-14-post-3"))
+        self.assertTrue(any("01-post-1" in l and "WARN" in l for l in logs))
+        self.assertTrue(any("02-post-2" in l and "copy_review" in l for l in logs))
+        self.assertFalse((self.tmp / "base" / "FAILED").exists())
+        self.assertTrue((q / "01-post-1").is_dir() and (q / "02-post-2").is_dir())
+
+    def test_nothing_ready_means_waiting_not_failed(self):
+        for d in pn.queue_items(self.queue):
+            (d / "tr.md").unlink()
+        self.assertEqual(self.publisher().publish_one(), ("waiting", None))
+        self.assertEqual(len(pn.queue_items(self.queue)), 3)
+        self.assertNotIn("content/journal/2026-11-14-post-1.en.md", self.remote_files())
+
+    def test_status_shows_ready_and_waiting(self):
+        (self.queue / "02-post-2" / "tr.md").unlink()
+        logs = []
+        p = self.publisher()
+        p.log = logs.append
+        p.status()
+        txt = "\n".join(logs)
+        self.assertIn("01-post-1 -> ready", txt)
+        self.assertIn("02-post-2 -> 대기 (waiting — missing tr)", txt)
 
     def test_dry_run_pushes_nothing_and_keeps_the_queue(self):
         self.publisher(dry_run=True).publish_one()

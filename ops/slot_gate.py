@@ -135,7 +135,7 @@ class Gate:
         self.log("[%s] %s" % (self.now().strftime("%Y-%m-%d %H:%M:%S KST"), msg))
 
     def warn_stock(self):
-        n = len(pn.queue_items(self.queue))
+        n = len(pn.ready_items(self.queue))
         msg = stock_warning(n)
         if not msg:
             (self.base / "STOCK_ALERT").unlink(missing_ok=True)
@@ -155,7 +155,7 @@ class Gate:
         return n
 
     def tick(self, roll_only=False):
-        """-> (action, detail). action: rolled-only | published | wait | forbidden | published-now | already | empty | blocked | failed"""
+        """-> (action, detail). action: rolled-only | published | wait | forbidden | published-now | already | empty | waiting | blocked | failed"""
         now = self.now()
         today = now.date()
         state, rolled = roll(load_state(self.state_path), today, self.rng)
@@ -190,6 +190,9 @@ class Gate:
             self.say("%s: %s — slot.json published=true" % (status, slug))
             self.warn_stock()
             return ("published-now" if status == "published" else "already"), slug
+        if status == "waiting":
+            self.say("queue has no ready entry (12 languages + copy_review) while a slot was due — waiting, nothing published")
+            return "waiting", None
         self.say("queue empty while a slot was due — nothing published")
         return "empty", None
 
