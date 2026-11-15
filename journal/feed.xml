@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Development notes on Tottertop — what the game is and why we are making it.</description>
 <language>en</language>
-<lastBuildDate>Sat, 14 Nov 2026 23:13:00 +0900</lastBuildDate>
+<lastBuildDate>Sun, 15 Nov 2026 14:30:00 +0900</lastBuildDate>
+<item><title>Tuning the wobble with bots instead of hands</title><link>https://tottertop.ipe.rest/journal/2026-11-15-tuning-the-wobble-with-bots/</link><guid isPermaLink="true">https://tottertop.ipe.rest/journal/2026-11-15-tuning-the-wobble-with-bots/</guid><pubDate>Sun, 15 Nov 2026 14:30:00 +0900</pubDate><description>Before a human could play Tottertop, we tuned its difficulty with three bots of different skill, 200 rounds each. What the numbers said, and what they cannot say.</description></item>
 <item><title>Why we moved from a dark night sky to mint and sky</title><link>https://tottertop.ipe.rest/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>Two days after the dark night-sky look, a polish pass changed almost nothing you could see. So we redrew the whole game bright, round and cute.</description></item>
 <item><title>What Tottertop is, and why we are making it</title><link>https://tottertop.ipe.rest/journal/2026-11-10-what-tottertop-is/</link><guid isPermaLink="true">https://tottertop.ipe.rest/journal/2026-11-10-what-tottertop-is/</guid><pubDate>Tue, 10 Nov 2026 22:13:00 +0900</pubDate><description>What Tottertop is — a one-tap physics stacker where a crane drops blocks onto a wobbling tower — and why ipe() wants to make a game this small.</description></item>
 </channel></rss>

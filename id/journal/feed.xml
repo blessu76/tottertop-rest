@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/id/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Catatan pengembangan Tottertop — apa itu game ini dan mengapa kami membuatnya.</description>
 <language>id</language>
-<lastBuildDate>Sat, 14 Nov 2026 23:13:00 +0900</lastBuildDate>
+<lastBuildDate>Sun, 15 Nov 2026 14:30:00 +0900</lastBuildDate>
+<item><title>Menyetel goyangan dengan bot, bukan dengan tangan</title><link>https://tottertop.ipe.rest/id/journal/2026-11-15-tuning-the-wobble-with-bots/</link><guid isPermaLink="true">https://tottertop.ipe.rest/id/journal/2026-11-15-tuning-the-wobble-with-bots/</guid><pubDate>Sun, 15 Nov 2026 14:30:00 +0900</pubDate><description>Sebelum ada yang bisa memainkan Tottertop, kami menyetel kesulitannya dengan tiga bot berkemampuan berbeda, masing-masing 200 ronde. Apa kata angkanya, dan apa yang tidak bisa dikatakannya.</description></item>
 <item><title>Mengapa kami beralih dari langit malam ke mint dan biru</title><link>https://tottertop.ipe.rest/id/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/id/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>Dua hari setelah tampilan langit malam yang gelap, satu putaran pemolesan nyaris tidak mengubah apa pun yang terlihat. Jadi kami menggambar ulang seluruh game menjadi cerah, bulat, dan imut.</description></item>
 <item><title>Apa itu Tottertop, dan mengapa kami membuatnya</title><link>https://tottertop.ipe.rest/id/journal/2026-11-10-what-tottertop-is/</link><guid isPermaLink="true">https://tottertop.ipe.rest/id/journal/2026-11-10-what-tottertop-is/</guid><pubDate>Tue, 10 Nov 2026 22:13:00 +0900</pubDate><description>Apa itu Tottertop — gim susun berbasis fisika dengan satu ketukan, tempat derek menjatuhkan balok ke menara yang bergoyang — dan mengapa ipe() ingin membuat gim sekecil ini.</description></item>
 </channel></rss>

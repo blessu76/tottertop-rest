@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/pt-BR/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Notas de desenvolvimento do Tottertop: o que é o jogo e por que o fazemos.</description>
 <language>pt-BR</language>
-<lastBuildDate>Sat, 14 Nov 2026 23:13:00 +0900</lastBuildDate>
+<lastBuildDate>Sun, 15 Nov 2026 14:30:00 +0900</lastBuildDate>
+<item><title>Ajustando o balanço com bots em vez de com as mãos</title><link>https://tottertop.ipe.rest/pt-BR/journal/2026-11-15-tuning-the-wobble-with-bots/</link><guid isPermaLink="true">https://tottertop.ipe.rest/pt-BR/journal/2026-11-15-tuning-the-wobble-with-bots/</guid><pubDate>Sun, 15 Nov 2026 14:30:00 +0900</pubDate><description>Antes de uma pessoa poder jogar o Tottertop, ajustamos a dificuldade com três bots de habilidades diferentes, 200 rodadas cada. O que os números dizem e o que eles não conseguem dizer.</description></item>
 <item><title>Por que trocamos o céu noturno escuro por menta e azul-céu</title><link>https://tottertop.ipe.rest/pt-BR/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/pt-BR/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>Dois dias depois do visual de céu noturno escuro, uma rodada de ajustes quase não mudou nada que desse para ver. Então redesenhamos o jogo inteiro: claro, redondo e fofo.</description></item>
 <item><title>O que é o Tottertop e por que estamos fazendo este jogo</title><link>https://tottertop.ipe.rest/pt-BR/journal/2026-11-10-what-tottertop-is/</link><guid isPermaLink="true">https://tottertop.ipe.rest/pt-BR/journal/2026-11-10-what-tottertop-is/</guid><pubDate>Tue, 10 Nov 2026 22:13:00 +0900</pubDate><description>O que é o Tottertop — um empilhador com física e um toque só, em que um guindaste solta blocos sobre uma torre balançando — e por que a ipe() quer fazer um jogo tão pequeno.</description></item>
 </channel></rss>
