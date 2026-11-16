@@ -23,6 +23,7 @@ Tottertop is a single-player mobile game by ipe() (https://ipe.rest/). It is in 
 
 RSS: https://tottertop.ipe.rest/journal/feed.xml
 
+- [One tower for everyone: how the daily seed works](https://tottertop.ipe.rest/journal/2026-11-16-one-tower-for-everyone/): In the test builds, the daily tower hands every player the same block order on the same day. How a date becomes a tower, and why UTC.
 - [Tuning the wobble with bots instead of hands](https://tottertop.ipe.rest/journal/2026-11-15-tuning-the-wobble-with-bots/): How we set Tottertop's difficulty before anyone had played it: three bots with different tap timing, 200 rounds each, and an honest caveat.
 - [Why we moved from a dark night sky to mint and sky](https://tottertop.ipe.rest/journal/2026-11-14-why-mint-and-sky/): Tottertop started dark: a navy night sky with gold. After a polish pass that still looked the same, we switched to a bright, cute mint-and-sky look.
 - [What Tottertop is, and why we are making it](https://tottertop.ipe.rest/journal/2026-11-10-what-tottertop-is/): A one-tap physics tower stacker: a crane drops blocks onto a wobbling tower, and one round takes about a minute. Why ipe() is making a game this small.
