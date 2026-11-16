@@ -27,7 +27,7 @@
  "home_desc": "Tottertop is a one-tap physics stacking game for phones, now in development. A swaying crane drops blocks onto a wobbling tower; stack it as high as you can. One round takes about a minute.",
  "hero_h1": "Drop the block. Keep the tower standing.",
  "hero_lead": "Tottertop is a quick physics game for your phone. A crane swings above a wobbling tower: tap once to drop the block and try to stack it so the tower stays balanced. One round takes about a minute.",
- "hero_note": "Coming soon. Tottertop launches free, with no ads, on iOS and Android. Details may still change before then.",
+ "hero_note": "Coming soon. Tottertop launches free, with no ads, on the App Store for iPhone first. Android comes later. Details may still change before then.",
  "card1_h": "One tap",
  "card1_p": "Time one tap to drop the block from the swinging crane. No menus, no tutorial walls.",
  "card2_h": "Watch it wobble",
@@ -38,8 +38,8 @@
  "fact1": "Simple physics stacking game, single player.",
  "fact2": "One tap to play; a round lasts about one minute.",
  "fact3": "Completely free, with no ads and no purchases to remove them.",
- "fact4": "Launching for iOS and Android, in 12 languages.",
- "fact5": "Find it on the App Store and Google Play.",
+ "fact4": "Launching on iPhone first, in 12 languages.",
+ "fact5": "Coming to the App Store. Android later.",
  "contact_cta": "Contact",
  "not_found": "This page does not exist (yet)."
 }

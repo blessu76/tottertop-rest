@@ -27,7 +27,7 @@
  "home_desc": "Tottertop es un juego de física para apilar con un solo toque en el móvil, actualmente en desarrollo. Una grúa oscilante suelta bloques sobre una torre tambaleante; apílalos lo más alto que puedas. Una partida dura alrededor de un minuto.",
  "hero_h1": "Suelta el bloque. Mantén la torre en pie.",
  "hero_lead": "Tottertop es un juego de física rápido para tu móvil. Una grúa se balancea sobre una torre tambaleante: toca una vez para soltar el bloque e intenta apilarlo de modo que la torre se mantenga en equilibrio. Una partida dura alrededor de un minuto.",
- "hero_note": "Próximamente. Totalmente gratuito y sin anuncios, Tottertop llega a iOS y Android. Los detalles pueden cambiar hasta entonces.",
+ "hero_note": "Próximamente. Totalmente gratuito y sin anuncios, Tottertop llega primero a iPhone en la App Store. Android llegará más adelante. Los detalles pueden cambiar hasta entonces.",
  "card1_h": "Un solo toque",
  "card1_p": "Elige el momento justo con un toque para soltar el bloque desde la grúa oscilante. Sin menús ni tutoriales interminables.",
  "card2_h": "Míralo tambalearse",
@@ -38,8 +38,8 @@
  "fact1": "Juego sencillo de apilar con física, para un jugador.",
  "fact2": "Se juega con un toque; una partida dura alrededor de un minuto.",
  "fact3": "Totalmente gratuito, sin anuncios y sin compras para quitarlos.",
- "fact4": "Disponible para iOS y Android, en 12 idiomas.",
- "fact5": "Disponible gratis en App Store y Google Play.",
+ "fact4": "Primero para iPhone, en 12 idiomas.",
+ "fact5": "Gratis en la App Store. Android llegará más adelante.",
  "contact_cta": "Contacto",
  "not_found": "Esta página no existe (todavía)."
 }

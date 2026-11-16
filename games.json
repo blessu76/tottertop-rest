@@ -7,13 +7,13 @@
   "provisional_name": false,
   "domain": "tottertop.ipe.rest",
   "genre": "Puzzle",
-  "platforms": ["iOS", "Android"],
+  "platforms": ["iOS"],
   "operator": "Davy Kim (ipe Studio)",
   "email": "ipe.haven@gmail.com",
   "effective": "2026-11-08",
   "pages_updated": "2026-11-14",
   "theme_color": "#C97B1A",
-  "asset_version": "20261116a",
+  "asset_version": "20261117a",
   "langs": ["en", "ko", "ja", "zh-Hant", "es", "pt-BR", "fr", "de", "id", "th", "vi", "tr"],
   "main_langs": ["en", "ko"]
 }
