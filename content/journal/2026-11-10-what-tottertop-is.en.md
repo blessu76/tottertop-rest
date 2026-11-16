@@ -27,4 +27,6 @@ A round lasts about a minute, and the game is single player. It is planned for i
 
 ## What is not decided yet
 
-The game is in preparation. There is no store page, no release date and no version number, and we will not promise a date. The plan is for the game to be free, supported by rewarded ads you choose to watch, with an optional purchase that removes the ads — that is a plan, not a promise. Details may change as development goes on; when something concrete happens — a build, a name change, a decision — it will be written here.
+The game is in preparation. There is no store page, no release date and no version number, and we will not promise a date. The plan is for the game to be completely free, with no ads and no purchase that removes them — that is a plan, not a promise. Details may change as development goes on; when something concrete happens — a build, a name change, a decision — it will be written here.
+
+Update: the game is completely free, with no ads.

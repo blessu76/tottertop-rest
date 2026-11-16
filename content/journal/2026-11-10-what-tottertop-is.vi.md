@@ -27,4 +27,6 @@ Một ván kéo dài khoảng một phút, và trò chơi dành cho một ngư�
 
 ## Những điều chưa quyết định
 
-Trò chơi đang trong giai đoạn chuẩn bị. Chưa có trang trên cửa hàng, chưa có ngày phát hành, chưa có số phiên bản, và chúng tôi sẽ không hứa một ngày cụ thể. Kế hoạch là trò chơi miễn phí, được hỗ trợ bởi quảng cáo có thưởng mà bạn tự chọn xem, kèm một lựa chọn mua để gỡ quảng cáo — đó là kế hoạch, không phải lời hứa. Chi tiết có thể thay đổi khi quá trình phát triển tiếp diễn; khi có điều gì cụ thể — một bản dựng, một lần đổi tên, một quyết định — chúng tôi sẽ viết ở đây.
+Trò chơi đang trong giai đoạn chuẩn bị. Chưa có trang trên cửa hàng, chưa có ngày phát hành, chưa có số phiên bản, và chúng tôi sẽ không hứa một ngày cụ thể. Kế hoạch là trò chơi hoàn toàn miễn phí, không có quảng cáo và không có lựa chọn mua để gỡ quảng cáo — đó là kế hoạch, không phải lời hứa. Chi tiết có thể thay đổi khi quá trình phát triển tiếp diễn; khi có điều gì cụ thể — một bản dựng, một lần đổi tên, một quyết định — chúng tôi sẽ viết ở đây.
+
+Cập nhật: hoàn toàn miễn phí, không quảng cáo.

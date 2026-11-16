@@ -27,4 +27,6 @@ Eine Runde dauert etwa eine Minute, und das Spiel ist ein Einzelspielerspiel. Ge
 
 ## Was noch nicht entschieden ist
 
-Das Spiel ist in Vorbereitung. Es gibt keine Store-Seite, kein Erscheinungsdatum und keine Versionsnummer, und wir versprechen auch kein Datum. Der Plan ist, dass das Spiel kostenlos ist und durch Belohnungswerbung finanziert wird, die du dir freiwillig ansiehst, mit einem optionalen Kauf, der die Werbung entfernt – das ist ein Plan, kein Versprechen. Details können sich im Lauf der Entwicklung ändern; wenn etwas Konkretes passiert – ein Build, eine Namensänderung, eine Entscheidung –, wird es hier stehen.
+Das Spiel ist in Vorbereitung. Es gibt keine Store-Seite, kein Erscheinungsdatum und keine Versionsnummer, und wir versprechen auch kein Datum. Der Plan ist, dass das Spiel völlig kostenlos ist, ohne Werbung und ohne Kauf zum Entfernen von Werbung – das ist ein Plan, kein Versprechen. Details können sich im Lauf der Entwicklung ändern; wenn etwas Konkretes passiert – ein Build, eine Namensänderung, eine Entscheidung –, wird es hier stehen.
+
+Aktualisierung: völlig kostenlos, ohne Werbung.

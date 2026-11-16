@@ -27,4 +27,6 @@ Bir tur yaklaşık bir dakika sürer ve oyun tek oyunculudur. iOS ve Android iç
 
 ## Henüz karara bağlanmayanlar
 
-Oyun hazırlık aşamasında. Mağaza sayfası, çıkış tarihi ve sürüm numarası yok; tarih sözü de vermeyeceğiz. Plan, oyunun ücretsiz olması, izlemeyi sizin seçtiğiniz ödüllü reklamlarla desteklenmesi ve reklamları kaldıran isteğe bağlı bir satın alma sunulması yönünde — bu bir plan, söz değil. Geliştirme ilerledikçe ayrıntılar değişebilir; somut bir şey olduğunda — bir derleme, bir ad değişikliği, bir karar — burada yazılacak.
+Oyun hazırlık aşamasında. Mağaza sayfası, çıkış tarihi ve sürüm numarası yok; tarih sözü de vermeyeceğiz. Plan, oyunun tamamen ücretsiz olması, reklam içermemesi ve reklamları kaldırmak için satın alma sunulmaması yönünde — bu bir plan, söz değil. Geliştirme ilerledikçe ayrıntılar değişebilir; somut bir şey olduğunda — bir derleme, bir ad değişikliği, bir karar — burada yazılacak.
+
+Güncelleme: tamamen ücretsiz, reklamsız.

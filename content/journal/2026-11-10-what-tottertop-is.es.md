@@ -27,4 +27,6 @@ Una partida dura cerca de un minuto y el juego es para un solo jugador. Está pr
 
 ## Lo que aún no está decidido
 
-El juego está en preparación. No hay página en las tiendas, ni fecha de lanzamiento, ni número de versión, y no prometeremos una fecha. El plan es que el juego sea gratuito, sostenido por anuncios con recompensa que tú eliges ver, con una compra opcional que quita los anuncios; eso es un plan, no una promesa. Los detalles pueden cambiar a medida que avance el desarrollo; cuando ocurra algo concreto —una versión de prueba, un cambio de nombre, una decisión— se escribirá aquí.
+El juego está en preparación. No hay página en las tiendas, ni fecha de lanzamiento, ni número de versión, y no prometeremos una fecha. El plan es que el juego sea totalmente gratuito, sin anuncios y sin compras para quitarlos; eso es un plan, no una promesa. Los detalles pueden cambiar a medida que avance el desarrollo; cuando ocurra algo concreto —una versión de prueba, un cambio de nombre, una decisión— se escribirá aquí.
+
+Actualización: totalmente gratuito, sin anuncios.

@@ -27,4 +27,6 @@ Une partie dure environ une minute, et le jeu se joue en solo. Il est prévu sur
 
 ## Ce qui n'est pas encore décidé
 
-Le jeu est en préparation. Il n'y a pas de page de boutique, pas de date de sortie, pas de numéro de version, et nous ne promettrons pas de date. Le plan est que le jeu soit gratuit, soutenu par des publicités récompensées que vous choisissez de regarder, avec un achat facultatif qui supprime les publicités — c'est un plan, pas une promesse. Les détails pourront changer au fil du développement ; quand quelque chose de concret arrivera — une version de test, un changement de nom, une décision — cela sera écrit ici.
+Le jeu est en préparation. Il n'y a pas de page de boutique, pas de date de sortie, pas de numéro de version, et nous ne promettrons pas de date. Le plan est que le jeu soit entièrement gratuit, sans publicité ni achat pour les supprimer — c'est un plan, pas une promesse. Les détails pourront changer au fil du développement ; quand quelque chose de concret arrivera — une version de test, un changement de nom, une décision — cela sera écrit ici.
+
+Mise à jour : entièrement gratuit, sans publicité.

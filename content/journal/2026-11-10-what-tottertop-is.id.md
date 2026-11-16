@@ -27,4 +27,6 @@ Satu ronde berlangsung sekitar satu menit, dan gimnya dimainkan sendiri. Gim ini
 
 ## Yang belum diputuskan
 
-Gimnya masih dalam persiapan. Belum ada halaman toko, belum ada tanggal rilis, dan belum ada nomor versi, dan kami tidak akan menjanjikan tanggal. Rencananya, gim ini gratis, didukung iklan berhadiah yang kamu pilih sendiri untuk ditonton, dengan pembelian opsional untuk menghilangkan iklan — itu rencana, bukan janji. Detailnya bisa berubah seiring pengembangan; ketika ada hal konkret — sebuah build, perubahan nama, sebuah keputusan — akan kami tulis di sini.
+Gimnya masih dalam persiapan. Belum ada halaman toko, belum ada tanggal rilis, dan belum ada nomor versi, dan kami tidak akan menjanjikan tanggal. Rencananya, gim ini sepenuhnya gratis, tanpa iklan dan tanpa pembelian untuk menghilangkan iklan — itu rencana, bukan janji. Detailnya bisa berubah seiring pengembangan; ketika ada hal konkret — sebuah build, perubahan nama, sebuah keputusan — akan kami tulis di sini.
+
+Pembaruan: sepenuhnya gratis, tanpa iklan.

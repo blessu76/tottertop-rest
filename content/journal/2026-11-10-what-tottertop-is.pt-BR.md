@@ -27,4 +27,6 @@ Uma partida dura cerca de um minuto, e o jogo é para um jogador só. A previsã
 
 ## O que ainda não foi decidido
 
-O jogo está em preparação. Não há página nas lojas, nem data de lançamento, nem número de versão, e não vamos prometer uma data. O plano é que o jogo seja gratuito, sustentado por anúncios com recompensa que você escolhe assistir, com uma compra opcional que remove os anúncios — isso é um plano, não uma promessa. Os detalhes podem mudar conforme o desenvolvimento avança; quando algo concreto acontecer — uma versão de teste, uma mudança de nome, uma decisão — vai ser escrito aqui.
+O jogo está em preparação. Não há página nas lojas, nem data de lançamento, nem número de versão, e não vamos prometer uma data. O plano é que o jogo seja totalmente gratuito, sem anúncios e sem compra para removê-los — isso é um plano, não uma promessa. Os detalhes podem mudar conforme o desenvolvimento avança; quando algo concreto acontecer — uma versão de teste, uma mudança de nome, uma decisão — vai ser escrito aqui.
+
+Atualização: totalmente gratuito, sem anúncios.
