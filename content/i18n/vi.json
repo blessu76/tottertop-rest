@@ -27,7 +27,7 @@
  "home_desc": "Tottertop là trò chơi xếp khối vật lý một chạm dành cho điện thoại, đang được phát triển. Cần cẩu đung đưa thả khối xuống tòa tháp chao đảo; hãy xếp cao nhất có thể. Một ván kéo dài khoảng một phút.",
  "hero_h1": "Thả khối. Giữ cho tháp đứng vững.",
  "hero_lead": "Tottertop là trò chơi vật lý nhanh gọn trên điện thoại. Một cần cẩu đung đưa phía trên tòa tháp chao đảo: chạm một lần để thả khối và cố xếp sao cho tháp giữ được thăng bằng. Một ván kéo dài khoảng một phút.",
- "hero_note": "Sắp ra mắt. Trò chơi vẫn đang được phát triển: hiện chưa có trang trên cửa hàng hay ngày phát hành, và các chi tiết có thể thay đổi.",
+ "hero_note": "Sắp ra mắt. Hoàn toàn miễn phí và không có quảng cáo, trò chơi ra mắt trên iOS và Android. Chi tiết có thể thay đổi trước thời điểm đó.",
  "card1_h": "Một chạm",
  "card1_p": "Chọn đúng lúc chạm một lần để thả khối từ cần cẩu đang đung đưa. Không có menu rườm rà, không có hướng dẫn dài dòng.",
  "card2_h": "Xem tháp chao đảo",
@@ -37,9 +37,9 @@
  "facts_h": "Tóm tắt nhanh",
  "fact1": "Trò chơi xếp khối vật lý đơn giản, dành cho một người chơi.",
  "fact2": "Chỉ cần một chạm để chơi; một ván kéo dài khoảng một phút.",
- "fact3": "Dự kiến hoàn toàn miễn phí, không có quảng cáo và không có tùy chọn mua để tắt quảng cáo.",
- "fact4": "Dự kiến có trên iOS và Android, với 12 ngôn ngữ.",
- "fact5": "Chưa có ngày phát hành.",
+ "fact3": "Hoàn toàn miễn phí, không có quảng cáo và không có tùy chọn mua để tắt quảng cáo.",
+ "fact4": "Ra mắt trên iOS và Android, với 12 ngôn ngữ.",
+ "fact5": "Miễn phí trên App Store và Google Play.",
  "contact_cta": "Liên hệ",
  "not_found": "Trang này không tồn tại (chưa)."
 }

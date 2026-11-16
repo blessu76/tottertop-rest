@@ -5,7 +5,7 @@ description: Comment tottertop.ipe.rest traite les informations, et le plan de c
 ---
 Date d'entrée en vigueur : **{{EFFECTIVE}}**. Cette politique couvre le site web {{DOMAIN}} (le « Site ») et, une fois publiée, l'application mobile {{GAME}} (l'« Application »). L'exploitant est **{{OPERATOR}}** (« nous »), un développeur indépendant. Contact : {{EMAIL}}.
 
-En bref : le Site n'a ni comptes, ni inscription, ni commentaires, ni publicité, et nous ne vous demandons aucune information personnelle. L'Application doit être gratuite et ne pas afficher de publicités.
+En bref : le Site n'a ni comptes, ni inscription, ni commentaires, ni publicité, et nous ne vous demandons aucune information personnelle. L'Application est gratuite et n'affiche pas de publicités.
 
 ## 1. Le Site
 
@@ -18,7 +18,8 @@ En bref : le Site n'a ni comptes, ni inscription, ni commentaires, ni publicité
 
 L'Application n'est pas publiée ; cette section décrit donc un projet, et non un produit livré. Nous la mettrons à jour avant la sortie, et les informations de confidentialité sur les stores y correspondront.
 
-- **Données de jeu.** Les réglages et la progression, comme votre meilleur score, doivent être stockés sur votre appareil. Nous ne prévoyons pas d'exiger de compte.
+- **Données de jeu.** Les réglages et la progression, comme votre meilleur score, sont stockés sur votre appareil. Nous n'exigeons pas de compte.
+- **Synchronisation iCloud.** La progression partagée entre les appareils connectés au même identifiant Apple est stockée dans votre propre iCloud et n'est pas envoyée à nos serveurs.
 - **Analyses.** Nous n'avons pas décidé si l'Application utilisera des outils d'analyse ou de rapport de plantage. Si c'est le cas, cette section indiquera avant la sortie ce qui est collecté.
 - **Conservation et vos droits.** [법무 확인 필요: formulation sur la conservation des données et les droits selon les régions (RGPD, CCPA, PIPA coréenne) à confirmer avant la soumission aux stores.]
 

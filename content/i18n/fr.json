@@ -27,7 +27,7 @@
  "home_desc": "Tottertop est un jeu d'empilement physique à un seul tap pour téléphones, actuellement en développement. Une grue oscillante lâche des blocs sur une tour branlante ; empilez-la le plus haut possible. Une partie dure environ une minute.",
  "hero_h1": "Lâchez le bloc. Gardez la tour debout.",
  "hero_lead": "Tottertop est un jeu de physique rapide pour votre téléphone. Une grue se balance au-dessus d'une tour branlante : tapez une fois pour lâcher le bloc et essayez de l'empiler pour que la tour reste en équilibre. Une partie dure environ une minute.",
- "hero_note": "Bientôt disponible. Le jeu est encore en développement : il n'y a pas encore de page sur les stores ni de date de sortie, et les détails peuvent changer.",
+ "hero_note": "Bientôt disponible. Entièrement gratuit et sans publicité, Tottertop sort sur iOS et Android. Les détails peuvent changer d'ici là.",
  "card1_h": "Un seul tap",
  "card1_p": "Choisissez le bon moment pour lâcher le bloc de la grue qui se balance. Pas de menus, pas de longs tutoriels.",
  "card2_h": "Regardez-la vaciller",
@@ -37,9 +37,9 @@
  "facts_h": "En un coup d'œil",
  "fact1": "Jeu d'empilement physique simple, solo.",
  "fact2": "Un seul tap pour jouer ; une partie dure environ une minute.",
- "fact3": "Prévu entièrement gratuit, sans publicité ni achat pour les supprimer.",
- "fact4": "Prévu pour iOS et Android, en 12 langues.",
- "fact5": "Pas encore de date de sortie.",
+ "fact3": "Entièrement gratuit, sans publicité ni achat pour les supprimer.",
+ "fact4": "Disponible sur iOS et Android, en 12 langues.",
+ "fact5": "Gratuit sur l'App Store et Google Play.",
  "contact_cta": "Contact",
  "not_found": "Cette page n'existe pas (encore)."
 }

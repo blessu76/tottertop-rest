@@ -18,7 +18,8 @@ Em resumo: o Site não tem contas, cadastro, comentários nem publicidade, e nã
 
 O App não foi lançado, então esta seção descreve um plano, não um produto entregue. Vamos atualizá-la antes do lançamento, e as informações de privacidade nas lojas de aplicativos corresponderão a ela.
 
-- **Dados do jogo.** Configurações e progresso, como sua melhor pontuação, devem ser armazenados no seu dispositivo. Não planejamos exigir uma conta.
+- **Dados do jogo.** Configurações e progresso, como sua melhor pontuação, são armazenados no seu dispositivo. Não exigimos uma conta.
+- **Sincronização com iCloud.** O progresso compartilhado entre dispositivos com o mesmo Apple ID é armazenado no seu próprio iCloud e não é enviado aos nossos servidores.
 - **Análises.** Ainda não decidimos se o App usará análises ou relatórios de falhas. Se usar, esta seção listará o que é coletado antes do lançamento.
 - **Retenção e seus direitos.** [법무 확인 필요: texto sobre retenção de dados e direitos por região (GDPR, CCPA, PIPA coreana) a ser confirmado antes do envio às lojas.]
 

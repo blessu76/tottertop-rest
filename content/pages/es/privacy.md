@@ -5,7 +5,7 @@ description: Cómo trata la información tottertop.ipe.rest y el plan de privaci
 ---
 Fecha de entrada en vigor: **{{EFFECTIVE}}**. Esta política abarca el sitio web {{DOMAIN}} (el "Sitio") y, una vez lanzada, la aplicación móvil {{GAME}} (la "Aplicación"). El operador es **{{OPERATOR}}** ("nosotros"), un desarrollador individual. Contacto: {{EMAIL}}.
 
-En resumen: el Sitio no tiene cuentas, ni registro, ni comentarios, ni publicidad, y no te pedimos información personal. Está previsto que la Aplicación sea gratuita y no muestre anuncios.
+En resumen: el Sitio no tiene cuentas, ni registro, ni comentarios, ni publicidad, y no te pedimos información personal. La Aplicación es gratuita y no muestra anuncios.
 
 ## 1. El Sitio
 
@@ -18,7 +18,8 @@ En resumen: el Sitio no tiene cuentas, ni registro, ni comentarios, ni publicida
 
 La Aplicación no está lanzada, por lo que esta sección describe el plan, no un producto ya publicado. Antes del lanzamiento la actualizaremos, y los datos de privacidad en las tiendas de aplicaciones coincidirán con ella.
 
-- **Datos del juego.** Está previsto que los ajustes y el progreso, como tu mejor puntuación, se almacenen en tu dispositivo. No tenemos previsto exigir una cuenta.
+- **Datos del juego.** Los ajustes y el progreso, como tu mejor puntuación, se almacenan en tu dispositivo. No exigimos una cuenta.
+- **Sincronización con iCloud.** El progreso entre dispositivos con el mismo ID de Apple se guarda en tu propio iCloud y no se envía a nuestros servidores.
 - **Analítica.** Aún no hemos decidido si la Aplicación usará analítica o informes de fallos. Si lo hace, esta sección indicará qué se recopila antes del lanzamiento.
 - **Conservación y tus derechos.** [법무 확인 필요: redacción sobre la conservación de datos y derechos por región (GDPR, CCPA, PIPA de Corea), por confirmar antes del envío a las tiendas.]
 

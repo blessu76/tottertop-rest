@@ -27,7 +27,7 @@
  "home_desc": "Tottertop, geliştirme aşamasında olan, telefonlar için tek dokunuşluk fizik tabanlı bir istifleme oyunudur. Sallanan bir vinç, sendeleyen kuleye bloklar bırakır; kuleyi olabildiğince yükseğe çıkarın. Bir tur yaklaşık bir dakika sürer.",
  "hero_h1": "Bloğu bırak. Kuleyi ayakta tut.",
  "hero_lead": "Tottertop, telefonunuz için hızlı bir fizik oyunudur. Bir vinç, sendeleyen kulenin üzerinde sallanır: bloğu bırakmak için bir kez dokunun ve kulenin dengede kalması için onu istiflemeye çalışın. Bir tur yaklaşık bir dakika sürer.",
- "hero_note": "Çok yakında. Oyun hâlâ geliştiriliyor: henüz mağaza sayfası ya da çıkış tarihi yok ve ayrıntılar değişebilir.",
+ "hero_note": "Çok yakında. Tamamen ücretsiz ve reklamsız olarak iOS ve Android'de yayınlanıyor. O zamana kadar ayrıntılar değişebilir.",
  "card1_h": "Tek dokunuş",
  "card1_p": "Sallanan vinçten bloğu bırakmak için tek bir dokunuşun zamanlamasını ayarlayın. Menü yok, uzun öğreticiler yok.",
  "card2_h": "Sallanışı izle",
@@ -37,9 +37,9 @@
  "facts_h": "Bir bakışta",
  "fact1": "Basit fizik tabanlı istifleme oyunu, tek oyunculu.",
  "fact2": "Oynamak için tek dokunuş; bir tur yaklaşık bir dakika sürer.",
- "fact3": "Tamamen ücretsiz oynanması planlanıyor; reklam içermeyecek ve reklamları kaldırmak için satın alma sunulmayacak.",
- "fact4": "iOS ve Android için planlanıyor, 12 dilde.",
- "fact5": "Henüz çıkış tarihi yok.",
+ "fact3": "Tamamen ücretsiz, reklamsız ve reklamları kaldırmak için satın alma yok.",
+ "fact4": "iOS ve Android için yayınlanıyor, 12 dilde.",
+ "fact5": "App Store ve Google Play'de ücretsiz.",
  "contact_cta": "İletişim",
  "not_found": "Bu sayfa yok (henüz)."
 }

@@ -5,7 +5,7 @@ description: Wie tottertop.ipe.rest mit Informationen umgeht, und der Datenschut
 ---
 Gültig ab: **{{EFFECTIVE}}**. Diese Erklärung gilt für die Website {{DOMAIN}} (die „Website") und, sobald sie veröffentlicht ist, für die mobile App {{GAME}} (die „App"). Betreiber ist **{{OPERATOR}}** („wir"), ein Einzelentwickler. Kontakt: {{EMAIL}}.
 
-Kurz gesagt: Die Website hat keine Konten, keine Registrierung, keine Kommentare und keine Werbung, und wir fragen dich nicht nach personenbezogenen Daten. Die App soll kostenlos sein und keine Werbung anzeigen.
+Kurz gesagt: Die Website hat keine Konten, keine Registrierung, keine Kommentare und keine Werbung, und wir fragen dich nicht nach personenbezogenen Daten. Die App ist kostenlos und zeigt keine Werbung an.
 
 ## 1. Die Website
 
@@ -18,7 +18,8 @@ Kurz gesagt: Die Website hat keine Konten, keine Registrierung, keine Kommentare
 
 Die App ist nicht veröffentlicht, daher beschreibt dieser Abschnitt einen Plan und kein ausgeliefertes Produkt. Wir werden ihn vor der Veröffentlichung aktualisieren, und die Datenschutzangaben in den App-Stores werden damit übereinstimmen.
 
-- **Spieldaten.** Einstellungen und Fortschritt, etwa dein Highscore, sollen auf deinem Gerät gespeichert werden. Wir planen nicht, ein Konto zu verlangen.
+- **Spieldaten.** Einstellungen und Fortschritt, etwa dein Highscore, werden auf deinem Gerät gespeichert. Wir verlangen kein Konto.
+- **iCloud-Synchronisation.** Der Fortschritt zwischen Geräten mit derselben Apple-ID wird in deiner eigenen iCloud gespeichert und nicht an unsere Server gesendet.
 - **Analyse.** Wir haben noch nicht entschieden, ob die App Analyse- oder Absturzberichte nutzen wird. Falls ja, wird dieser Abschnitt vor der Veröffentlichung auflisten, was erfasst wird.
 - **Speicherdauer und deine Rechte.** [법무 확인 필요: Formulierung zu Speicherdauer und Rechten je Region (DSGVO, CCPA, koreanisches PIPA) vor der Store-Einreichung zu bestätigen.]
 
