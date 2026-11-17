@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/zh-Hant/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop 開發筆記 — 這款遊戲是什麼，以及我們為什麼要做它。</description>
 <language>zh-Hant</language>
-<lastBuildDate>Mon, 16 Nov 2026 16:30:00 +0900</lastBuildDate>
+<lastBuildDate>Tue, 17 Nov 2026 14:45:00 +0900</lastBuildDate>
+<item><title>不算數的「完美」:第一天修掉的三個錯誤</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-17-the-perfect-that-was-not/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-17-the-perfect-that-was-not/</guid><pubDate>Tue, 17 Nov 2026 14:45:00 +0900</pubDate><description>讓塔倒下的方塊卻跳出「完美」、第一塊就在 1 樓摔倒、崩塌途中消失的最高紀錄。同一個晚上找到的三個錯誤。</description></item>
 <item><title>人人同一座塔:每日塔的種子是怎麼產生的</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-16-one-tower-for-everyone/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-16-one-tower-for-everyone/</guid><pubDate>Mon, 16 Nov 2026 16:30:00 +0900</pubDate><description>每日塔必須讓大家真的拿到同一座塔才有意義。我們如何把一個日期,變成全世界每支手機上完全相同的方塊順序。</description></item>
 <item><title>用機器人，而不是用手，來調校搖晃感</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-15-tuning-the-wobble-with-bots/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-15-tuning-the-wobble-with-bots/</guid><pubDate>Sun, 15 Nov 2026 14:30:00 +0900</pubDate><description>在真人能玩 Tottertop 之前，我們先用三個技術不同的機器人、各跑 200 局來調校難度。數字說明了什麼，又說明不了什麼。</description></item>
 <item><title>為什麼我們從暗色夜空改成薄荷與天空藍</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>暗色夜空風格誕生兩天後,一輪修飾幾乎沒有帶來肉眼可見的改變。所以我們把整款遊戲重新畫過,變得明亮、圓潤又可愛。</description></item>

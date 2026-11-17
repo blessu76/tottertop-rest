@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ja/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop の開発ノート — ゲームの内容と、作る理由。</description>
 <language>ja</language>
-<lastBuildDate>Mon, 16 Nov 2026 16:30:00 +0900</lastBuildDate>
+<lastBuildDate>Tue, 17 Nov 2026 14:45:00 +0900</lastBuildDate>
+<item><title>「パーフェクト」ではなかったパーフェクト:初日に直した3つの不具合</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-17-the-perfect-that-was-not/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-17-the-perfect-that-was-not/</guid><pubDate>Tue, 17 Nov 2026 14:45:00 +0900</pubDate><description>タワーを崩すブロックに出た「パーフェクト」、1階で倒れた最初のブロック、崩れている最中に消えた自己ベスト。ある夜に見つかった3つの不具合。</description></item>
 <item><title>みんなに同じタワーを:今日のタワーのシードはこうして作ります</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-16-one-tower-for-everyone/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-16-one-tower-for-everyone/</guid><pubDate>Mon, 16 Nov 2026 16:30:00 +0900</pubDate><description>今日のタワーは、全員が本当に同じタワーを受け取ってこそ意味があります。日付ひとつを、世界中のどの端末でも同じブロックの順番に変える方法。</description></item>
 <item><title>ぐらつきの調整は、人の手ではなくボットで</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-15-tuning-the-wobble-with-bots/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-15-tuning-the-wobble-with-bots/</guid><pubDate>Sun, 15 Nov 2026 14:30:00 +0900</pubDate><description>人がTottertopを遊べるようになる前に、腕前の違う3体のボットで各200ラウンド、難易度を調整しました。数字が示すこと、示せないこと。</description></item>
 <item><title>夜空のダークな見た目から、ミントとスカイブルーに変えた理由</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-14-why-mint-and-sky/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-14-why-mint-and-sky/</guid><pubDate>Sat, 14 Nov 2026 23:13:00 +0900</pubDate><description>ダークな夜空の見た目から2日後、仕上げの調整をしても目に見える変化はほとんどありませんでした。そこでゲーム全体を、明るく、丸く、かわいく描き直しました。</description></item>
