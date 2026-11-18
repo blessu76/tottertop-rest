@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ko/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>기우뚱탑(Tottertop) 개발 노트 — 게임이 무엇인지, 왜 만드는지.</description>
 <language>ko</language>
-<lastBuildDate>Tue, 17 Nov 2026 14:45:00 +0900</lastBuildDate>
+<lastBuildDate>Wed, 18 Nov 2026 16:15:00 +0900</lastBuildDate>
+<item><title>열두 개 언어, 고정된 한 가지 순서</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-18-twelve-languages-one-order/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-18-twelve-languages-one-order/</guid><pubDate>Wed, 18 Nov 2026 16:15:00 +0900</pubDate><description>첫 글에 열한 개 언어라고 썼는데 지금은 열두 개입니다. 순서는 고정이고, 언어 고르기가 있고, 모든 언어가 320px 화면에 들어가는지 시험합니다.</description></item>
 <item><title>「정확」이 아니었던 「정확」: 첫날 고친 버그 셋</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-17-the-perfect-that-was-not/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-17-the-perfect-that-was-not/</guid><pubDate>Tue, 17 Nov 2026 14:45:00 +0900</pubDate><description>탑을 무너뜨리는 블록에 뜬 「정확」, 1층에서 쓰러진 첫 블록, 무너지는 중에 사라진 최고 기록. 한 저녁에 나온 버그 셋.</description></item>
 <item><title>모두에게 같은 탑: 오늘의 탑 시드는 이렇게 만듭니다</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-16-one-tower-for-everyone/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-16-one-tower-for-everyone/</guid><pubDate>Mon, 16 Nov 2026 16:30:00 +0900</pubDate><description>오늘의 탑은 모두가 정말 같은 탑을 받아야 의미가 있습니다. 날짜 하나를 전 세계 어느 폰에서나 똑같은 블록 순서로 바꾸는 방법.</description></item>
 <item><title>사람 손 대신 봇으로 흔들림을 맞춘 이야기</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-15-tuning-the-wobble-with-bots/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-15-tuning-the-wobble-with-bots/</guid><pubDate>Sun, 15 Nov 2026 14:30:00 +0900</pubDate><description>사람이 해 보기 전에, 실력이 다른 봇 셋이 각 200판씩 돌려서 기우뚱탑의 난이도를 맞췄습니다. 숫자가 말해 주는 것과 말해 주지 못하는 것.</description></item>
