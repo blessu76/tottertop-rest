@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/zh-Hant/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop 開發筆記 — 這款遊戲是什麼，以及我們為什麼要做它。</description>
 <language>zh-Hant</language>
-<lastBuildDate>Wed, 18 Nov 2026 16:15:00 +0900</lastBuildDate>
+<lastBuildDate>Thu, 19 Nov 2026 14:30:00 +0900</lastBuildDate>
+<item><title>音效開了卻沒聲音:iPhone 的靜音開關</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-19-the-silent-switch/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-19-the-silent-switch/</guid><pubDate>Thu, 19 Nov 2026 14:30:00 +0900</pubDate><description>設定是開的,程式路徑沒問題,遊戲卻還是靜悄悄。原因是有一種音訊模式會服從靜音開關。</description></item>
 <item><title>十二種語言,固定的順序</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-18-twelve-languages-one-order/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-18-twelve-languages-one-order/</guid><pubDate>Wed, 18 Nov 2026 16:15:00 +0900</pubDate><description>第一篇文章寫的是十一種語言。現在是十二種,順序固定,有語言選單,還有一項測試確保每種語言都放得進 320 px 的螢幕。</description></item>
 <item><title>不算數的「完美」:第一天修掉的三個錯誤</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-17-the-perfect-that-was-not/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-17-the-perfect-that-was-not/</guid><pubDate>Tue, 17 Nov 2026 14:45:00 +0900</pubDate><description>讓塔倒下的方塊卻跳出「完美」、第一塊就在 1 樓摔倒、崩塌途中消失的最高紀錄。同一個晚上找到的三個錯誤。</description></item>
 <item><title>人人同一座塔:每日塔的種子是怎麼產生的</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-16-one-tower-for-everyone/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-16-one-tower-for-everyone/</guid><pubDate>Mon, 16 Nov 2026 16:30:00 +0900</pubDate><description>每日塔必須讓大家真的拿到同一座塔才有意義。我們如何把一個日期,變成全世界每支手機上完全相同的方塊順序。</description></item>
