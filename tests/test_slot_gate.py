@@ -8,7 +8,9 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import urllib.error
 from pathlib import Path
+from unittest import mock
 
 from helpers import REPO
 
@@ -84,6 +86,59 @@ class SlotLogicTests(unittest.TestCase):
         self.assertEqual(sg.decide(at("2026-11-14", "14:15"), inside)[0], "forbidden")
         self.assertEqual(sg.decide(at("2026-11-14", "14:30"), inside)[0], "due")
 
+    def test_allowed_minutes_skip_forbidden_and_the_ticks_that_would_defer(self):
+        self.assertEqual((sg.ALLOWED[0], sg.ALLOWED[-1]), (12 * 60, 17 * 60 + 59))
+        for m in sg.ALLOWED:
+            self.assertFalse(13 * 60 <= m < 14 * 60 + 30, m)  # forbidden web-push window
+            self.assertFalse(10 * 60 <= m < 11 * 60, m)
+            self.assertFalse(13 * 60 <= sg.publish_tick(m) < 14 * 60 + 30, m)  # the tick that would publish it is not forbidden
+        self.assertNotIn(12 * 60 + 46, sg.ALLOWED)  # 13:00 tick would defer it to 14:30
+        self.assertIn(12 * 60 + 45, sg.ALLOWED)
+        self.assertIn(14 * 60 + 30, sg.ALLOWED)
+
+    def test_hundreds_of_draws_never_land_in_a_forbidden_window(self):
+        rng = random.Random(42)
+        for _ in range(1000):
+            h, m = map(int, sg.draw_time(rng).split(":"))
+            self.assertFalse(13 * 60 <= h * 60 + m < 14 * 60 + 30)
+            self.assertIn(h * 60 + m, sg.ALLOWED)
+        state, today = None, dt.date(2026, 11, 21)
+        for day in range(500):
+            state, _ = sg.roll(state, today + dt.timedelta(days=day), rng)
+            self.assertIn(sg._minute_of(dt.time(*map(int, state["time"].split(":")))), sg.ALLOWED)
+
+    def test_draws_vary_across_days(self):
+        state, seen = None, set()
+        for day in range(30):
+            state, _ = sg.roll(state, dt.date(2026, 11, 21) + dt.timedelta(days=day), random.Random(day))
+            seen.add(state["time"])
+        self.assertGreaterEqual(len(seen), 20)
+        self.assertGreaterEqual(len({t[:2] for t in seen}), 3)  # several different hours
+
+    def test_redraw_moves_a_forbidden_slot_into_the_rest_of_today(self):
+        state = {"date": "2026-11-14", "time": "13:20", "prev_date": "2026-11-13", "prev_time": "15:10", "published": False}
+        for seed in range(200):
+            new, changed = sg.redraw_forbidden(dict(state), at("2026-11-14", "12:10"), random.Random(seed))
+            self.assertTrue(changed)
+            h, m = map(int, new["time"].split(":"))
+            self.assertIn(h * 60 + m, sg.ALLOWED)
+            self.assertGreaterEqual(h * 60 + m, 12 * 60 + 10)
+            self.assertNotEqual(h, 15)  # yesterday's hour still avoided
+
+    def test_redraw_after_the_window_opens_only_picks_from_now_on(self):
+        state = {"date": "2026-11-14", "time": "13:20", "published": False}
+        for seed in range(200):
+            new, changed = sg.redraw_forbidden(dict(state), at("2026-11-14", "13:45"), random.Random(seed))
+            self.assertTrue(changed)
+            self.assertGreaterEqual(new["time"], "14:30")
+
+    def test_allowed_or_published_slots_are_left_alone(self):
+        for st in ({"date": "2026-11-14", "time": "12:40", "published": False},
+                   {"date": "2026-11-14", "time": "13:20", "published": True}):
+            new, changed = sg.redraw_forbidden(dict(st), at("2026-11-14", "12:00"), random.Random(1))
+            self.assertFalse(changed)
+            self.assertEqual(new, st)
+
     def test_stock_warning_at_two_or_fewer(self):
         for n in (0, 1, 2):
             self.assertIn("WARNING", sg.stock_warning(n))
@@ -142,14 +197,37 @@ class GateTickTests(unittest.TestCase):
         self.assertEqual(self.calls, [])
 
     def test_forbidden_window_defers_without_touching_state(self):
+        # an allowed slot (12:40) whose ticks were missed (Mac asleep) is found inside the window: defer, state unchanged
         g = self.gate(5)
-        g.state_path.write_text(json.dumps({"date": "2026-11-14", "time": "13:10", "published": False}), encoding="utf-8")
-        self.now = at("2026-11-14", "13:45")
+        g.state_path.write_text(json.dumps({"date": "2026-11-14", "time": "12:40", "published": False}), encoding="utf-8")
+        self.now = at("2026-11-14", "13:05")
         self.assertEqual(g.tick()[0], "forbidden")
         self.assertEqual(self.calls, [])
-        self.assertEqual(self.state(g), {"date": "2026-11-14", "time": "13:10", "published": False})
+        self.assertEqual(self.state(g), {"date": "2026-11-14", "time": "12:40", "published": False})
         self.now = at("2026-11-14", "14:30")
         self.assertEqual(g.tick()[0], "published-now")
+
+    def test_old_forbidden_slot_is_redrawn_and_saved_not_pushed_to_14_30(self):
+        g = self.gate(5)
+        g.state_path.write_text(json.dumps({"date": "2026-11-14", "time": "13:20", "published": False}), encoding="utf-8")
+        self.now = at("2026-11-14", "13:10")
+        action, _ = g.tick()
+        st = self.state(g)
+        self.assertNotEqual(st["time"], "13:20")
+        self.assertIn(int(st["time"][:2]) * 60 + int(st["time"][3:]), sg.ALLOWED)
+        self.assertGreaterEqual(st["time"], "14:30")  # only the rest of today's window is left
+        self.assertEqual(action, "wait")
+        self.assertEqual(self.calls, [])
+        self.now = at("2026-11-14", "17:59")
+        self.assertEqual(g.tick()[0], "published-now")
+        self.assertEqual(len(self.calls), 1)
+
+    def test_roll_only_redraws_an_old_forbidden_slot(self):
+        g = self.gate(5)
+        g.state_path.write_text(json.dumps({"date": "2026-11-14", "time": "13:20", "published": False}), encoding="utf-8")
+        self.now = at("2026-11-14", "12:05")
+        self.assertEqual(g.tick(roll_only=True)[0], "rolled-only")
+        self.assertIn(int(self.state(g)["time"][:2]) * 60 + int(self.state(g)["time"][3:]), sg.ALLOWED)
 
     def test_manual_publish_in_repo_sets_published(self):
         g = self.gate(5, outcome=("already", "2026-11-14-manual"))
@@ -199,6 +277,43 @@ class GateTickTests(unittest.TestCase):
         st = self.state(g)
         self.assertEqual((st["date"], st["prev_time"], st["published"]), ("2026-11-14", "22:41", False))
         self.assertEqual(self.calls, [])
+
+
+class LiveCheckTests(unittest.TestCase):
+    """verify_live: a failing live check warns in the log, flags it, and notifies once per slug (never fails the run)."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp(prefix="tt-live-"))
+        self.logs = []
+        (self.tmp / "base").mkdir()
+        self.p = pn.Publisher(self.tmp / "base", self.tmp / "queue", remote="unused", live="http://127.0.0.1:9",
+                              now_fn=lambda: at("2026-11-14", "14:31"), verify=False, check_cmds=[], log=self.logs.append)
+
+    def tearDown(self):
+        shutil.rmtree(str(self.tmp))
+
+    def test_failed_live_check_warns_flags_and_notifies_once(self):
+        notes = []
+        with mock.patch.object(pn.urllib.request, "urlopen", side_effect=urllib.error.URLError("boom")), \
+                mock.patch.object(pn.time, "sleep", lambda s: None), mock.patch.object(pn, "notify_mac", notes.append):
+            self.assertFalse(self.p.verify_live("2026-11-14-x"))
+            self.assertTrue(any("WARNING: live check failed — deploy 확인 필요" in l for l in self.logs))
+            self.assertTrue((self.tmp / "base" / "LIVE_CHECK_FAILED").is_file())
+            self.assertEqual(len(notes), 1)
+            self.assertFalse(self.p.verify_live("2026-11-14-x"))  # same slug again: no second notification
+            self.assertEqual(len(notes), 1)
+            self.assertFalse(self.p.verify_live("2026-11-15-y"))  # a new slug notifies again
+            self.assertEqual(len(notes), 2)
+
+    def test_live_ok_clears_the_flag_and_does_not_notify(self):
+        notes = []
+        (self.tmp / "base" / "LIVE_CHECK_FAILED").write_text("old\n", encoding="utf-8")
+        resp = mock.MagicMock()
+        resp.__enter__.return_value.status = 200
+        with mock.patch.object(pn.urllib.request, "urlopen", return_value=resp), mock.patch.object(pn, "notify_mac", notes.append):
+            self.assertTrue(self.p.verify_live("2026-11-14-x"))
+        self.assertFalse((self.tmp / "base" / "LIVE_CHECK_FAILED").exists())
+        self.assertEqual(notes, [])
 
 
 class QueueItemTests(unittest.TestCase):

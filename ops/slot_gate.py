@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """Random-afternoon slot gate for the tottertop.ipe.rest journal — stdlib only (Python 3.8+).
 
-One post a day, at a random time in 12:00-17:59 KST that is never in the same hour as yesterday's. launchd
+One post a day, at a random time in the allowed windows of 12:00-17:59 KST (see ALLOWED) that is never in the same hour as
+yesterday's. launchd
 (rest.ipe.tottertop-publish, every 15 min 12:00-18:45 KST) runs this script; most ticks do nothing.
 
 State file (default ~/.ipe/queue/tottertop/slot.json):
   {"date": "YYYY-MM-DD", "time": "HH:MM", "prev_date": ..., "prev_time": ..., "published": true|false}
 
 Each tick:
-  1. slot.json date is not today -> draw a new time (12:00-17:59, hour != yesterday's), yesterday's date/time move to prev_*.
+  1. slot.json date is not today -> draw a new time (ALLOWED minutes, hour != yesterday's), yesterday's date/time move to prev_*.
+  1b. today's slot is not in ALLOWED (an old draw, e.g. 13:20 from before this rule) and not yet published -> redraw it from the
+     rest of today's ALLOWED minutes (>= now) and save it to slot.json. Never pushed to a fixed time.
   2. published is already true -> nothing.
   3. now < time -> wait.  Inside a forbidden web-push window (10:00-11:00, 13:00-14:30) -> defer, slot.json unchanged.
   4. otherwise publish one post from the queue (ops/publish_next.py: queue -> content/journal -> build -> check -> commit -> push);
@@ -26,7 +29,6 @@ import json
 import os
 import random
 import shutil
-import subprocess
 import sys
 from pathlib import Path
 
@@ -36,6 +38,26 @@ import publish_next as pn  # noqa: E402
 KST = pn.KST
 HOURS = tuple(range(12, 18))  # a slot is drawn in 12:00-17:59
 FORBIDDEN = [(dt.time(10, 0), dt.time(11, 0)), (dt.time(13, 0), dt.time(14, 30))]  # [start, end) KST — never push inside
+TICK_MIN = 15  # launchd fires every 15 min from 12:00 KST (rest.ipe.tottertop-publish.plist)
+
+
+def _minute_of(t):
+    return t.hour * 60 + t.minute
+
+
+def publish_tick(m):
+    """minute-of-day of the first launchd tick at or after minute m (ticks sit on a 15-min grid from 12:00)."""
+    return -(-m // TICK_MIN) * TICK_MIN
+
+
+def _forbidden_minute(m):
+    return any(_minute_of(a) <= m < _minute_of(b) for a, b in FORBIDDEN)
+
+
+# A slot minute is ALLOWED when it is inside 12:00-17:59, not inside a forbidden window, AND the tick that publishes it is not
+# inside one either. Without the last check a 12:46-12:59 slot is picked up by the 13:00 tick, deferred, and piles up at 14:30.
+ALLOWED = tuple(m for m in range(12 * 60, 18 * 60)
+                if not _forbidden_minute(m) and not _forbidden_minute(publish_tick(m)))
 MIN_STOCK = 3  # warn when the queue holds fewer than this (i.e. 2 or fewer)
 HOME = Path.home() / ".ipe"
 DEFAULT_STATE = HOME / "queue" / "tottertop" / "slot.json"
@@ -47,10 +69,26 @@ def in_forbidden(t):
     return any(a <= t < b for a, b in FORBIDDEN)
 
 
-def draw_time(rng, avoid_hour=None):
-    """random 'HH:MM' in 12:00-17:59, never in `avoid_hour`."""
-    hours = [h for h in HOURS if h != avoid_hour]
-    return "%02d:%02d" % (rng.choice(hours), rng.randrange(60))
+def draw_time(rng, avoid_hour=None, not_before=None):
+    """random 'HH:MM' from ALLOWED (optionally only minutes >= not_before), never in `avoid_hour` when another choice exists."""
+    pool = [m for m in ALLOWED if not_before is None or m >= not_before] or list(ALLOWED)
+    pool_ok = [m for m in pool if avoid_hour is None or m // 60 != avoid_hour] or pool
+    return "%02d:%02d" % divmod(rng.choice(pool_ok), 60)
+
+
+def redraw_forbidden(state, now, rng):
+    """today's unpublished slot outside ALLOWED (an old draw) -> redraw from the rest of today's ALLOWED minutes.
+    -> (state, changed). `state` must already be for `now`'s date (see roll())."""
+    if not state or state.get("published") or state.get("time") is None:
+        return state, False
+    hh, mm = str(state["time"]).split(":")
+    if int(hh) * 60 + int(mm) in ALLOWED:
+        return state, False
+    avoid = None
+    if state.get("prev_date") == (now.date() - dt.timedelta(days=1)).isoformat():
+        avoid = hour_of(state.get("prev_time"))
+    new = dict(state, time=draw_time(rng, avoid, not_before=_minute_of(now.timetz().replace(tzinfo=None))))
+    return new, True
 
 
 def hour_of(hm):
@@ -146,12 +184,8 @@ class Gate:
         if not (flag.exists() and flag.read_text(encoding="utf-8").startswith(marker)):  # notify once a day
             self.base.mkdir(parents=True, exist_ok=True)
             flag.write_text("%s\n%s\n" % (marker, msg), encoding="utf-8")
-            if self.notify and os.environ.get("TOTTERTOP_NO_NOTIFY") != "1":
-                try:
-                    subprocess.run(["osascript", "-e", 'display notification "%s" with title "tottertop journal"' % msg.replace('"', "'")],
-                                   capture_output=True, timeout=10)
-                except Exception:  # noqa: BLE001 — a notification must never break the tick
-                    pass
+            if self.notify:
+                pn.notify_mac(msg)
         return n
 
     def tick(self, roll_only=False):
@@ -163,6 +197,10 @@ class Gate:
             save_state(self.state_path, state)
             self.say("new day %s: slot drawn %s KST (prev %s %s)" % (today, state["time"], state["prev_date"], state["prev_time"]))
             self.warn_stock()
+        state, redrawn = redraw_forbidden(state, now, self.rng)
+        if redrawn:
+            save_state(self.state_path, state)
+            self.say("today's slot was outside the allowed windows — redrawn to %s KST" % state["time"])
         if roll_only:
             return "rolled-only", state["time"]
         action, why = decide(now, state)

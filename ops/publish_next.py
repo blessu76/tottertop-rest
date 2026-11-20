@@ -197,6 +197,17 @@ def check_staged(name_status, leftovers=""):
 
 # ---------------------------------------------------------------- publisher
 
+def notify_mac(msg):
+    """macOS notification; never raises (a notification must never break the publisher). TOTTERTOP_NO_NOTIFY=1 turns it off."""
+    if os.environ.get("TOTTERTOP_NO_NOTIFY") == "1":
+        return
+    try:
+        subprocess.run(["osascript", "-e", 'display notification "%s" with title "tottertop journal"' % msg.replace('"', "'")],
+                       capture_output=True, timeout=10)
+    except Exception:  # noqa: BLE001
+        pass
+
+
 class Publisher:
     def __init__(self, base, queue, remote=DEFAULT_REMOTE, live=DEFAULT_LIVE, kit=DEFAULT_KIT, now_fn=None,
                  dry_run=False, verify=True, branch="main", check_cmds=None, log=print):
@@ -306,8 +317,10 @@ class Publisher:
         return sha
 
     def verify_live(self, slug):
-        """soft: wait for the Pages deploy, then every language's post page answer 200. Never fails the run."""
+        """soft: wait for the Pages deploy, then every language's post page answer 200. Never fails the run.
+        On failure: a WARNING line in the log, LIVE_CHECK_FAILED flag, and one macOS notification per slug."""
         ok_all = True
+        bad = []
         for lang in MAIN_LANGS:
             url = "%s/%sjournal/%s/" % (self.live.rstrip("/"), "" if lang == "en" else lang + "/", slug)
             ok = False
@@ -322,8 +335,16 @@ class Publisher:
                 time.sleep(30)
             self.say("live %s: %s" % ("OK" if ok else "NOT 200", url))
             ok_all &= ok
+            if not ok:
+                bad.append(url)
         if not ok_all:
+            msg = "live check failed — deploy 확인 필요 (%s: %d NOT 200)" % (slug, len(bad))
+            self.say("WARNING: " + msg + " — " + " ".join(bad[:3]) + (" ..." if len(bad) > 3 else ""))
+            flag = self.base / "LIVE_CHECK_FAILED"
+            was = flag.read_text(encoding="utf-8") if flag.exists() else ""
             self.flag("LIVE_CHECK_FAILED", slug)
+            if slug not in was:  # notify once per slug, like STOCK_ALERT
+                notify_mac("tottertop journal: " + msg)
         else:
             (self.base / "LIVE_CHECK_FAILED").unlink(missing_ok=True)
         return ok_all
