@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ja/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop の開発ノート — ゲームの内容と、作る理由。</description>
 <language>ja</language>
-<lastBuildDate>Thu, 19 Nov 2026 14:30:00 +0900</lastBuildDate>
+<lastBuildDate>Fri, 20 Nov 2026 14:30:00 +0900</lastBuildDate>
+<item><title>何かを出す前に、まずこれを確かめます</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-20-what-we-test-first/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-20-what-we-test-first/</guid><pubDate>Fri, 20 Nov 2026 14:30:00 +0900</pubDate><description>700近い自動テスト、全言語のレイアウト確認、そしてボットのプレイヤー。それに、どんなテストでも決着のつかないことの一覧。</description></item>
 <item><title>音をオンにしても聞こえない:iPhoneのサイレントスイッチ</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-19-the-silent-switch/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-19-the-silent-switch/</guid><pubDate>Thu, 19 Nov 2026 14:30:00 +0900</pubDate><description>設定はオン、コードの流れも問題なし。それでもゲームは無音でした。原因は、サイレントスイッチに従うオーディオモードがひとつあったことです。</description></item>
 <item><title>12言語、固定された順番</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-18-twelve-languages-one-order/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-18-twelve-languages-one-order/</guid><pubDate>Wed, 18 Nov 2026 16:15:00 +0900</pubDate><description>最初の記事では11言語と書きました。今は12言語で、順番は固定。言語の選択画面と、すべての言語を320 pxの画面に収めるテストがあります。</description></item>
 <item><title>「パーフェクト」ではなかったパーフェクト:初日に直した3つの不具合</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-17-the-perfect-that-was-not/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-17-the-perfect-that-was-not/</guid><pubDate>Tue, 17 Nov 2026 14:45:00 +0900</pubDate><description>タワーを崩すブロックに出た「パーフェクト」、1階で倒れた最初のブロック、崩れている最中に消えた自己ベスト。ある夜に見つかった3つの不具合。</description></item>
