@@ -343,7 +343,8 @@ class Publisher:
             flag = self.base / "LIVE_CHECK_FAILED"
             was = flag.read_text(encoding="utf-8") if flag.exists() else ""
             self.flag("LIVE_CHECK_FAILED", slug)
-            if slug not in was:  # notify once per slug, like STOCK_ALERT
+            lines = was.splitlines()  # flag file: timestamp, then the slug (exact match, not a substring)
+            if len(lines) < 2 or lines[1] != slug:  # notify once per slug, like STOCK_ALERT
                 notify_mac("tottertop journal: " + msg)
         else:
             (self.base / "LIVE_CHECK_FAILED").unlink(missing_ok=True)

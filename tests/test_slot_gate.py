@@ -87,7 +87,7 @@ class SlotLogicTests(unittest.TestCase):
         self.assertEqual(sg.decide(at("2026-11-14", "14:30"), inside)[0], "due")
 
     def test_allowed_minutes_skip_forbidden_and_the_ticks_that_would_defer(self):
-        self.assertEqual((sg.ALLOWED[0], sg.ALLOWED[-1]), (12 * 60, 17 * 60 + 59))
+        self.assertEqual((sg.ALLOWED[0], sg.ALLOWED[-1]), (12 * 60, 17 * 60 + 45))  # 17:46+ would publish at the 18:00 tick
         for m in sg.ALLOWED:
             self.assertFalse(13 * 60 <= m < 14 * 60 + 30, m)  # forbidden web-push window
             self.assertFalse(10 * 60 <= m < 11 * 60, m)
@@ -95,6 +95,56 @@ class SlotLogicTests(unittest.TestCase):
         self.assertNotIn(12 * 60 + 46, sg.ALLOWED)  # 13:00 tick would defer it to 14:30
         self.assertIn(12 * 60 + 45, sg.ALLOWED)
         self.assertIn(14 * 60 + 30, sg.ALLOWED)
+        self.assertIn(17 * 60 + 45, sg.ALLOWED)
+        self.assertNotIn(17 * 60 + 46, sg.ALLOWED)
+
+    def test_slot_at_1450_is_published_at_the_1500_tick_so_next_day_skips_15(self):
+        state = {"date": "2026-11-13", "time": "14:50", "published_at": "15:00", "published": True}
+        for seed in range(300):
+            new, _ = sg.roll(state, dt.date(2026, 11, 14), random.Random(seed))
+            self.assertNotEqual(int(new["time"][:2]), 15)
+            self.assertEqual(new["prev_published_at"], "15:00")
+
+    def test_yesterday_published_at_1430_skips_14(self):
+        state = {"date": "2026-11-13", "time": "12:40", "published_at": "14:30", "published": True}
+        for seed in range(300):
+            new, _ = sg.roll(state, dt.date(2026, 11, 14), random.Random(seed))
+            self.assertNotEqual(int(new["time"][:2]), 14)
+
+    def test_old_state_without_published_at_still_uses_the_drawn_hour(self):
+        state = {"date": "2026-11-13", "time": "14:50", "published": True}  # no published_at key (older slot.json)
+        for seed in range(300):
+            new, _ = sg.roll(state, dt.date(2026, 11, 14), random.Random(seed))
+            self.assertNotEqual(int(new["time"][:2]), 14)
+
+    def test_late_after_1800_never_publishes_and_the_slot_stays_unpublished(self):
+        for hm in ("18:00", "18:30", "18:45"):
+            self.assertEqual(sg.decide(at("2026-11-14", hm), {"date": "2026-11-14", "time": "17:40", "published": False})[0], "late")
+        self.assertEqual(sg.decide(at("2026-11-14", "17:59"), {"date": "2026-11-14", "time": "17:40", "published": False})[0], "due")
+
+    def test_redraw_with_no_allowed_minute_left_skips_the_day(self):
+        state = {"date": "2026-11-14", "time": "13:20", "published": False}
+        for hm in ("17:46", "18:00", "18:30"):
+            new, changed = sg.redraw_forbidden(dict(state), at("2026-11-14", hm), random.Random(1))
+            self.assertTrue(changed)
+            self.assertTrue(new.get("skipped"))
+            self.assertEqual(sg.decide(at("2026-11-14", hm), new)[0], "late")
+
+    def test_draw_with_not_before_past_the_window_returns_none(self):
+        self.assertIsNone(sg.draw_time(random.Random(1), not_before=17 * 60 + 46))
+        for seed in range(200):
+            h, m = map(int, sg.draw_time(random.Random(seed), not_before=14 * 60 + 40).split(":"))
+            self.assertGreaterEqual(h * 60 + m, 14 * 60 + 40)
+            self.assertIn(h * 60 + m, sg.ALLOWED)
+
+    def test_same_hour_only_is_detected_for_the_log(self):
+        # 17:20 now: the rest of today is 17:20-17:45 (one hour); yesterday went out at 17:xx -> only same hour is left
+        state = {"date": "2026-11-14", "time": "13:20", "prev_date": "2026-11-13", "prev_time": "16:00",
+                 "prev_published_at": "17:05", "published": False}
+        new, changed = sg.redraw_forbidden(dict(state), at("2026-11-14", "17:20"), random.Random(2))
+        self.assertTrue(changed)
+        self.assertTrue(sg.same_hour_only(new, at("2026-11-14", "17:20")))
+        self.assertFalse(sg.same_hour_only(dict(state, prev_published_at="14:05"), at("2026-11-14", "17:20")))
 
     def test_hundreds_of_draws_never_land_in_a_forbidden_window(self):
         rng = random.Random(42)
@@ -177,10 +227,37 @@ class GateTickTests(unittest.TestCase):
         self.assertEqual((st["date"], st["prev_date"], st["prev_time"], st["published"]), ("2026-11-14", "2026-11-13", "15:30", False))
         self.assertNotEqual(st["time"][:2], "15")
         self.assertIn(action, ("wait", "forbidden", "published-now"))
-        self.now = at("2026-11-14", "18:45")  # well past any slot and outside the forbidden windows
+        self.now = at("2026-11-14", "17:45")  # last allowed tick (slots are drawn up to 17:45)
         self.assertEqual(g.tick()[0], "published-now")
         self.assertEqual(len(self.calls), 1)
         self.assertTrue(self.state(g)["published"])
+        self.assertRegex(self.state(g)["published_at"], r"^17:45$")
+
+    def test_tick_at_1800_and_1830_does_not_publish_an_unpublished_slot(self):
+        g = self.gate(5)
+        g.state_path.write_text(json.dumps({"date": "2026-11-14", "time": "17:40", "published": False}), encoding="utf-8")
+        for hm in ("18:00", "18:30"):
+            self.now = at("2026-11-14", hm)
+            self.assertEqual(g.tick()[0], "late")
+        self.assertEqual(self.calls, [])
+        self.assertEqual(self.state(g), {"date": "2026-11-14", "time": "17:40", "published": False})
+        self.assertTrue(any("late: past 18:00 KST — skip today, the post stays in the queue" in l for l in self.logs))
+
+    def test_published_slot_records_the_tick_it_went_out(self):
+        g = self.gate(5)
+        g.state_path.write_text(json.dumps({"date": "2026-11-14", "time": "14:50", "published": False}), encoding="utf-8")
+        self.now = at("2026-11-14", "15:00")
+        self.assertEqual(g.tick()[0], "published-now")
+        self.assertEqual(self.state(g)["published_at"], "15:00")
+
+    def test_redraw_to_yesterdays_hour_logs_a_line(self):
+        g = self.gate(5)
+        g.state_path.write_text(json.dumps({"date": "2026-11-14", "time": "13:20", "prev_date": "2026-11-13", "prev_time": "16:00",
+                                            "prev_published_at": "17:05", "published": False}), encoding="utf-8")
+        self.now = at("2026-11-14", "17:20")
+        g.tick(roll_only=True)
+        self.assertTrue(any("only yesterday's hour is left today" in l for l in self.logs))
+        self.assertIn(self.state(g)["time"][:2], ("17",))
 
     def test_already_published_is_ignored(self):
         g = self.gate(5)
@@ -218,7 +295,7 @@ class GateTickTests(unittest.TestCase):
         self.assertGreaterEqual(st["time"], "14:30")  # only the rest of today's window is left
         self.assertEqual(action, "wait")
         self.assertEqual(self.calls, [])
-        self.now = at("2026-11-14", "17:59")
+        self.now = at("2026-11-14", "17:45")
         self.assertEqual(g.tick()[0], "published-now")
         self.assertEqual(len(self.calls), 1)
 
@@ -291,6 +368,14 @@ class LiveCheckTests(unittest.TestCase):
 
     def tearDown(self):
         shutil.rmtree(str(self.tmp))
+
+    def test_notify_once_compares_the_whole_slug_not_a_substring(self):
+        notes = []
+        (self.tmp / "base" / "LIVE_CHECK_FAILED").write_text("2026-11-14T14:31:00+09:00\n2026-11-14-x-long\nold\n", encoding="utf-8")
+        with mock.patch.object(pn.urllib.request, "urlopen", side_effect=urllib.error.URLError("boom")), \
+                mock.patch.object(pn.time, "sleep", lambda s: None), mock.patch.object(pn, "notify_mac", notes.append):
+            self.assertFalse(self.p.verify_live("2026-11-14-x"))
+        self.assertEqual(len(notes), 1)  # "2026-11-14-x" is not "2026-11-14-x-long": notify
 
     def test_failed_live_check_warns_flags_and_notifies_once(self):
         notes = []
