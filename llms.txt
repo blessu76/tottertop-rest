@@ -23,6 +23,7 @@ Tottertop is a single-player mobile game by ipe() (https://ipe.rest/). It is in 
 
 RSS: https://tottertop.ipe.rest/journal/feed.xml
 
+- [Why this journal posts once a day](https://tottertop.ipe.rest/journal/2026-11-21-one-post-a-day/): Tottertop's journal appears about once a day, in twelve languages. What we write here, what we leave out, and why we do not promise dates.
 - [What we test before anything ships](https://tottertop.ipe.rest/journal/2026-11-20-what-we-test-first/): A short tour of the checks Tottertop goes through before a build leaves the desk: unit tests, a 320 px layout test in 12 languages, bot runs, and what only a real phone can tell us.
 - [Sound switched on, nothing heard: the iPhone silent switch](https://tottertop.ipe.rest/journal/2026-11-19-the-silent-switch/): Turning on sound in Tottertop's settings did nothing on an iPhone with the silent switch on. What caused it, what we changed, and what is still unchecked on real devices.
 - [Twelve languages, one fixed order](https://tottertop.ipe.rest/journal/2026-11-18-twelve-languages-one-order/): Tottertop moved from eleven languages to twelve common ones in a fixed order. What changed, what we dropped, and the narrow-screen test that guards it.
