@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ko/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>기우뚱탑(Tottertop) 개발 노트 — 게임이 무엇인지, 왜 만드는지.</description>
 <language>ko</language>
-<lastBuildDate>Sat, 21 Nov 2026 17:15:00 +0900</lastBuildDate>
+<lastBuildDate>Sun, 22 Nov 2026 15:30:00 +0900</lastBuildDate>
+<item><title>기우뚱탑을 광고 없이 무료로 두기로 한 이유</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-22-free-and-no-ads/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-22-free-and-no-ads/</guid><pubDate>Sun, 22 Nov 2026 15:30:00 +0900</pubDate><description>광고도, 살 것도 없습니다. 완전 무료라는 원칙이 게임 설계를 어떻게 바꾸는지.</description></item>
 <item><title>이 저널이 하루에 한 편만 올라오는 이유</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-21-one-post-a-day/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-21-one-post-a-day/</guid><pubDate>Sat, 21 Nov 2026 17:15:00 +0900</pubDate><description>하루 한 편, 열두 개 언어, 실제로 있었던 일만. 이 저널이 어떻게 돌아가고 무엇을 하지 않는지에 대한 메모.</description></item>
 <item><title>무엇이든 내보내기 전에 먼저 보는 것들</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-20-what-we-test-first/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-20-what-we-test-first/</guid><pubDate>Fri, 20 Nov 2026 14:30:00 +0900</pubDate><description>700개에 가까운 자동 시험, 모든 언어의 화면 검사, 대신 놀아 주는 봇. 그리고 어떤 시험으로도 가릴 수 없는 것의 목록.</description></item>
 <item><title>소리를 켰는데 안 들린다: 아이폰 무음 스위치</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-19-the-silent-switch/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-19-the-silent-switch/</guid><pubDate>Thu, 19 Nov 2026 14:30:00 +0900</pubDate><description>설정은 켜져 있었고 코드 경로도 멀쩡했는데 게임은 조용했습니다. 원인은 무음 스위치를 따르는 오디오 모드 하나였습니다.</description></item>
