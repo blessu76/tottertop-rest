@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/zh-Hant/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop 開發筆記 — 這款遊戲是什麼，以及我們為什麼要做它。</description>
 <language>zh-Hant</language>
-<lastBuildDate>Sun, 22 Nov 2026 15:30:00 +0900</lastBuildDate>
+<lastBuildDate>Mon, 23 Nov 2026 17:30:00 +0900</lastBuildDate>
+<item><title>先做 iPhone，以及 iCloud 同步做什麼</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-23-iphone-first-icloud/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-23-iphone-first-icloud/</guid><pubDate>Mon, 23 Nov 2026 17:30:00 +0900</pubDate><description>一開始只做 iPhone，進度會跟著你在手機之間移動。哪些會同步，哪些不會。</description></item>
 <item><title>為什麼 Tottertop 要免費、而且沒有廣告</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-22-free-and-no-ads/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-22-free-and-no-ads/</guid><pubDate>Sun, 22 Nov 2026 15:30:00 +0900</pubDate><description>沒有廣告，也沒有要買的東西。完全免費這條規則，如何改變遊戲的做法。</description></item>
 <item><title>這份日誌為什麼一天只發一篇</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-21-one-post-a-day/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-21-one-post-a-day/</guid><pubDate>Sat, 21 Nov 2026 17:15:00 +0900</pubDate><description>一天一篇、十二種語言,只寫真正發生過的事。關於這份日誌怎麼運作、不會做什麼的一則說明。</description></item>
 <item><title>任何東西上線之前,我們先測什麼</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-20-what-we-test-first/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-20-what-we-test-first/</guid><pubDate>Fri, 20 Nov 2026 14:30:00 +0900</pubDate><description>將近 700 項自動化測試、每種語言的版面檢查,還有機器人玩家。以及一份沒有任何測試能判定的清單。</description></item>

@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ja/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop の開発ノート — ゲームの内容と、作る理由。</description>
 <language>ja</language>
-<lastBuildDate>Sun, 22 Nov 2026 15:30:00 +0900</lastBuildDate>
+<lastBuildDate>Mon, 23 Nov 2026 17:30:00 +0900</lastBuildDate>
+<item><title>まずiPhone、そしてiCloud同期ができること</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-23-iphone-first-icloud/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-23-iphone-first-icloud/</guid><pubDate>Mon, 23 Nov 2026 17:30:00 +0900</pubDate><description>最初はiPhoneのみ、そして端末間を追いかけてくる記録。何が同期され、何が同期されないか。</description></item>
 <item><title>Tottertopを広告なしの無料にしておく理由</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-22-free-and-no-ads/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-22-free-and-no-ads/</guid><pubDate>Sun, 22 Nov 2026 15:30:00 +0900</pubDate><description>広告もなく、買うものもありません。完全無料というルールがゲームの作りをどう変えるか。</description></item>
 <item><title>このジャーナルが1日1回だけ更新される理由</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-21-one-post-a-day/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-21-one-post-a-day/</guid><pubDate>Sat, 21 Nov 2026 17:15:00 +0900</pubDate><description>1日1本、12言語で、実際に起きたことについて書きます。このジャーナルの進め方と、しないことについてのメモです。</description></item>
 <item><title>何かを出す前に、まずこれを確かめます</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-20-what-we-test-first/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-20-what-we-test-first/</guid><pubDate>Fri, 20 Nov 2026 14:30:00 +0900</pubDate><description>700近い自動テスト、全言語のレイアウト確認、そしてボットのプレイヤー。それに、どんなテストでも決着のつかないことの一覧。</description></item>
