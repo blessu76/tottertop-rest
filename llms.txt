@@ -23,6 +23,7 @@ Tottertop is a single-player mobile game by ipe() (https://ipe.rest/). It is in 
 
 RSS: https://tottertop.ipe.rest/journal/feed.xml
 
+- [Telling the blocks apart: a color-blind check](https://tottertop.ipe.rest/journal/2026-11-24-telling-the-blocks-apart/): When block color sets arrived in Tottertop, a color-blindness simulation found two default blocks that looked almost the same. What we measured and what we changed.
 - [iPhone first, and what iCloud sync does](https://tottertop.ipe.rest/journal/2026-11-23-iphone-first-icloud/): Tottertop is planned for iPhone only at first. Your progress can follow you between devices on one Apple ID through iCloud, while settings stay on each device.
 - [Why Tottertop is meant to be free, with no ads](https://tottertop.ipe.rest/journal/2026-11-22-free-and-no-ads/): Tottertop is planned as a fully free game: no ads, no rewarded ads, no in-app purchases and no remove-ads option. What that rule changes in the design.
 - [Why this journal posts once a day](https://tottertop.ipe.rest/journal/2026-11-21-one-post-a-day/): Tottertop's journal appears about once a day, in twelve languages. What we write here, what we leave out, and why we do not promise dates.
