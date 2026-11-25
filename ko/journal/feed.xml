@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ko/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>기우뚱탑(Tottertop) 개발 노트 — 게임이 무엇인지, 왜 만드는지.</description>
 <language>ko</language>
-<lastBuildDate>Tue, 24 Nov 2026 14:45:00 +0900</lastBuildDate>
+<lastBuildDate>Wed, 25 Nov 2026 15:30:00 +0900</lastBuildDate>
+<item><title>첫 판, 그리고 한 판 더 할 이유</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-25-the-first-round-and-the-next/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-25-the-first-round-and-the-next/</guid><pubDate>Wed, 25 Nov 2026 15:30:00 +0900</pubDate><description>게임을 멈추지 않는 안내, 판 도중에 뜨는 「최고 기록!」, 그리고 다음 판에 노릴 목표 하나.</description></item>
 <item><title>블록을 구별할 수 있게: 색각 이상 점검</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-24-telling-the-blocks-apart/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-24-telling-the-blocks-apart/</guid><pubDate>Tue, 24 Nov 2026 14:45:00 +0900</pubDate><description>녹색맹 시뮬레이션에서 파랑과 보라 블록이 거의 똑같았습니다. 대비 시험이 이를 잡아낸 과정과, 이제 모든 블록 색 묶음이 통과해야 하는 기준.</description></item>
 <item><title>iPhone 먼저, 그리고 iCloud 동기화가 하는 일</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-23-iphone-first-icloud/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-23-iphone-first-icloud/</guid><pubDate>Mon, 23 Nov 2026 17:30:00 +0900</pubDate><description>처음에는 iPhone 전용, 그리고 폰 사이를 따라다니는 기록. 무엇이 동기화되고 무엇이 안 되는지.</description></item>
 <item><title>기우뚱탑을 광고 없이 무료로 두기로 한 이유</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-22-free-and-no-ads/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-22-free-and-no-ads/</guid><pubDate>Sun, 22 Nov 2026 15:30:00 +0900</pubDate><description>광고도, 살 것도 없습니다. 완전 무료라는 원칙이 게임 설계를 어떻게 바꾸는지.</description></item>
