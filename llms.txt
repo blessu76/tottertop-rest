@@ -23,6 +23,7 @@ Tottertop is a single-player mobile game by ipe() (https://ipe.rest/). It is in 
 
 RSS: https://tottertop.ipe.rest/journal/feed.xml
 
+- [A short game on purpose: why a round takes about a minute](https://tottertop.ipe.rest/journal/2026-11-26-a-short-game-on-purpose/): Tottertop is built to fit a short break. Why a round lasts about a minute, and what we have not measured yet.
 - [The first round, and a reason for one more](https://tottertop.ipe.rest/journal/2026-11-25-the-first-round-and-the-next/): Three short tips for a first-time player, a banner the moment you pass your best, and one number on the result screen. Small things added to Tottertop on November 15.
 - [Telling the blocks apart: a color-blind check](https://tottertop.ipe.rest/journal/2026-11-24-telling-the-blocks-apart/): When block color sets arrived in Tottertop, a color-blindness simulation found two default blocks that looked almost the same. What we measured and what we changed.
 - [iPhone first, and what iCloud sync does](https://tottertop.ipe.rest/journal/2026-11-23-iphone-first-icloud/): Tottertop is planned for iPhone only at first. Your progress can follow you between devices on one Apple ID through iCloud, while settings stay on each device.
