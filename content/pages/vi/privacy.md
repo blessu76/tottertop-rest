@@ -21,11 +21,11 @@ Tóm lại, Trang web không có tài khoản, mục đăng ký, bình luận ha
 - **Dữ liệu trò chơi.** Cài đặt và tiến độ chơi, chẳng hạn như điểm cao nhất, được lưu trên thiết bị của bạn. Chúng tôi không yêu cầu tài khoản.
 - **Đồng bộ hóa iCloud.** Tiến độ chơi được chia sẻ giữa các thiết bị đăng nhập bằng cùng một ID Apple sẽ được lưu trong iCloud của chính bạn và không được gửi đến máy chủ của chúng tôi.
 - **Phân tích.** Chúng tôi chưa quyết định liệu Ứng dụng có dùng công cụ phân tích hoặc báo cáo sự cố hay không. Nếu có, trước khi phát hành chúng tôi sẽ liệt kê dữ liệu được thu thập trong phần này.
-- **Lưu giữ dữ liệu và các quyền của bạn.** [Cần rà soát pháp lý: Cần xác nhận cách diễn đạt về lưu giữ dữ liệu và các quyền theo từng khu vực (GDPR, CCPA, PIPA của Hàn Quốc) trước khi gửi ứng dụng lên cửa hàng.]
+- **Lưu giữ dữ liệu và các quyền của bạn.** [법무 확인 필요: Cần xác nhận cách diễn đạt về lưu giữ dữ liệu và các quyền theo từng khu vực (GDPR, CCPA, PIPA của Hàn Quốc) trước khi gửi ứng dụng lên cửa hàng.]
 
 ## 3. Giới hạn độ tuổi
 
-Trang web và Ứng dụng không hướng đến người dùng dưới 16 tuổi. Chúng tôi không thu thập thông tin cá nhân của bất kỳ ai mà chúng tôi biết là dưới 16 tuổi. Chỉ người dùng từ đủ 16 tuổi mới có thể sử dụng Trang web và Ứng dụng. [Cần rà soát pháp lý: Cần xác nhận cách xử lý đối với người dưới 16 tuổi và phân loại độ tuổi trước khi phát hành.]
+Trang web và Ứng dụng không hướng đến người dùng dưới 16 tuổi. Chúng tôi không thu thập thông tin cá nhân của bất kỳ ai mà chúng tôi biết là dưới 16 tuổi. Chỉ người dùng từ đủ 16 tuổi mới có thể sử dụng Trang web và Ứng dụng. [법무 확인 필요: Cần xác nhận cách xử lý đối với người dưới 16 tuổi và phân loại độ tuổi trước khi phát hành.]
 
 ## 4. Thay đổi
 

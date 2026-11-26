@@ -21,11 +21,11 @@ Aplikasi belum dirilis, sehingga bagian ini menjelaskan rencana, bukan produk ya
 - **Data permainan.** Pengaturan dan progres, seperti skor tertinggi Anda, disimpan di perangkat Anda. Kami tidak mewajibkan akun.
 - **Sinkronisasi iCloud.** Progres yang dibagikan antarperangkat yang masuk dengan ID Apple yang sama disimpan di iCloud Anda sendiri dan tidak dikirimkan ke server kami.
 - **Analitik.** Kami belum memutuskan apakah Aplikasi akan menggunakan analitik atau pelaporan crash. Jika digunakan, sebelum rilis kami akan mencantumkan data yang dikumpulkan di bagian ini.
-- **Retensi data dan hak Anda.** [Perlu tinjauan hukum: redaksi mengenai retensi data dan hak menurut wilayah (GDPR, CCPA, PIPA Korea) perlu dikonfirmasi sebelum pengajuan ke toko aplikasi.]
+- **Retensi data dan hak Anda.** [법무 확인 필요: redaksi mengenai retensi data dan hak menurut wilayah (GDPR, CCPA, PIPA Korea) perlu dikonfirmasi sebelum pengajuan ke toko aplikasi.]
 
 ## 3. Batas Usia
 
-Situs dan Aplikasi tidak ditujukan bagi pengguna di bawah usia 16 tahun, dan kami tidak secara sadar mengumpulkan informasi pribadi siapa pun yang berusia di bawah 16 tahun. Hanya pengguna berusia 16 tahun ke atas yang boleh menggunakan Situs dan Aplikasi. [Perlu tinjauan hukum: ketentuan bagi pengguna di bawah 16 tahun dan klasifikasi usia perlu dikonfirmasi sebelum rilis.]
+Situs dan Aplikasi tidak ditujukan bagi pengguna di bawah usia 16 tahun, dan kami tidak secara sadar mengumpulkan informasi pribadi siapa pun yang berusia di bawah 16 tahun. Hanya pengguna berusia 16 tahun ke atas yang boleh menggunakan Situs dan Aplikasi. [법무 확인 필요: ketentuan bagi pengguna di bawah 16 tahun dan klasifikasi usia perlu dikonfirmasi sebelum rilis.]
 
 ## 4. Perubahan
 

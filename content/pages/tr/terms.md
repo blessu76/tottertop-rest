@@ -16,7 +16,7 @@ Site, Uygulama hakkında bilgi vermek amacıyla olduğu gibi sunulur. {{GAME}} g
 Uygulamaya ilişkin bu koşullar taslak niteliğindedir ve yayımdan önce son hâlini alacaktır.
 
 - **Lisans.** Uygulamayı kendi cihazlarınıza yüklemeniz ve kişisel, ticari olmayan amaçlarla kullanmanız için size kişisel, münhasır olmayan ve devredilemez bir lisans veriyoruz. Yasaların izin verdiği durumlar dışında Uygulamayı kopyalayamaz, yeniden satamaz, tersine mühendisliğe tabi tutamaz veya üzerinde değişiklik yapamazsınız.
-- **Garanti verilmemesi.** Uygulama, herhangi bir garanti olmaksızın olduğu gibi sunulur. Yasaların izin verdiği ölçüde dolaylı veya arızi kayıplardan sorumlu değiliz. [Hukuki inceleme gerekli: Sorumluluğun sınırlandırılması ve uygulanacak hukuk, mağazaya gönderimden önce sahibi tarafından incelenmelidir.]
+- **Garanti verilmemesi.** Uygulama, herhangi bir garanti olmaksızın olduğu gibi sunulur. Yasaların izin verdiği ölçüde dolaylı veya arızi kayıplardan sorumlu değiliz. [법무 확인 필요: Sorumluluğun sınırlandırılması ve uygulanacak hukuk, mağazaya gönderimden önce sahibi tarafından incelenmelidir.]
 
 ## 3. İletişim
 

@@ -21,11 +21,11 @@ Uygulama henüz yayımlanmadığından bu bölüm geliştirme planını açıkla
 - **Oyun verileri.** Ayarlarınız ve en yüksek puanınız gibi ilerleme bilgileriniz cihazınızda saklanır. Hesap açmanız gerekmez.
 - **iCloud eşzamanlaması.** Aynı Apple Kimliğiyle giriş yapılmış cihazlar arasında paylaşılan ilerleme, kendi iCloud hesabınızda saklanır ve sunucularımıza gönderilmez.
 - **Analiz.** Uygulamanın analiz veya çökme raporlaması kullanıp kullanmayacağına henüz karar vermedik. Kullanırsa yayımdan önce hangi verilerin toplandığını bu bölümde belirteceğiz.
-- **Veri saklama ve haklarınız.** [Hukuki inceleme gerekli: Veri saklama ve bölgelere göre haklarla ilgili ifadeler (GDPR, CCPA, Kore PIPA) mağazaya gönderimden önce teyit edilmelidir.]
+- **Veri saklama ve haklarınız.** [법무 확인 필요: Veri saklama ve bölgelere göre haklarla ilgili ifadeler (GDPR, CCPA, Kore PIPA) mağazaya gönderimden önce teyit edilmelidir.]
 
 ## 3. Yaş Sınırı
 
-Site ve Uygulama 16 yaşından küçüklere yönelik değildir. 16 yaşından küçük olduğunu bildiğimiz kişilerden kişisel bilgi toplamayız. Siteyi ve Uygulamayı yalnızca 16 yaş ve üzeri kullanıcılar kullanabilir. [Hukuki inceleme gerekli: 16 yaşından küçük kullanıcılara ilişkin uygulama ve yaş derecelendirmesi yayımdan önce teyit edilmelidir.]
+Site ve Uygulama 16 yaşından küçüklere yönelik değildir. 16 yaşından küçük olduğunu bildiğimiz kişilerden kişisel bilgi toplamayız. Siteyi ve Uygulamayı yalnızca 16 yaş ve üzeri kullanıcılar kullanabilir. [법무 확인 필요: 16 yaşından küçük kullanıcılara ilişkin uygulama ve yaş derecelendirmesi yayımdan önce teyit edilmelidir.]
 
 ## 4. Değişiklikler
 

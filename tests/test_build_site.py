@@ -41,6 +41,23 @@ class SiteTests(unittest.TestCase):
             _, errs = bs.make_ctx(root)
         self.assertEqual(errs, ["missing pages/id/privacy.md", "missing pages/th/terms.md"])
 
+    def test_legal_pages_match_english_facts(self):
+        # every translation keeps the age limit (16), the iCloud line and the same legal-review markers as en,
+        # so one grep for "[법무 확인 필요:" finds every open item in every language before the store submission
+        marker = "[법무 확인 필요: "
+        for slug, extra in (("privacy", "iCloud"), ("terms", None)):
+            want = (REPO / "content/pages/en" / (slug + ".md")).read_text(encoding="utf-8").count(marker)
+            self.assertGreater(want, 0)
+            for lang in bs.LANGS:
+                with self.subTest(lang=lang, slug=slug):
+                    text = (REPO / "content/pages" / lang / (slug + ".md")).read_text(encoding="utf-8")
+                    self.assertEqual(text.count(marker), want)
+                    self.assertIn("16", text)
+                    if extra:
+                        self.assertIn(extra, text)
+                    if lang not in bs.MAIN_LANGS:
+                        self.assertRegex(text.split("---")[1], r"(?m)^translation_of: (en|ko)$")
+
     def test_sitemap_is_consistent(self):
         errs, urls = cs.check(REPO)
         self.assertEqual(errs, [])

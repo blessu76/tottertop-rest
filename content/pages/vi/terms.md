@@ -16,7 +16,7 @@ Trang web được cung cấp theo hiện trạng để giới thiệu thông ti
 Các điều khoản dành cho Ứng dụng đang ở dạng dự thảo và sẽ được hoàn thiện trước khi phát hành.
 
 - **Giấy phép.** Chúng tôi cấp cho bạn giấy phép cá nhân, không độc quyền và không thể chuyển nhượng để cài đặt và sử dụng Ứng dụng trên các thiết bị của chính bạn cho mục đích cá nhân, phi thương mại. Bạn không được sao chép, bán lại, dịch ngược hoặc can thiệp vào Ứng dụng, trừ trường hợp pháp luật cho phép.
-- **Không bảo đảm.** Ứng dụng được cung cấp theo hiện trạng, không có bất kỳ bảo đảm nào. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm về tổn thất gián tiếp hoặc phát sinh kèm theo. [Cần rà soát pháp lý: Chủ sở hữu cần xem xét giới hạn trách nhiệm và luật điều chỉnh trước khi gửi ứng dụng lên cửa hàng.]
+- **Không bảo đảm.** Ứng dụng được cung cấp theo hiện trạng, không có bất kỳ bảo đảm nào. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm về tổn thất gián tiếp hoặc phát sinh kèm theo. [법무 확인 필요: Chủ sở hữu cần xem xét giới hạn trách nhiệm và luật điều chỉnh trước khi gửi ứng dụng lên cửa hàng.]
 
 ## 3. Liên hệ
 

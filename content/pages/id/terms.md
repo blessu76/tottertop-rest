@@ -16,7 +16,7 @@ Situs disediakan sebagaimana adanya untuk memberikan informasi tentang Aplikasi.
 Ketentuan untuk Aplikasi ini masih berupa draf dan akan diselesaikan sebelum rilis.
 
 - **Lisensi.** Kami memberikan kepada Anda lisensi pribadi, non-eksklusif, dan tidak dapat dialihkan untuk memasang dan menggunakan Aplikasi di perangkat Anda sendiri untuk penggunaan pribadi dan nonkomersial. Anda tidak boleh menyalin, menjual kembali, merekayasa balik, atau mengutak-atik Aplikasi, kecuali jika diizinkan oleh hukum.
-- **Tanpa jaminan.** Aplikasi disediakan sebagaimana adanya tanpa jaminan apa pun. Sejauh diizinkan oleh hukum, kami tidak bertanggung jawab atas kerugian tidak langsung atau insidental. [Perlu tinjauan hukum: pembatasan tanggung jawab dan hukum yang berlaku perlu ditinjau oleh pemilik sebelum pengajuan ke toko aplikasi.]
+- **Tanpa jaminan.** Aplikasi disediakan sebagaimana adanya tanpa jaminan apa pun. Sejauh diizinkan oleh hukum, kami tidak bertanggung jawab atas kerugian tidak langsung atau insidental. [법무 확인 필요: pembatasan tanggung jawab dan hukum yang berlaku perlu ditinjau oleh pemilik sebelum pengajuan ke toko aplikasi.]
 
 ## 3. Kontak
 
