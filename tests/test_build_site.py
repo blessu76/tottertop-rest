@@ -18,7 +18,8 @@ class SiteTests(unittest.TestCase):
         self.assertEqual((REPO / "CNAME").read_text().strip(), g["domain"])
 
     def test_all_languages_complete(self):
-        ctx = bs.make_ctx(REPO, require_all=True)[0]
+        ctx, errs = bs.make_ctx(REPO, require_all=True)
+        self.assertEqual(errs, [])
         self.assertEqual(set(ctx.langs), set(bs.LANGS))
 
     def test_build_has_required_files(self):
@@ -26,13 +27,19 @@ class SiteTests(unittest.TestCase):
         files = bs.build_all(ctx)
         for want in ("index.html", "404.html", "sitemap.xml", "robots.txt", "llms.txt"):
             self.assertIn(want, files)
-        # every page slug (contact) is built for every language
         for l in ctx.langs:
             for slug in bs.PAGE_SLUGS:
-                if slug not in bs.REQUIRED_PAGE_SLUGS and (l, slug) not in ctx.pages:
-                    continue  # privacy/terms bodies exist in 7 languages only
                 rel = bs.path_page(l, slug).lstrip("/") + "index.html"
                 self.assertIn(rel, files, "%s/%s" % (l, slug))
+
+    def test_missing_legal_translation_fails_default_build(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            shutil.copytree(REPO / "content", root / "content", ignore=shutil.ignore_patterns("journal"))
+            (root / "content/pages/id/privacy.md").unlink()
+            (root / "content/pages/th/terms.md").unlink()
+            _, errs = bs.make_ctx(root)
+        self.assertEqual(errs, ["missing pages/id/privacy.md", "missing pages/th/terms.md"])
 
     def test_sitemap_is_consistent(self):
         errs, urls = cs.check(REPO)
@@ -204,7 +211,7 @@ class HeaderFooterTests(unittest.TestCase):
         for l in self.ctx.langs:
             footer = self._block(self.files[bs.path_home(l).lstrip("/") + "index.html"], "footer", "site-footer")
             for slug in ("privacy", "terms"):
-                want = bs.path_page(l if (l, slug) in self.ctx.pages else "en", slug)
+                want = bs.path_page(l, slug)
                 self.assertIn('href="%s"' % want, footer, "%s footer links %s" % (l, slug))
                 self.assertIn(want.lstrip("/") + "index.html", self.files)
 
@@ -245,6 +252,19 @@ class HeaderFooterTests(unittest.TestCase):
     def test_hreflang_links_kept(self):
         head = self.files["index.html"].split("</head>")[0]
         self.assertEqual(len(re.findall(r'rel="alternate" hreflang="[^"]+"', head)), len(bs.LANGS) + 1)
+
+    def test_legal_language_links_stay_on_the_same_document(self):
+        for slug in ("privacy", "terms"):
+            paths = {lang: bs.path_page(lang, slug) for lang in self.ctx.langs}
+            for lang, path in paths.items():
+                with self.subTest(lang=lang, slug=slug):
+                    page = self.files[path.lstrip("/") + "index.html"]
+                    head = page.split("</head>")[0]
+                    selects = re.findall(r'<option value="([^"]+)" lang="([^"]+)"( selected)?>', page)
+                    self.assertCountEqual(selects, [(p, l, " selected" if l == lang else "") for l, p in paths.items()])
+                    alternate_links = re.findall(r'rel="alternate" hreflang="([^"]+)" href="([^"]+)"', head)
+                    self.assertCountEqual(alternate_links, [(l, bs.url(p)) for l, p in paths.items()] +
+                                          [("x-default", bs.url(paths["en"]))])
 
     def test_journal_json_ld_parses(self):
         pages = [f for f in self.files if f.endswith(".html")]

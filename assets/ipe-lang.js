@@ -32,6 +32,12 @@
     }
     return DEFAULT;
   }
+  function withTail(url) {
+    var loc = root.location, i = url.indexOf('#'), tail = i < 0 ? '' : url.slice(i), base = i < 0 ? url : url.slice(0, i);
+    var q = String(loc.search || '').replace(/^\?/, '');
+    if (q) base += (base.indexOf('?') < 0 ? '?' : '&') + q;
+    return base + (loc.hash || tail);
+  }
   function stored() {
     try { var v = root.localStorage.getItem(KEY); return v ? resolve(v) : null; } catch (e) { return null; }
   }
@@ -46,9 +52,9 @@
     var cur = sel.options[sel.selectedIndex], i;
     if (cur && cur.lang === want) return;
     for (i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].lang === want && sel.options[i].value) { root.location.replace(sel.options[i].value); return; }
+      if (sel.options[i].lang === want && sel.options[i].value) { root.location.replace(withTail(sel.options[i].value)); return; }
     }
   }
-  root.IpeLang = { resolve: resolve, pick: pick, stored: stored, SUPPORTED: SUPPORTED };
+  root.IpeLang = { resolve: resolve, pick: pick, stored: stored, withTail: withTail, SUPPORTED: SUPPORTED };
   run();
 })(typeof window !== 'undefined' ? window : this);

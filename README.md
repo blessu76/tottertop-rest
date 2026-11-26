@@ -18,9 +18,10 @@ One journal post a day (all 12 languages, each with copy_review), at a random ti
 - A hard failure writes `~/.ipe/tottertop-publish/FAILED` and stops the gate until a human deletes it. Logs: `~/.ipe/logs/tottertop-publish.log`.
 - Check without publishing: `python3 ops/slot_gate.py --status`, `python3 ops/publish_next.py --dry-run`.
 
-## Hidden pages
-privacy/terms are hidden (not built, not linked) until the app exists: see `HIDDEN_PAGES` in `scripts/build_site.py`. Sources stay in `content/pages/`.
+## Privacy and terms
+
+Every language has its own privacy and terms pages, linked from the site footer.
 
 ## TODO
 - Real art (assets/ are brand-neutral placeholders).
-- Resolve the `[법무 확인 필요]` markers in privacy §2/§3 and terms §2, then move the slugs back into `PAGE_SLUGS` before the store submission.
+- Resolve the legal-review markers in privacy §2/§3 and terms §2 before the store submission.
