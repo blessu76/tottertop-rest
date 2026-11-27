@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/zh-Hant/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop 開發筆記 — 這款遊戲是什麼，以及我們為什麼要做它。</description>
 <language>zh-Hant</language>
-<lastBuildDate>Thu, 26 Nov 2026 16:45:00 +0900</lastBuildDate>
+<lastBuildDate>Fri, 27 Nov 2026 17:15:00 +0900</lastBuildDate>
+<item><title>每塊積木一次點擊：Tottertop 怎麼玩</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-27-one-tap-per-block/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-27-one-tap-per-block/</guid><pubDate>Fri, 27 Nov 2026 17:15:00 +0900</pubDate><description>一次點擊決定積木何時放手，落在哪裡則由塔和晃動決定。</description></item>
 <item><title>刻意做短的遊戲：為什麼一局大約一分鐘</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-26-a-short-game-on-purpose/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-26-a-short-game-on-purpose/</guid><pubDate>Thu, 26 Nov 2026 16:45:00 +0900</pubDate><description>等公車的幾分鐘，會議開始前的空檔。短是刻意的設計，我們也寫下它的限制。</description></item>
 <item><title>第一局，以及再玩一局的理由</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-25-the-first-round-and-the-next/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-25-the-first-round-and-the-next/</guid><pubDate>Wed, 25 Nov 2026 15:30:00 +0900</pubDate><description>不會讓遊戲暫停的提示、在一局中途出現的「新紀錄!」，以及下一局要追的一個目標。</description></item>
 <item><title>讓方塊分得清楚：色覺檢查</title><link>https://tottertop.ipe.rest/zh-Hant/journal/2026-11-24-telling-the-blocks-apart/</link><guid isPermaLink="true">https://tottertop.ipe.rest/zh-Hant/journal/2026-11-24-telling-the-blocks-apart/</guid><pubDate>Tue, 24 Nov 2026 14:45:00 +0900</pubDate><description>在綠色盲的模擬下，藍色和紫色方塊幾乎一模一樣。對比測試如何抓到這件事，以及現在每組方塊配色都必須通過的標準。</description></item>
