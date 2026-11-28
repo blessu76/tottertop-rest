@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ko/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>기우뚱탑(Tottertop) 개발 노트 — 게임이 무엇인지, 왜 만드는지.</description>
 <language>ko</language>
-<lastBuildDate>Fri, 27 Nov 2026 17:15:00 +0900</lastBuildDate>
+<lastBuildDate>Sat, 28 Nov 2026 16:15:00 +0900</lastBuildDate>
+<item><title>다음 블록을 한 걸음 앞에서</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-28-the-next-block-one-step-ahead/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-28-the-next-block-one-step-ahead/</guid><pubDate>Sat, 28 Nov 2026 16:15:00 +0900</pubDate><description>다음 블록은 미리보기로 보입니다. 블록 하나 앞을 생각하면, 기울기 안내가 어느 쪽에 두라고 하는지 보입니다.</description></item>
 <item><title>블록 하나에 탭 하나: 기우뚱탑 하는 법</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-27-one-tap-per-block/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-27-one-tap-per-block/</guid><pubDate>Fri, 27 Nov 2026 17:15:00 +0900</pubDate><description>탭 한 번이 블록을 놓는 순간을 정합니다. 어디에 떨어질지는 탑과 흔들림이 정합니다.</description></item>
 <item><title>짧게 만든 게임: 한 판이 1분쯤 걸리는 이유</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-26-a-short-game-on-purpose/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-26-a-short-game-on-purpose/</guid><pubDate>Thu, 26 Nov 2026 16:45:00 +0900</pubDate><description>버스를 기다리는 몇 분, 회의 시작 전의 틈. 짧은 것은 설계이고, 그 한계도 함께 적습니다.</description></item>
 <item><title>첫 판, 그리고 한 판 더 할 이유</title><link>https://tottertop.ipe.rest/ko/journal/2026-11-25-the-first-round-and-the-next/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ko/journal/2026-11-25-the-first-round-and-the-next/</guid><pubDate>Wed, 25 Nov 2026 15:30:00 +0900</pubDate><description>게임을 멈추지 않는 안내, 판 도중에 뜨는 「최고 기록!」, 그리고 다음 판에 노릴 목표 하나.</description></item>

@@ -6,7 +6,8 @@
 <atom:link href="https://tottertop.ipe.rest/ja/journal/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Tottertop の開発ノート — ゲームの内容と、作る理由。</description>
 <language>ja</language>
-<lastBuildDate>Fri, 27 Nov 2026 17:15:00 +0900</lastBuildDate>
+<lastBuildDate>Sat, 28 Nov 2026 16:15:00 +0900</lastBuildDate>
+<item><title>次のブロックを一歩先に</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-28-the-next-block-one-step-ahead/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-28-the-next-block-one-step-ahead/</guid><pubDate>Sat, 28 Nov 2026 16:15:00 +0900</pubDate><description>次のブロックはプレビューで見えます。一個先を考えると、傾きのヒントが置く場所を示してくれます。</description></item>
 <item><title>ブロック1個にタップ1回：Tottertopの遊び方</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-27-one-tap-per-block/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-27-one-tap-per-block/</guid><pubDate>Fri, 27 Nov 2026 17:15:00 +0900</pubDate><description>タップ1回で、ブロックを放す瞬間が決まります。どこに落ちるかは、塔と揺れが決めます。</description></item>
 <item><title>わざと短く作ったゲーム：1回が約1分の理由</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-26-a-short-game-on-purpose/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-26-a-short-game-on-purpose/</guid><pubDate>Thu, 26 Nov 2026 16:45:00 +0900</pubDate><description>バスを待つ数分、会議の前の少しの間。短いことは意図した設計であり、その限界も書いておきます。</description></item>
 <item><title>最初の一回と、もう一回遊ぶ理由</title><link>https://tottertop.ipe.rest/ja/journal/2026-11-25-the-first-round-and-the-next/</link><guid isPermaLink="true">https://tottertop.ipe.rest/ja/journal/2026-11-25-the-first-round-and-the-next/</guid><pubDate>Wed, 25 Nov 2026 15:30:00 +0900</pubDate><description>ゲームを止めないヒント、プレイ中に出る「自己ベスト!」、そして次の一回で目指す目標ひとつ。</description></item>
